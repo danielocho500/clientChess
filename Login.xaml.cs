@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cliente.SuperChess;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
@@ -16,14 +17,14 @@ using System.Windows.Shapes;
 namespace Cliente
 {
 
-    public partial class Login : Window, ChessService.ILoginServiceCallback
+    public partial class Login : Window, ILoginServiceCallback
     {
-        public ChessService.LoginServiceClient server;
+        public LoginServiceClient server;
         public Login()
         {
             InitializeComponent();
             InstanceContext instanceContext = new InstanceContext(this);
-            server = new ChessService.LoginServiceClient(instanceContext);
+            server = new LoginServiceClient(instanceContext);
         }
 
         public void LoginStatus(bool status, string message, int idUser) 

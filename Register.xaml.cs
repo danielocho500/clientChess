@@ -1,4 +1,4 @@
-﻿using Cliente.ChessService;
+﻿using Cliente.SuperChess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,12 +20,12 @@ namespace Cliente
 
     public partial class Register : Window, IRegisterServiceCallback
     {
-        public ChessService.RegisterServiceClient server;
+        public RegisterServiceClient server;
         public Register()
         {
             InitializeComponent();
             InstanceContext instanceContext = new InstanceContext(this);
-            server = new ChessService.RegisterServiceClient(instanceContext);
+            server = new RegisterServiceClient(instanceContext);
         }
         private void Registrarse_Click(object sender, RoutedEventArgs e)
         {

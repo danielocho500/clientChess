@@ -1,4 +1,4 @@
-﻿using Cliente.ChessService;
+﻿using Cliente.SuperChess;
 using System;
 using System.Collections.Generic;
 using System.Linq;

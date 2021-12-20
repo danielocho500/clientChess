@@ -61,3 +61,9 @@ C:\Users\peres\Documents\5.- Semestre\3.  Tecnologias\Proyecto SuperChess\Deskto
 C:\Users\peres\Documents\5.- Semestre\3.  Tecnologias\Proyecto SuperChess\Desktop\Cliente\obj\Debug\Invitations.baml
 C:\Users\peres\Documents\5.- Semestre\3.  Tecnologias\Proyecto SuperChess\Desktop\Cliente\obj\Debug\Chat.g.cs
 C:\Users\peres\Documents\5.- Semestre\3.  Tecnologias\Proyecto SuperChess\Desktop\Cliente\obj\Debug\Chat.baml
+C:\Users\danie\Desktop\Cliente\obj\Debug\Chat.g.cs
+C:\Users\danie\Desktop\Cliente\obj\Debug\Invitations.g.cs
+C:\Users\danie\Desktop\Cliente\obj\Debug\MainChess.g.cs
+C:\Users\danie\Desktop\Cliente\obj\Debug\Chat.baml
+C:\Users\danie\Desktop\Cliente\obj\Debug\Invitations.baml
+C:\Users\danie\Desktop\Cliente\obj\Debug\MainChess.baml

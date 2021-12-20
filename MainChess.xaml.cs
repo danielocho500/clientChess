@@ -1,4 +1,4 @@
-﻿using Cliente.ChessService;
+﻿using Cliente.SuperChess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,21 +16,20 @@ using System.Windows.Shapes;
 
 namespace Cliente
 {
-    public partial class MainChess : Window,IRequestServiceCallback, IConnectedFriendsServiceCallback
+    public partial class MainChess : Window, IFriendServiceCallback
     {
-        public RequestServiceClient server;
-        public ConnectedFriendsServiceClient serverFriends;
+        public RequestServiceClient server_Request;
+        public FriendServiceClient server_friend;
         public int idUser;
         public MainChess(int idUser_)
         {
             InitializeComponent();
             InstanceContext instanceContext = new InstanceContext(this);
-            server = new RequestServiceClient(instanceContext);
+            server_Request = new RequestServiceClient(instanceContext);
+            server_friend = new FriendServiceClient(instanceContext);
             idUser = idUser_;
-
-            serverFriends = new ConnectedFriendsServiceClient(instanceContext);
-            serverFriends.Connected(idUser);
-
+            server_friend.Connected(idUser_);
+            
         }
 
         private void NewGame_Click(object sender, RoutedEventArgs e)
@@ -57,7 +56,9 @@ namespace Cliente
         {
             Login lg = new Login();
             lg.Show();
-            MessageBox.Show("Sesion closed");
+
+            server_friend.Disconnected(idUser);
+
             this.Close();
         }
 
@@ -77,7 +78,7 @@ namespace Cliente
         {
             if (!string.IsNullOrEmpty(txtAddUser.Text))
             {
-                server.sendRequest(txtAddUser.Text,idUser);
+                server_Request.sendRequest(txtAddUser.Text,idUser);
             }
             else{
                 MessageBox.Show("Please, enter an username");
@@ -95,26 +96,29 @@ namespace Cliente
             ch.Show();
         }
 
-        public void getUser(string[] usernames)
+        public void getUsers(string[] usernames)
         {
-            string username = "";
-
-            foreach (string user in usernames)
+            string imp = "";
+            foreach (string username in usernames)
             {
-                username += user;
+                imp += username;
             }
-            MessageBox.Show(username);
-
+            MessageBox.Show("total: " + imp);
         }
 
-        public void newConection(string username)
+        public void newConecction(string username)
         {
-            throw new NotImplementedException();
+            MessageBox.Show(username + "Se conecto");
         }
 
-        public void newDisconection(string username)
+        public void newDisconecction(string username)
         {
-            throw new NotImplementedException();
+            MessageBox.Show(username + "se desconecto");
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            server_friend.Disconnected(idUser);
         }
     }
 }
