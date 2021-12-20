@@ -106,6 +106,14 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetHttpBinding_IGetStatsService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd0" namespace="http://tempuri.org/" />
@@ -191,8 +199,20 @@
   <wsdl:message name="IMatchService_sendConnection_InputMessage">
     <wsdl:part name="parameters" element="tns:sendConnection" />
   </wsdl:message>
+  <wsdl:message name="IMatchService_giveUp_InputMessage">
+    <wsdl:part name="parameters" element="tns:giveUp" />
+  </wsdl:message>
   <wsdl:message name="IMatchService_ReciveMessage_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReciveMessage" />
+  </wsdl:message>
+  <wsdl:message name="IMatchService_MatchEnds_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:MatchEnds" />
+  </wsdl:message>
+  <wsdl:message name="IGetStatsService_getStats_InputMessage">
+    <wsdl:part name="parameters" element="tns:getStats" />
+  </wsdl:message>
+  <wsdl:message name="IGetStatsService_ShowStats_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ShowStats" />
   </wsdl:message>
   <wsdl:portType name="IRegisterService">
     <wsdl:operation name="GenerateCodeRegister">
@@ -285,8 +305,22 @@
     <wsdl:operation name="sendConnection">
       <wsdl:input wsaw:Action="http://tempuri.org/IMatchService/sendConnection" message="tns:IMatchService_sendConnection_InputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="giveUp">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchService/giveUp" message="tns:IMatchService_giveUp_InputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ReciveMessage">
       <wsdl:output wsaw:Action="http://tempuri.org/IMatchService/ReciveMessage" message="tns:IMatchService_ReciveMessage_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MatchEnds">
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchService/MatchEnds" message="tns:IMatchService_MatchEnds_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IGetStatsService">
+    <wsdl:operation name="getStats">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGetStatsService/getStats" message="tns:IGetStatsService_getStats_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ShowStats">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGetStatsService/ShowStats" message="tns:IGetStatsService_ShowStats_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IRegisterService" type="tns:IRegisterService">
@@ -473,8 +507,36 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
+    <wsdl:operation name="giveUp">
+      <soap12:operation soapAction="http://tempuri.org/IMatchService/giveUp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="ReciveMessage">
       <soap12:operation soapAction="http://tempuri.org/IMatchService/ReciveMessage" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MatchEnds">
+      <soap12:operation soapAction="http://tempuri.org/IMatchService/MatchEnds" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetHttpBinding_IGetStatsService" type="tns:IGetStatsService">
+    <wsp:PolicyReference URI="#NetHttpBinding_IGetStatsService_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/websocket" />
+    <wsdl:operation name="getStats">
+      <soap12:operation soapAction="http://tempuri.org/IGetStatsService/getStats" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ShowStats">
+      <soap12:operation soapAction="http://tempuri.org/IGetStatsService/ShowStats" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
@@ -486,7 +548,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/ChatService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-K22I61J\peres</Upn>
+          <Upn>DESKTOP-RGC3AGN\danie</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -495,7 +557,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/ChatService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-K22I61J\peres</Upn>
+          <Upn>DESKTOP-RGC3AGN\danie</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -530,6 +592,12 @@
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetHttpBinding_IMatchService" binding="tns:NetHttpBinding_IMatchService">
+      <soap12:address location="ws://localhost:8080/ChatService" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>ws://localhost:8080/ChatService</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetHttpBinding_IGetStatsService" binding="tns:NetHttpBinding_IGetStatsService">
       <soap12:address location="ws://localhost:8080/ChatService" />
       <wsa10:EndpointReference>
         <wsa10:Address>ws://localhost:8080/ChatService</wsa10:Address>

@@ -22,44 +22,95 @@ namespace Cliente
     /// 
     public partial class Partida : Window, IMatchServiceCallback
     {
-        public int idUser;
-        public string rival;
+        public int IdUser;
+        public string Rival;
         public string MatchCode;
-        public bool white;
+        public bool IsWhite;
+        public string UsernameActual;
         public MatchServiceClient server_match;
 
-        public Partida(int idUser_, string rival_, string MatchCode_, bool white_)
+        ImageBrush pawnImage = new ImageBrush();
+
+        public Partida(int idUser_, string username_, string rival_, string MatchCode_, bool white_)
         {
             InitializeComponent();
 
             InstanceContext instanceContext = new InstanceContext(this);
             server_match = new MatchServiceClient(instanceContext);
 
-            idUser = idUser_;
-            rival = rival_;
+            IdUser = idUser_;
+            Rival = rival_;
             MatchCode = MatchCode_;
-            white = white_;
+            IsWhite = white_;
+            UsernameActual = username_;
 
-            string color = (white) ? "whites" : "Blacks";
+            string color = (IsWhite) ? "whites" : "Blacks";
 
-            prueba.Content += " " + rival + " you are "+color;
+            prueba.Content += " " + Rival + " you are "+color;
 
-            server_match.sendConnection(white, MatchCode);
+            server_match.sendConnection(IsWhite, MatchCode);
+
+
+            SetUpGame();
+            
+        }
+
+        private void SetUpGame()
+        {
+            BitmapImage btm = new BitmapImage(new Uri("Images/WhitePawn.png", UriKind.Relative));
+            Image img = new Image();
+            img.Source = btm;
+            img.Stretch = Stretch.Fill;
+            a1.Content = img;
         }
 
         private void BtnSend_Click(object sender, RoutedEventArgs e)
         {
-
+            if (string.IsNullOrEmpty(TextBMessage.Text.Trim()))
+            {
+                MessageBox.Show("You must write a message");
+                return;
+            }
+            string message = TextBMessage.Text;
+            listVMessages.Items.Add(GetHourFormat() + " " + UsernameActual + ": " + message);
+            listVMessages.ScrollIntoView(listVMessages.Items.Count - 1);
+            server_match.SendMessage(IsWhite, message, MatchCode);
+            TextBMessage.Text = "";
         }
 
         private void BtnRendirse_Click(object sender, RoutedEventArgs e)
         {
-
+            if (MessageBox.Show("Do you want to Surrender?", "Confirm", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                server_match.giveUp(IsWhite, MatchCode);
+            }
         }
 
-        public void ReciveMessage(string message)
+        public void ReciveMessage(string message,string time)
         {
-            
+            listVMessages.Items.Add(time+" "+Rival + ": " + message);
+            listVMessages.ScrollIntoView(listVMessages.Items.Count - 1);
+        }
+
+        private string GetHourFormat()
+        {
+            var date = DateTime.Now;
+            int hour = date.Hour;
+            int minute = date.Minute;
+            return "[" + hour + ":" + minute + "]";
+        }
+
+        public void MatchEnds(bool youWon, int oldElo, int newElo)
+        {
+            string msg = (youWon) ? "You WIN!!!!" : "You Lose :c";
+            msg += "  Elo: " + oldElo + " -> " + newElo;
+            MessageBox.Show(msg);
+            this.Close();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

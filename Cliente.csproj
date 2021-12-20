@@ -95,6 +95,9 @@
     <Compile Include="Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Stats.xaml.cs">
+      <DependentUpon>Stats.xaml</DependentUpon>
+    </Compile>
     <Page Include="GetCodeMatch.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -135,6 +138,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Register.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Stats.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -225,6 +232,21 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\Fondo.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\BlackBishop.png" />
+    <Resource Include="Images\BlackKing.png" />
+    <Resource Include="Images\BlackKnight.png" />
+    <Resource Include="Images\BlackPawn.png" />
+    <Resource Include="Images\BlackQueen.png" />
+    <Resource Include="Images\BlackTower.png" />
+    <Resource Include="Images\WhiteBishop.png" />
+    <Resource Include="Images\WhiteKing.png" />
+    <Resource Include="Images\WhiteKnight.png" />
+    <Resource Include="Images\WhitePawn.png" />
+    <Resource Include="Images\WhiteQueen.png" />
+    <Resource Include="Images\WhiteTower.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

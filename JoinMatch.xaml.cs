@@ -16,12 +16,9 @@ using System.Windows.Shapes;
 
 namespace Cliente
 {
-    /// <summary>
-    /// Interaction logic for JoinMatch.xaml
-    /// </summary>
-    public partial class JoinMatch : Window, ISendInvitationServiceCallback
+    public partial class JoinMatch : Window//, ISendInvitationServiceCallback
     {
-        public SendInvitationServiceClient server;
+        //public SendInvitationServiceClient server;
         public int idUser;
         public JoinMatch(int idUser_)
         {
@@ -29,7 +26,7 @@ namespace Cliente
 
             idUser = idUser_;
             InstanceContext instanceContext = new InstanceContext(this);
-            server = new SendInvitationServiceClient(instanceContext);
+            //server = new SendInvitationServiceClient(instanceContext);
 
         }
 
@@ -38,7 +35,7 @@ namespace Cliente
             throw new NotImplementedException();
         }
 
-        public void ValidateCodeStatus(bool status, string usernameRival, string MatchCode, bool white)
+        public void ValidateCodeStatus(bool status, string usernameRival, string username, string MatchCode, bool white)
         {
             if (!status)
             {
@@ -46,7 +43,7 @@ namespace Cliente
                 return;
             }
 
-            Partida partida = new Partida(idUser, usernameRival, MatchCode, white);
+            Partida partida = new Partida(idUser, usernameRival, username, MatchCode, white);
             partida.Show();
             this.Close();
         }
@@ -64,13 +61,13 @@ namespace Cliente
                 return;
             }
             string code = TBCode.Text;
-            server.ValidateCodeInvitation(idUser,code);
+            //server.ValidateCodeInvitation(idUser,code);
             
         }
 
-        void ISendInvitationServiceCallback.JoinMatch(string usernameRival, string codeMatch, bool white)
+        /*void ISendInvitationServiceCallback.JoinMatch(string usernameRival, string username, string codeMatch, bool white)
         {
             throw new NotImplementedException();
-        }
+        }*/
     }
 }

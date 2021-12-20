@@ -26,15 +26,15 @@ using System.Windows.Shapes;
 
 namespace Cliente
 {
-    public partial class Register : Window, IRegisterServiceCallback
+    public partial class Register : Window//, IRegisterServiceCallback
     {
-        public RegisterServiceClient server;
+        //public RegisterServiceClient server;
 
         public Register()
         {
             InitializeComponent();
             InstanceContext instanceContext = new InstanceContext(this);
-            server = new RegisterServiceClient(instanceContext);
+            //server = new RegisterServiceClient(instanceContext);
         }
 
         private void Register_Click(object sender, RoutedEventArgs e)
@@ -47,7 +47,7 @@ namespace Cliente
                     {
                         if (Safe_Password(pssPassword1.Password))
                         {
-                            bool generatedCode = server.GenerateCodeRegister(txtUsername.Text, pssPassword1.Password, txtEmail.Text);
+                            /*bool generatedCode = server.GenerateCodeRegister(txtUsername.Text, pssPassword1.Password, txtEmail.Text);
                             if (generatedCode)
                             {
                                 btnValidate.Visibility = Visibility.Visible;
@@ -57,7 +57,7 @@ namespace Cliente
                             else
                             {
                                 MessageBox.Show("Code was no generated");
-                            }     
+                            }*/    
                         }
                     }
                 }
@@ -82,7 +82,7 @@ namespace Cliente
 
         private void Validate_Click(object sender, RoutedEventArgs e)
         {
-            server.VerificateCode(txtCode.Text);
+            //server.VerificateCode(txtCode.Text);
         }
 
         //Validaciones de campos y formatos

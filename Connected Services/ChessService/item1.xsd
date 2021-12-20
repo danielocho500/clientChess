@@ -171,6 +171,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="status" type="xs:boolean" />
         <xs:element minOccurs="0" name="usernameRival" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="codeMatch" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="white" type="xs:boolean" />
       </xs:sequence>
@@ -180,6 +181,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="usernameRival" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="codeMatch" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="white" type="xs:boolean" />
       </xs:sequence>
@@ -188,6 +190,7 @@
   <xs:element name="SendMessage">
     <xs:complexType>
       <xs:sequence>
+        <xs:element minOccurs="0" name="isWhite" type="xs:boolean" />
         <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="matchCode" nillable="true" type="xs:string" />
       </xs:sequence>
@@ -196,7 +199,15 @@
   <xs:element name="sendConnection">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="white" type="xs:boolean" />
+        <xs:element minOccurs="0" name="isWhite" type="xs:boolean" />
+        <xs:element minOccurs="0" name="matchCode" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="giveUp">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="isWhite" type="xs:boolean" />
         <xs:element minOccurs="0" name="matchCode" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -205,6 +216,34 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="time" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MatchEnds">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="youWon" type="xs:boolean" />
+        <xs:element minOccurs="0" name="oldElo" type="xs:int" />
+        <xs:element minOccurs="0" name="newElo" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getStats">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ShowStats">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Matches_played" type="xs:int" />
+        <xs:element minOccurs="0" name="Matches_win" type="xs:int" />
+        <xs:element minOccurs="0" name="WinP" type="xs:decimal" />
+        <xs:element minOccurs="0" name="eloMax" type="xs:int" />
+        <xs:element minOccurs="0" name="eloActual" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

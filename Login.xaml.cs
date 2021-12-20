@@ -26,14 +26,14 @@ using System.Windows.Shapes;
 
 namespace Cliente
 {
-    public partial class Login : Window, ILoginServiceCallback
+    public partial class Login: Window//, ILoginServiceCallback
     {
-        public LoginServiceClient server;
+        //public LoginServiceClient server;
         public Login()
         {
             InitializeComponent();
             InstanceContext instanceContext = new InstanceContext(this);
-            server = new LoginServiceClient(instanceContext);
+            //server = new LoginServiceClient(instanceContext);
         }
 
         public void LoginStatus(bool status, string message, int idUser) 
@@ -55,7 +55,11 @@ namespace Cliente
         {
             if (!string.IsNullOrEmpty(txtUsername.Text) && (!string.IsNullOrEmpty(pssPassword.Password)))
             {
-                server.Login(txtUsername.Text, pssPassword.Password);
+                //server.Login(txtUsername.Text, pssPassword.Password)
+                //Borrar lo de abajo
+                MainChess mainchess = new MainChess(0);
+                mainchess.Show();
+                this.Close();
             }
             else
             {

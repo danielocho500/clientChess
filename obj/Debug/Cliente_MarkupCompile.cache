@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\peres\Downloads\chess\chess\Cliente\obj\Debug\
+C:\Users\danie\Desktop\chess\Cliente\obj\Debug\
 Cliente
 none
 false
 DEBUG;TRACE
-C:\Users\peres\Downloads\chess\chess\Cliente\App.xaml
-81645308559
+C:\Users\danie\Desktop\chess\Cliente\App.xaml
+9-101780147
 
-13-287959226
+14-1089964164
 151842682125
-GetCodeMatch.xaml;Invitations.xaml;JoinMatch.xaml;Login.xaml;MainChess.xaml;MainWindow.xaml;Partida.xaml;Register.xaml;
+GetCodeMatch.xaml;Invitations.xaml;JoinMatch.xaml;Login.xaml;MainChess.xaml;MainWindow.xaml;Partida.xaml;Register.xaml;Stats.xaml;
 
 False
 
