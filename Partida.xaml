@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cliente"
         mc:Ignorable="d"
-        Title="Partida" Height="450" Width="800">
+        Title="Partida" Height="666" Width="1024" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        <ListView x:Name="listVMessages" Margin="526,24,40,77">
+        <Image Source="/resource/Fondo.png" ></Image>
+        <ListView x:Name="listVMessages" Margin="579,109,38,151">
         </ListView>
-        <Button x:Name="BtnSend" Content="Send" HorizontalAlignment="Left" Margin="677,370,0,0" VerticalAlignment="Top" Width="75" Click="BtnSend_Click"/>
-        <TextBox x:Name="TextBMessage" Margin="526,370,141,29"></TextBox>
-        <Button x:Name="BtnRendirse" Content="Rendirse" HorizontalAlignment="Left" Margin="426,370,0,0" VerticalAlignment="Top" Width="76" Click="BtnRendirse_Click"/>
-        <Label x:Name="prueba" Content="Jugando contra: " HorizontalAlignment="Left" Margin="74,44,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="BtnSend" Content="Send" HorizontalAlignment="Left" Margin="886,509,0,0" VerticalAlignment="Top" Width="94" Click="BtnSend_Click" Height="81"/>
+        <TextBox x:Name="TextBMessage" Margin="579,509,137,47"/>
+        <Button x:Name="BtnRendirse" Content="Rendirse" Margin="479,521,463,0" VerticalAlignment="Top" Click="BtnRendirse_Click" Height="55"/>
+        <Label x:Name="prueba" Content="Jugando contra: " HorizontalAlignment="Left" Margin="72,146,0,0" VerticalAlignment="Top" Width="178"/>
     </Grid>
 </Window>

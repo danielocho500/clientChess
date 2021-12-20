@@ -5,12 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cliente"
         mc:Ignorable="d"
-        Title="JoinMatch" Height="450" Width="800">
+        Title="JoinMatch" Height="450" Width="656.061">
     <Grid>
-        <TextBox x:Name="TBCode" HorizontalAlignment="Left" Height="23" Margin="222,114,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <Label Content="Code" HorizontalAlignment="Left" Margin="138,114,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="BtnJoin"  Content="Join" HorizontalAlignment="Left" Margin="200,192,0,0" VerticalAlignment="Top" Width="75" Click="BtnJoin_Click" />
-        <Button x:Name="btnExit" Content="Exit" HorizontalAlignment="Left" Margin="318,201,0,0" VerticalAlignment="Top" Width="75" Click="btnExit_Click"/>
+        <Image Source="/resource/Fondo.png" />
+        <Image Source="/resource/Boton6.png" Margin="154,69,192,0" Height="119" VerticalAlignment="Top" />
+        <TextBox x:Name="TBCode" HorizontalAlignment="Left" Height="33" Margin="110,118,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="143" d:LayoutOverrides="HorizontalAlignment" FontSize="20"/>
+        <Label Content="Code" HorizontalAlignment="Left" Margin="44,113,0,0" VerticalAlignment="Top" Height="38" Width="66" FontSize="20"/>
+        <Button x:Name="BtnJoin"  Content="Join" Margin="268,125,305,0" VerticalAlignment="Top" Click="BtnJoin_Click" d:LayoutOverrides="VerticalAlignment" Foreground="white" Background="Transparent" BorderBrush="Transparent"/>
+        <Button x:Name="btnExit" Content="Exit" HorizontalAlignment="Left" Margin="527,358,0,0" VerticalAlignment="Top" Width="75" Click="btnExit_Click" Foreground="white" Background="Transparent" BorderBrush="Transparent"/>
 
     </Grid>
 </Window>

@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cliente"
         mc:Ignorable="d"
-        Title="GetCodeMatch" Height="450" Width="800">
+        Title="GetCodeMatch" Height="450" Width="656.061">
     <Grid>
-        <Label Content="Your Code is:" HorizontalAlignment="Left" Margin="132,135,0,0" VerticalAlignment="Top" Width="122"/>
-        <Label x:Name="lbCode" Content="" HorizontalAlignment="Left" Margin="259,135,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="BtnExit" Content="Exit" HorizontalAlignment="Left" Margin="180,276,0,0" VerticalAlignment="Top" Width="76" Click="BtnExit_Click"/>
+        <Image Source="/resource/Fondo.png" />
+        <Label Content="Your Code is:" HorizontalAlignment="Left" Margin="40,127,0,0" VerticalAlignment="Top" Width="148" FontSize="20" FontFamily="Bold"/>
+        <Label x:Name="lbCode" Content="" HorizontalAlignment="Left" Margin="193,127,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Bold" Foreground="Red"/>
+        <Button x:Name="BtnExit" Content="Exit" HorizontalAlignment="Right" Margin="0,358,45,0" VerticalAlignment="Top" Width="76" Click="BtnExit_Click" Foreground="white" Background="Transparent" BorderBrush="Transparent"/>
 
     </Grid>
 </Window>
