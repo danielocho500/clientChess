@@ -1,0 +1,16 @@
+﻿<Window x:Class="Cliente.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Cliente"
+        mc:Ignorable="d"
+        Title="SuperChess" Height="666" Width="1024">
+    <Grid>
+        <Image Source="/resource/Inicio 2.0.png" Margin="-8,-10,-34,0"></Image>
+        <Label Content="Welcome to SuperChess" Margin="688,98,34,0" Grid.Column="0" Grid.Row="0" FontSize="26" Height="42" VerticalAlignment="Top" Foreground="White"/>
+        <Label Content="¿Aun no tienes cuenta?" Margin="0,0,91,337" Grid.Column="0" Grid.Row="0" FontSize="15" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="174" Foreground="White"></Label>
+        <Button x:Name="btnLogin" Content="_Login" Height="67" VerticalAlignment="Top" Margin="0,155,61,0" HorizontalAlignment="Right" Width="236" FontSize="25" Click="Login_Click" Background="Transparent" BorderBrush="Transparent" Foreground="White" ></Button>
+        <Button x:Name="btnRegister" Content="_Register" Margin="0,310,108,286" HorizontalAlignment="Right" Width="140" FontSize="20" Click="Register_Click" Background="Transparent" BorderBrush="Transparent" Foreground="Black" />
+    </Grid>
+</Window>
