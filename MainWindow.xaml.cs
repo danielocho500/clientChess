@@ -2,7 +2,7 @@
 /* Archivo: MainWindow.xaml.cs                                    */
 /* Programador: Raul Peredo                                       */
 /* Fecha: 18/Oct/2021                                             */
-/* Fecha modificación:  22/Oct/2021                               */
+/* Fecha modificación:  13/Dic/2021                               */
 /* Descripción: Ventana principal ponde se decide si quiere       */
 /*              iniciar sesion o desea registrase                 */
 /******************************************************************/
@@ -11,6 +11,7 @@
 
 
 using Cliente.ChessService;
+using Cliente.Properties.Langs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -84,7 +85,7 @@ namespace Cliente
             }
             else
             {
-                MessageBox.Show("No connection with the server");
+                MessageBox.Show(Lang.noConecction);
                 Application.Current.Shutdown();
             }
         }

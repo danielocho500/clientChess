@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cliente.Properties.Langs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -43,6 +44,7 @@ namespace Cliente
                 this.InitializeComponent();
             }
             Properties.Settings.Default.Save();
+            MessageBox.Show(Lang.refreshedLang);
             
         }
 

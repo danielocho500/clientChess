@@ -8,6 +8,7 @@
 
 
 using Cliente.ChessService;
+using Cliente.Properties.Langs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,13 +56,13 @@ namespace Cliente
                 {
                     if (Check_Passwords() == false)
                     {
-                        MessageBox.Show("The passwords are not the same");
+                        MessageBox.Show(Lang.samePass);
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Missing fields");
+                MessageBox.Show(Lang.emptyFields);
             }
         }
 
@@ -135,21 +136,44 @@ namespace Cliente
 
         public void ValidateCode(int status)
         {
-            /* 
-                 succes = 0 --> cerrar ventana
-                 fail = 1
-                 incorrect code = 2
-             */
+            if (status == 0)
+            {
+                MessageBox.Show(Lang.codeSuccess);
+            }
+            else if (status == 1)
+            {
+                MessageBox.Show(Lang.codeFail);
+            }
+            else if (status == 2)
+            {
+                MessageBox.Show(Lang.codeIncorrect);
+            }
         }
 
         public void CodeRecieve(int status)
         {
-            /*
-                codeGenerated = 0 --> habilitar campo para poner el código
-                fail = 1
-                emailRegistered = 2
-                userTAken = 3
-             */
+            if (status== 0)
+            {
+                lbCode.Visibility = Visibility.Visible;
+                txtCode.Visibility = Visibility.Visible;
+                btnValidate.Visibility = Visibility.Visible;
+            }
+            else if (status == 1)
+            {
+                MessageBox.Show(Lang.error);
+            }
+            else if (status == 2)
+            {
+                MessageBox.Show(Lang.error);
+            }
+            else if (status == 3)
+            {
+                MessageBox.Show(Lang.emailRegistered);
+            }
+            else if (status == 4)
+            {
+                MessageBox.Show(Lang.userTaken);
+            }
         }
     }
 }

@@ -6,9 +6,10 @@
         xmlns:local="clr-namespace:Cliente"
         mc:Ignorable="d"
         xmlns:language ="clr-namespace:Cliente.Properties.Langs"
-        Title="Stats" Height="450" Width="800">
+        Title="Stats" Height="450" Width="656.061">
     <Grid>
-        <Label x:Name="lbMatchesPlayed" Content="{x:Static language:Lang.matchPlayed}" Margin="44,26,593,332" RenderTransformOrigin="0.5,0.5">
+        <Image Source="/resource/Register.png" Margin="0,-112,0,-56" />
+        <Label x:Name="lbMatchesPlayed" Content="{x:Static language:Lang.matchPlayed}" Margin="44,23,247,335" RenderTransformOrigin="0.5,0.5" d:LayoutOverrides="HorizontalAlignment">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -18,9 +19,9 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <Label x:Name="lbWinP" Content="{x:Static language:Lang.win}" Margin="44,101,581,265"></Label>
-        <Label x:Name="lbEloM" Content="{x:Static language:Lang.eloMax}" Margin="44,159,563,193"></Label>
-        <Label x:Name="lbEloA" Content="{x:Static language:Lang.elo}" Margin="44,237,499,129"></Label>
-        <Button x:Name="btnExit" Margin="397,309,345,81" Content="{x:Static language:Lang.exit}" Click="btnExit_Click"></Button>
+        <Label x:Name="lbWinP" Content="{x:Static language:Lang.win}" Margin="44,101,251,265" d:LayoutOverrides="HorizontalAlignment"></Label>
+        <Label x:Name="lbEloM" Content="{x:Static language:Lang.eloMax}" Margin="44,159,251,193" d:LayoutOverrides="HorizontalAlignment"></Label>
+        <Label x:Name="lbEloA" Content="{x:Static language:Lang.elo}" Margin="44,237,251,129" d:LayoutOverrides="HorizontalAlignment"></Label>
+        <Button x:Name="btnExit" Margin="510,333,50,57" Content="{x:Static language:Lang.exit}" Click="btnExit_Click"></Button>
     </Grid>
 </Window>

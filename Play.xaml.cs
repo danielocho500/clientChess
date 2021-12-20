@@ -1,5 +1,6 @@
 ﻿using Cliente.ChessService;
 using Cliente.play_logic;
+using Cliente.Properties.Langs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,8 +51,9 @@ namespace Cliente
             MatchCode = MatchCode_;
             IsWhite = white_;
             UsernameActual = username_;
+            
 
-            string color = (IsWhite) ? "whites" : "Blacks";
+            string color = (IsWhite) ? Lang.white : Lang.black;
 
             LbColor.Content = color;
             server_match.sendConnection(IsWhite, MatchCode);
@@ -114,7 +116,7 @@ namespace Cliente
         {
             if (string.IsNullOrEmpty(TextBMessage.Text.Trim()))
             {
-                MessageBox.Show("You must write a message");
+                MessageBox.Show(Lang.mustWrite);
                 return;
             }
             string message = TextBMessage.Text;
@@ -126,7 +128,7 @@ namespace Cliente
 
         private void BtnRendirse_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Do you want to Surrender?", "Confirm", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (MessageBox.Show(Lang.surrender, Lang.confirm, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 server_match.giveUp(IsWhite, MatchCode);
             }
@@ -151,7 +153,7 @@ namespace Cliente
         public void MatchEnds(bool youWon, int oldElo, int newElo)
         {           
             givenUP = true;
-            string msg = (youWon) ? "You WIN!!!!" : "You Lose :c";
+            string msg = (youWon) ? Lang.youWin : Lang.youLose;
             msg += "  Elo: " + oldElo + " -> " + newElo;
             MessageBox.Show(msg);
             this.Close();
@@ -160,7 +162,7 @@ namespace Cliente
         private void Update()
         {
             if (isTurn)
-                LbTurn.Content = "You";
+                LbTurn.Content = Lang.you;
             else
                 LbTurn.Content = Rival;
             foreach (string key in Squares.Keys)
@@ -465,12 +467,12 @@ namespace Cliente
 
         public void setOptionMoves(List<string> btnMove)
         {
-            string moveColor = blackPieces.Contains(selectedSquareValue) ? "black" : "white";
+            string moveColor = blackPieces.Contains(selectedSquareValue) ? Lang.black : Lang.white;
             foreach (string btn in btnMove)
             {
                 if (Squares[btn].GetSquareStatus() == SquareStatus.disabled)
                 {
-                    if (moveColor == "black")
+                    if (moveColor == Lang.black)
                         Squares[btn].setSquareStatus(SquareStatus.toMoveBlack);
                     else
                         Squares[btn].setSquareStatus(SquareStatus.toMoveWhite);

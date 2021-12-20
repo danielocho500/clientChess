@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Partida" Height="666" Width="1024" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Closing="Window_Closing">
     <Grid>
-        <Image Source="/resource/Fondo.png" />
+        <Image Source="/resource/register.png" Margin="-81,-79,-11,-2" />
         <ListView x:Name="listVMessages" Margin="579,109,38,151">
         </ListView>
         <Button x:Name="BtnSend" Content="Send" HorizontalAlignment="Left" Margin="886,509,0,0" VerticalAlignment="Top" Width="94" Click="BtnSend_Click" Height="81"/>

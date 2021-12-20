@@ -123,8 +123,14 @@
   <data name="addFriend" xml:space="preserve">
     <value>Añadir Amigo</value>
   </data>
+  <data name="alreadyLogged" xml:space="preserve">
+    <value>Ya se encuentra logueado</value>
+  </data>
   <data name="back" xml:space="preserve">
     <value>Regresar</value>
+  </data>
+  <data name="black" xml:space="preserve">
+    <value>Negras</value>
   </data>
   <data name="cancel" xml:space="preserve">
     <value>Cancelar</value>
@@ -134,6 +140,18 @@
   </data>
   <data name="code" xml:space="preserve">
     <value>Codigo:</value>
+  </data>
+  <data name="codeFail" xml:space="preserve">
+    <value>Validacion Incorrecta</value>
+  </data>
+  <data name="codeIncorrect" xml:space="preserve">
+    <value>Codigo Incorrecto</value>
+  </data>
+  <data name="codeSuccess" xml:space="preserve">
+    <value>Validacion Correcta</value>
+  </data>
+  <data name="confirm" xml:space="preserve">
+    <value>Confirmar</value>
   </data>
   <data name="confirmPass" xml:space="preserve">
     <value>Confirmar Contraseña:</value>
@@ -153,8 +171,26 @@
   <data name="email" xml:space="preserve">
     <value>Correo Electronico:</value>
   </data>
+  <data name="emailRegistered" xml:space="preserve">
+    <value>El email se encuentra en uso</value>
+  </data>
+  <data name="emptyFields" xml:space="preserve">
+    <value>Campos vacios</value>
+  </data>
   <data name="en" xml:space="preserve">
     <value>Ingles</value>
+  </data>
+  <data name="enterUsername" xml:space="preserve">
+    <value>Porfavor ingresa un nombre de usuario</value>
+  </data>
+  <data name="error" xml:space="preserve">
+    <value> Error en la validacion</value>
+  </data>
+  <data name="errorLogin" xml:space="preserve">
+    <value>Error durante inicio de sesión</value>
+  </data>
+  <data name="errorOcurred" xml:space="preserve">
+    <value>ocurrio un error</value>
   </data>
   <data name="es" xml:space="preserve">
     <value>Español MX</value>
@@ -167,6 +203,9 @@
   </data>
   <data name="friends" xml:space="preserve">
     <value>Amigos</value>
+  </data>
+  <data name="incorrectCredentials" xml:space="preserve">
+    <value>Credenciales Incorrectas</value>
   </data>
   <data name="invitations" xml:space="preserve">
     <value>Invitaciones</value>
@@ -189,8 +228,14 @@
   <data name="matchPlayed" xml:space="preserve">
     <value>Partidas Jugadas:</value>
   </data>
+  <data name="mustWrite" xml:space="preserve">
+    <value>Debes escribir un mensaje</value>
+  </data>
   <data name="newGame" xml:space="preserve">
     <value>Nueva Partida</value>
+  </data>
+  <data name="noConecction" xml:space="preserve">
+    <value>No hay conexión con el servidor</value>
   </data>
   <data name="passInclude" xml:space="preserve">
     <value>La contrasela debe tener</value>
@@ -213,17 +258,56 @@
   <data name="password" xml:space="preserve">
     <value>Contraseña:</value>
   </data>
+  <data name="putCode" xml:space="preserve">
+    <value>Pon el codigo</value>
+  </data>
   <data name="ranking" xml:space="preserve">
     <value>Clasificación</value>
+  </data>
+  <data name="refreshedLang" xml:space="preserve">
+    <value>Idioma Actualizado</value>
   </data>
   <data name="register" xml:space="preserve">
     <value>Registrar</value>
   </data>
+  <data name="requestAlready" xml:space="preserve">
+    <value>Ya has enviado solicitud</value>
+  </data>
+  <data name="requestAuto" xml:space="preserve">
+    <value>No puedes enviar solicitud a tu propio usuario</value>
+  </data>
+  <data name="requestError" xml:space="preserve">
+    <value>Error de envio</value>
+  </data>
+  <data name="requestFriendAlready" xml:space="preserve">
+    <value>Ya son amigos</value>
+  </data>
+  <data name="requestRejected" xml:space="preserve">
+    <value>Solicitud rechazada</value>
+  </data>
+  <data name="samePass" xml:space="preserve">
+    <value>Las contraseñas no son las mismas</value>
+  </data>
+  <data name="selectUser" xml:space="preserve">
+    <value>Selecciona un usuario en la lista</value>
+  </data>
   <data name="stats" xml:space="preserve">
     <value>Estadisticas</value>
   </data>
+  <data name="successRequest" xml:space="preserve">
+    <value>Invitación enviada</value>
+  </data>
+  <data name="surrender" xml:space="preserve">
+    <value>¿Estas seguro que quieres rendirte?</value>
+  </data>
   <data name="username" xml:space="preserve">
     <value>Usuario:</value>
+  </data>
+  <data name="userNotFound" xml:space="preserve">
+    <value>Usuario no encontrado</value>
+  </data>
+  <data name="userTaken" xml:space="preserve">
+    <value>El usuario se encuentra en uso</value>
   </data>
   <data name="validate" xml:space="preserve">
     <value>Validar</value>
@@ -231,10 +315,22 @@
   <data name="welcome" xml:space="preserve">
     <value>Bienvenido</value>
   </data>
+  <data name="white" xml:space="preserve">
+    <value>Blancas</value>
+  </data>
   <data name="win" xml:space="preserve">
     <value>Ganadas %:</value>
   </data>
+  <data name="you" xml:space="preserve">
+    <value>Tu</value>
+  </data>
+  <data name="youLose" xml:space="preserve">
+    <value>Perdiste :c</value>
+  </data>
   <data name="yourCode" xml:space="preserve">
     <value>Tu codigo es:</value>
+  </data>
+  <data name="youWin" xml:space="preserve">
+    <value>Ganaste!!</value>
   </data>
 </root>

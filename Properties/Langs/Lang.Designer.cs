@@ -79,11 +79,29 @@ namespace Cliente.Properties.Langs {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a This account is already logged.
+        /// </summary>
+        public static string alreadyLogged {
+            get {
+                return ResourceManager.GetString("alreadyLogged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Back.
         /// </summary>
         public static string back {
             get {
                 return ResourceManager.GetString("back", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Black.
+        /// </summary>
+        public static string black {
+            get {
+                return ResourceManager.GetString("black", resourceCulture);
             }
         }
         
@@ -111,6 +129,42 @@ namespace Cliente.Properties.Langs {
         public static string code {
             get {
                 return ResourceManager.GetString("code", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Incorrect Validation.
+        /// </summary>
+        public static string codeFail {
+            get {
+                return ResourceManager.GetString("codeFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Incorrect Code.
+        /// </summary>
+        public static string codeIncorrect {
+            get {
+                return ResourceManager.GetString("codeIncorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Correct Validation.
+        /// </summary>
+        public static string codeSuccess {
+            get {
+                return ResourceManager.GetString("codeSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Confirm.
+        /// </summary>
+        public static string confirm {
+            get {
+                return ResourceManager.GetString("confirm", resourceCulture);
             }
         }
         
@@ -169,11 +223,65 @@ namespace Cliente.Properties.Langs {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a The email is already register.
+        /// </summary>
+        public static string emailRegistered {
+            get {
+                return ResourceManager.GetString("emailRegistered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Empty fields.
+        /// </summary>
+        public static string emptyFields {
+            get {
+                return ResourceManager.GetString("emptyFields", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a English.
         /// </summary>
         public static string en {
             get {
                 return ResourceManager.GetString("en", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Please, enter an username.
+        /// </summary>
+        public static string enterUsername {
+            get {
+                return ResourceManager.GetString("enterUsername", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error in validation.
+        /// </summary>
+        public static string error {
+            get {
+                return ResourceManager.GetString("error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error while logging in.
+        /// </summary>
+        public static string errorLogin {
+            get {
+                return ResourceManager.GetString("errorLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a an error occurred.
+        /// </summary>
+        public static string errorOcurred {
+            get {
+                return ResourceManager.GetString("errorOcurred", resourceCulture);
             }
         }
         
@@ -210,6 +318,15 @@ namespace Cliente.Properties.Langs {
         public static string friends {
             get {
                 return ResourceManager.GetString("friends", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Incorrect credentials.
+        /// </summary>
+        public static string incorrectCredentials {
+            get {
+                return ResourceManager.GetString("incorrectCredentials", resourceCulture);
             }
         }
         
@@ -277,11 +394,29 @@ namespace Cliente.Properties.Langs {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a You must write a message.
+        /// </summary>
+        public static string mustWrite {
+            get {
+                return ResourceManager.GetString("mustWrite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a New Game.
         /// </summary>
         public static string newGame {
             get {
                 return ResourceManager.GetString("newGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a No connection with the server.
+        /// </summary>
+        public static string noConecction {
+            get {
+                return ResourceManager.GetString("noConecction", resourceCulture);
             }
         }
         
@@ -349,11 +484,29 @@ namespace Cliente.Properties.Langs {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Put the code.
+        /// </summary>
+        public static string putCode {
+            get {
+                return ResourceManager.GetString("putCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Ranking.
         /// </summary>
         public static string ranking {
             get {
                 return ResourceManager.GetString("ranking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Language updated.
+        /// </summary>
+        public static string refreshedLang {
+            get {
+                return ResourceManager.GetString("refreshedLang", resourceCulture);
             }
         }
         
@@ -367,6 +520,69 @@ namespace Cliente.Properties.Langs {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Request already sent.
+        /// </summary>
+        public static string requestAlready {
+            get {
+                return ResourceManager.GetString("requestAlready", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a You cannot send request to your own user.
+        /// </summary>
+        public static string requestAuto {
+            get {
+                return ResourceManager.GetString("requestAuto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Send Error.
+        /// </summary>
+        public static string requestError {
+            get {
+                return ResourceManager.GetString("requestError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Already Friends.
+        /// </summary>
+        public static string requestFriendAlready {
+            get {
+                return ResourceManager.GetString("requestFriendAlready", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Request rejected.
+        /// </summary>
+        public static string requestRejected {
+            get {
+                return ResourceManager.GetString("requestRejected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a The password are not the same.
+        /// </summary>
+        public static string samePass {
+            get {
+                return ResourceManager.GetString("samePass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Select an user in the list.
+        /// </summary>
+        public static string selectUser {
+            get {
+                return ResourceManager.GetString("selectUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Stats.
         /// </summary>
         public static string stats {
@@ -376,11 +592,47 @@ namespace Cliente.Properties.Langs {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Request sent.
+        /// </summary>
+        public static string successRequest {
+            get {
+                return ResourceManager.GetString("successRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Do you want to Surrender?.
+        /// </summary>
+        public static string surrender {
+            get {
+                return ResourceManager.GetString("surrender", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Username:.
         /// </summary>
         public static string username {
             get {
                 return ResourceManager.GetString("username", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a User not found.
+        /// </summary>
+        public static string userNotFound {
+            get {
+                return ResourceManager.GetString("userNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a The user is already taken.
+        /// </summary>
+        public static string userTaken {
+            get {
+                return ResourceManager.GetString("userTaken", resourceCulture);
             }
         }
         
@@ -403,6 +655,15 @@ namespace Cliente.Properties.Langs {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a White.
+        /// </summary>
+        public static string white {
+            get {
+                return ResourceManager.GetString("white", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Win %:.
         /// </summary>
         public static string win {
@@ -412,11 +673,38 @@ namespace Cliente.Properties.Langs {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a You.
+        /// </summary>
+        public static string you {
+            get {
+                return ResourceManager.GetString("you", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a You Lose :c.
+        /// </summary>
+        public static string youLose {
+            get {
+                return ResourceManager.GetString("youLose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Your Code is:.
         /// </summary>
         public static string yourCode {
             get {
                 return ResourceManager.GetString("yourCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a You Win!!.
+        /// </summary>
+        public static string youWin {
+            get {
+                return ResourceManager.GetString("youWin", resourceCulture);
             }
         }
     }

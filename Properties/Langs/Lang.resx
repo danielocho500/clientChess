@@ -123,8 +123,14 @@
   <data name="addFriend" xml:space="preserve">
     <value>Add Friend</value>
   </data>
+  <data name="alreadyLogged" xml:space="preserve">
+    <value>This account is already logged</value>
+  </data>
   <data name="back" xml:space="preserve">
     <value>Back</value>
+  </data>
+  <data name="black" xml:space="preserve">
+    <value>Black</value>
   </data>
   <data name="cancel" xml:space="preserve">
     <value>Cancel:</value>
@@ -134,6 +140,18 @@
   </data>
   <data name="code" xml:space="preserve">
     <value>Code:</value>
+  </data>
+  <data name="codeFail" xml:space="preserve">
+    <value>Incorrect Validation</value>
+  </data>
+  <data name="codeIncorrect" xml:space="preserve">
+    <value>Incorrect Code</value>
+  </data>
+  <data name="codeSuccess" xml:space="preserve">
+    <value>Correct Validation</value>
+  </data>
+  <data name="confirm" xml:space="preserve">
+    <value>Confirm</value>
   </data>
   <data name="confirmPass" xml:space="preserve">
     <value>Confirm Password:</value>
@@ -153,8 +171,26 @@
   <data name="email" xml:space="preserve">
     <value>Email:</value>
   </data>
+  <data name="emailRegistered" xml:space="preserve">
+    <value>The email is already register</value>
+  </data>
+  <data name="emptyFields" xml:space="preserve">
+    <value>Empty fields</value>
+  </data>
   <data name="en" xml:space="preserve">
     <value>English</value>
+  </data>
+  <data name="enterUsername" xml:space="preserve">
+    <value>Please, enter an username</value>
+  </data>
+  <data name="error" xml:space="preserve">
+    <value>Error in validation</value>
+  </data>
+  <data name="errorLogin" xml:space="preserve">
+    <value>Error while logging in</value>
+  </data>
+  <data name="errorOcurred" xml:space="preserve">
+    <value>an error occurred</value>
   </data>
   <data name="es" xml:space="preserve">
     <value>Spanish</value>
@@ -167,6 +203,9 @@
   </data>
   <data name="friends" xml:space="preserve">
     <value>Friends</value>
+  </data>
+  <data name="incorrectCredentials" xml:space="preserve">
+    <value>Incorrect credentials</value>
   </data>
   <data name="invitations" xml:space="preserve">
     <value>Invitations</value>
@@ -189,8 +228,14 @@
   <data name="matchPlayed" xml:space="preserve">
     <value>Matches Played:</value>
   </data>
+  <data name="mustWrite" xml:space="preserve">
+    <value>You must write a message</value>
+  </data>
   <data name="newGame" xml:space="preserve">
     <value>New Game</value>
+  </data>
+  <data name="noConecction" xml:space="preserve">
+    <value>No connection with the server</value>
   </data>
   <data name="passInclude" xml:space="preserve">
     <value>The password must include</value>
@@ -213,17 +258,56 @@
   <data name="password" xml:space="preserve">
     <value>Password:</value>
   </data>
+  <data name="putCode" xml:space="preserve">
+    <value>Put the code</value>
+  </data>
   <data name="ranking" xml:space="preserve">
     <value>Ranking</value>
+  </data>
+  <data name="refreshedLang" xml:space="preserve">
+    <value>Language updated</value>
   </data>
   <data name="register" xml:space="preserve">
     <value>Register</value>
   </data>
+  <data name="requestAlready" xml:space="preserve">
+    <value>Request already sent</value>
+  </data>
+  <data name="requestAuto" xml:space="preserve">
+    <value>You cannot send request to your own user</value>
+  </data>
+  <data name="requestError" xml:space="preserve">
+    <value>Send Error</value>
+  </data>
+  <data name="requestFriendAlready" xml:space="preserve">
+    <value>Already Friends</value>
+  </data>
+  <data name="requestRejected" xml:space="preserve">
+    <value>Request rejected</value>
+  </data>
+  <data name="samePass" xml:space="preserve">
+    <value>The password are not the same</value>
+  </data>
+  <data name="selectUser" xml:space="preserve">
+    <value>Select an user in the list</value>
+  </data>
   <data name="stats" xml:space="preserve">
     <value>Stats</value>
   </data>
+  <data name="successRequest" xml:space="preserve">
+    <value>Request sent</value>
+  </data>
+  <data name="surrender" xml:space="preserve">
+    <value>Do you want to Surrender?</value>
+  </data>
   <data name="username" xml:space="preserve">
     <value>Username:</value>
+  </data>
+  <data name="userNotFound" xml:space="preserve">
+    <value>User not found</value>
+  </data>
+  <data name="userTaken" xml:space="preserve">
+    <value>The user is already taken</value>
   </data>
   <data name="validate" xml:space="preserve">
     <value>Validate</value>
@@ -231,10 +315,22 @@
   <data name="welcome" xml:space="preserve">
     <value>Welcome</value>
   </data>
+  <data name="white" xml:space="preserve">
+    <value>White</value>
+  </data>
   <data name="win" xml:space="preserve">
     <value>Win %:</value>
   </data>
+  <data name="you" xml:space="preserve">
+    <value>You</value>
+  </data>
+  <data name="youLose" xml:space="preserve">
+    <value>You Lose :c</value>
+  </data>
   <data name="yourCode" xml:space="preserve">
     <value>Your Code is:</value>
+  </data>
+  <data name="youWin" xml:space="preserve">
+    <value>You Win!!</value>
   </data>
 </root>

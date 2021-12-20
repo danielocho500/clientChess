@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cliente"
         mc:Ignorable="d"
-        Title="Ranking" Height="450" Width="800">
+        xmlns:language ="clr-namespace:Cliente.Properties.Langs"
+        Title="Ranking" Height="450" Width="656.061">
     <Grid>
+        <Image Source="/resource/Fondo.png" />
         <ListView Height="262" Width="450" Margin="21,90,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" x:Name="lvRank" >
             <ListView.View>
                 <GridView>
@@ -16,5 +18,6 @@
             </ListView.View>
         </ListView>
         <Label > </Label>
+        <Button x:Name="BtnExit" Content="{x:Static language:Lang.exit}" HorizontalAlignment="Right" Margin="0,353,41,0" VerticalAlignment="Top" Width="85" Click="BtnExit_Click" Foreground="white" Background="Transparent" BorderBrush="Transparent" Height="27"/>
     </Grid>
 </Window>

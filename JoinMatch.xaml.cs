@@ -1,4 +1,5 @@
 ﻿using Cliente.ChessService;
+using Cliente.Properties.Langs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,7 +40,7 @@ namespace Cliente
         {
             if (!status)
             {
-                MessageBox.Show("An error ocurre");
+                MessageBox.Show(Lang.errorOcurred);
                 return;
             }
 
@@ -57,7 +58,7 @@ namespace Cliente
         {
             if (string.IsNullOrEmpty(TBCode.Text))
             {
-                MessageBox.Show("Put the code");
+                MessageBox.Show(Lang.putCode);
                 return;
             }
             string code = TBCode.Text;

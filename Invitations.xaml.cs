@@ -9,6 +9,7 @@
 
 
 using Cliente.ChessService;
+using Cliente.Properties.Langs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -65,7 +66,7 @@ namespace Cliente
 
             if (lboxRequest.SelectedIndex == -1)
             {
-                MessageBox.Show("Select an user in the list");
+                MessageBox.Show(Lang.selectUser);
             }
             else
             {
@@ -95,7 +96,7 @@ namespace Cliente
 
             if (lboxRequest.SelectedIndex == -1)
             {
-                MessageBox.Show("Select an user in the list");
+                MessageBox.Show(Lang.selectUser);
             }
             else
             {

@@ -9,6 +9,7 @@
 
 
 using Cliente.ChessService;
+using Cliente.Properties.Langs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,22 +41,27 @@ namespace Cliente
         { 
             if (status == 0)
             {
-                MessageBox.Show("success");
                 MainChess mainchess = new MainChess(idUser);
                 mainchess.Show();
                 this.Close();
             }
-            else
+            else if (status == 1)
             {
-                MessageBox.Show("nope nope");
+                MessageBox.Show(Lang.errorLogin);
             }
+            else if (status == 2)
+            {
+                MessageBox.Show(Lang.incorrectCredentials);
+            }
+            else if (status == 4)
+            {
+                MessageBox.Show(Lang.alreadyLogged);
+            }
+
         }
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
-            
-
-
             if (!string.IsNullOrEmpty(txtUsername.Text) && (!string.IsNullOrEmpty(pssPassword.Password)))
             {
                 //server.Login(txtUsername.Text, pssPassword.Password);
@@ -67,7 +73,7 @@ namespace Cliente
             }
             else
             {
-                MessageBox.Show("Empty fields");
+                MessageBox.Show(Lang.emptyFields);
             }
         }
 

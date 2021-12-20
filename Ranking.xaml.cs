@@ -38,5 +38,10 @@ namespace Cliente
                 lvRank.Items.Add(player);
             }
         }
+
+        private void BtnExit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

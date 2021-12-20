@@ -202,3 +202,42 @@ C:\Users\danie\Documents\chess (2)\chess (2)\Cliente\obj\Debug\Cliente.csproj.Co
 C:\Users\danie\Documents\chess (2)\chess (2)\Cliente\obj\Debug\es\Cliente.resources.dll
 C:\Users\danie\Documents\chess (2)\chess (2)\Cliente\obj\Debug\Cliente.exe
 C:\Users\danie\Documents\chess (2)\chess (2)\Cliente\obj\Debug\Cliente.pdb
+C:\Users\peres\Desktop\Cliente12-12\Cliente\bin\Debug\Cliente.exe.config
+C:\Users\peres\Desktop\Cliente12-12\Cliente\bin\Debug\Cliente.exe
+C:\Users\peres\Desktop\Cliente12-12\Cliente\bin\Debug\Cliente.pdb
+C:\Users\peres\Desktop\Cliente12-12\Cliente\bin\Debug\es\Cliente.resources.dll
+C:\Users\peres\Desktop\Cliente12-12\Cliente\obj\Debug\Cliente.csproj.AssemblyReference.cache
+C:\Users\peres\Desktop\Cliente12-12\Cliente\obj\Debug\Configuration.g.cs
+C:\Users\peres\Desktop\Cliente12-12\Cliente\obj\Debug\GetCodeMatch.g.cs
+C:\Users\peres\Desktop\Cliente12-12\Cliente\obj\Debug\Invitations.g.cs
+C:\Users\peres\Desktop\Cliente12-12\Cliente\obj\Debug\JoinMatch.g.cs
+C:\Users\peres\Desktop\Cliente12-12\Cliente\obj\Debug\Login.g.cs
+C:\Users\peres\Desktop\Cliente12-12\Cliente\obj\Debug\MainChess.g.cs
+C:\Users\peres\Desktop\Cliente12-12\Cliente\obj\Debug\MainWindow.g.cs
+C:\Users\peres\Desktop\Cliente12-12\Cliente\obj\Debug\Play.g.cs
+C:\Users\peres\Desktop\Cliente12-12\Cliente\obj\Debug\Ranking.g.cs
+C:\Users\peres\Desktop\Cliente12-12\Cliente\obj\Debug\Register.g.cs
+C:\Users\peres\Desktop\Cliente12-12\Cliente\obj\Debug\Stats.g.cs
+C:\Users\peres\Desktop\Cliente12-12\Cliente\obj\Debug\App.g.cs
+C:\Users\peres\Desktop\Cliente12-12\Cliente\obj\Debug\Cliente_MarkupCompile.cache
+C:\Users\peres\Desktop\Cliente12-12\Cliente\obj\Debug\Cliente_MarkupCompile.lref
+C:\Users\peres\Desktop\Cliente12-12\Cliente\obj\Debug\Configuration.baml
+C:\Users\peres\Desktop\Cliente12-12\Cliente\obj\Debug\GetCodeMatch.baml
+C:\Users\peres\Desktop\Cliente12-12\Cliente\obj\Debug\Invitations.baml
+C:\Users\peres\Desktop\Cliente12-12\Cliente\obj\Debug\JoinMatch.baml
+C:\Users\peres\Desktop\Cliente12-12\Cliente\obj\Debug\Login.baml
+C:\Users\peres\Desktop\Cliente12-12\Cliente\obj\Debug\MainChess.baml
+C:\Users\peres\Desktop\Cliente12-12\Cliente\obj\Debug\MainWindow.baml
+C:\Users\peres\Desktop\Cliente12-12\Cliente\obj\Debug\Play.baml
+C:\Users\peres\Desktop\Cliente12-12\Cliente\obj\Debug\Ranking.baml
+C:\Users\peres\Desktop\Cliente12-12\Cliente\obj\Debug\Register.baml
+C:\Users\peres\Desktop\Cliente12-12\Cliente\obj\Debug\Stats.baml
+C:\Users\peres\Desktop\Cliente12-12\Cliente\obj\Debug\Cliente.g.resources
+C:\Users\peres\Desktop\Cliente12-12\Cliente\obj\Debug\Cliente.Properties.Langs.Lang.resources
+C:\Users\peres\Desktop\Cliente12-12\Cliente\obj\Debug\Cliente.Properties.Resources.resources
+C:\Users\peres\Desktop\Cliente12-12\Cliente\obj\Debug\Cliente.Properties.Langs.Lang.es.resources
+C:\Users\peres\Desktop\Cliente12-12\Cliente\obj\Debug\Cliente.csproj.GenerateResource.cache
+C:\Users\peres\Desktop\Cliente12-12\Cliente\obj\Debug\Cliente.csproj.CoreCompileInputs.cache
+C:\Users\peres\Desktop\Cliente12-12\Cliente\obj\Debug\es\Cliente.resources.dll
+C:\Users\peres\Desktop\Cliente12-12\Cliente\obj\Debug\Cliente.exe
+C:\Users\peres\Desktop\Cliente12-12\Cliente\obj\Debug\Cliente.pdb

@@ -2,13 +2,14 @@
 /* Archivo: MainChess.xaml.cs                                     */
 /* Programador: Daniel Diaz                                       */
 /* Fecha: 26/Oct/2021                                             */
-/* Fecha modificación:  29/Oct/2021                               */
+/* Fecha modificación:  13/dic/2021                               */
 /* Descripción: Ventana principal del sistema donde se accede a   */
 /*              las diferentes funcionalidades del juego          */
 /******************************************************************/
 
 
 using Cliente.ChessService;
+using Cliente.Properties.Langs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -97,22 +98,40 @@ namespace Cliente
             }
             else
             {
-                MessageBox.Show("Please, enter an username");
+                MessageBox.Show(Lang.enterUsername);
             }
         }
 
         public void SendRequestStatus(int status)
         {
-            /*
-             ---->Request
-                success = 0   ------> limpiar campo
-                error = 1
-                friends Already = 2
-                requested already = 3
-                rejected = 4,
-                userNotFound = 5,
-                AutoRequest = 6
-             * */
+            if (status == 0)
+            {
+                MessageBox.Show(Lang.successRequest);
+            }
+            else if (status == 1)
+            {
+                MessageBox.Show(Lang.requestError);
+            }
+            else if (status == 2)
+            {
+                MessageBox.Show(Lang.requestFriendAlready);
+            }
+            else if (status == 3)
+            {
+                MessageBox.Show(Lang.requestAlready);
+            }
+            else if (status == 4)
+            {
+                MessageBox.Show(Lang.requestRejected);
+            }
+            else if (status == 5)
+            {
+                MessageBox.Show(Lang.userNotFound);
+            }
+            else if (status == 6)
+            {
+                MessageBox.Show(Lang.requestAuto);
+            }
         }
 
         public void GetUsers(string[] usernamesConn, string[] usernamesDisc)
