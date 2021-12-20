@@ -1,8 +1,8 @@
 ﻿/******************************************************************/
 /* Archivo: Invitations.xaml.cs                                   */
 /* Programador: Daniel Diaz                                       */
-/* Fecha: 26/Oct/2021                                             */
-/* Fecha modificación:  29/Oct/2021                               */
+/* Fecha: 30/Oct/2021                                             */
+/* Fecha modificación:  10/Nov/2021                               */
 /* Descripción: Ventana para aceptar o rechazar solicitus de      */
 /*              amistad                                           */
 /******************************************************************/
@@ -27,13 +27,19 @@ using System.Windows.Shapes;
 
 namespace Cliente
 {
-
+    /// <summary>
+    /// Logica de interaccion para el archivo Invitations.xaml.cs
+    /// </summary>
     public partial class Invitations : Window, IRespondServiceCallback
     {
         public RespondServiceClient server;
         public Dictionary<int, string> request;
         public int idUserSend;
 
+        /// <summary>
+        /// inicia la ventana Invitations con las invitaciondes del id user que solicita y verifica la conexion
+        /// </summary>
+        /// <param name="idUser"> id del usuario</param>
         public Invitations(int idUser)
         {
             InitializeComponent();
@@ -46,12 +52,16 @@ namespace Cliente
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show(Lang.noConecction);
-                Connected.IsConnected = false;
+                Connected.is_Connected = false;
                 this.Close();
             }   
             idUserSend = idUser;
         }
 
+        /// <summary>
+        /// recibe una solicitud de amistad
+        /// </summary>
+        /// <param name="users"></param>
         public void ReciveRequest(Dictionary<int, string> users)
         {
             request = users;
@@ -64,12 +74,22 @@ namespace Cliente
             }
         }
 
-        private void Close_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Cierra la ventana
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CloseClick(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
-        private void Accept_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Acepta una solicitud de amistad y envia la informacion al server
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AcceptClick(object sender, RoutedEventArgs e)
         {
             string userIteamName;
 
@@ -90,7 +110,6 @@ namespace Cliente
                         idUserRecive = requestKey;
                         break;
                     }
-
                 }
 
                 try
@@ -101,14 +120,20 @@ namespace Cliente
                 catch (CommunicationObjectFaultedException)
                 {
                     MessageBox.Show(Lang.noConecction);
-                    Connected.IsConnected = false;
+                    Connected.is_Connected = false;
                     this.Close();
                 }
             }
             
         }
 
-        private void Deny_Click(object sender, RoutedEventArgs e)
+
+        /// <summary>
+        /// Rechaza una solicitud de amistad y envia la informacion al server
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DenyClick(object sender, RoutedEventArgs e)
         {
             string userIteamName;
 
@@ -138,7 +163,7 @@ namespace Cliente
                 catch (EndpointNotFoundException)
                 {
                     MessageBox.Show(Lang.noConecction);
-                    Connected.IsConnected = false;
+                    Connected.is_Connected = false;
                     this.Close();
                 }
             }

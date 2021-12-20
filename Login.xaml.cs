@@ -27,9 +27,16 @@ using System.Windows.Shapes;
 
 namespace Cliente
 {
+    /// <summary>
+    /// Logica de interaccion para el archivo Login.xaml.cs
+    /// </summary>
     public partial class Login: Window, ILoginServiceCallback
     {
         public LoginServiceClient server;
+
+        /// <summary>
+        /// Incializa la ventana Login
+        /// </summary>
         public Login()
         {
             InitializeComponent();
@@ -37,6 +44,11 @@ namespace Cliente
             server = new LoginServiceClient(instanceContext);
         }
 
+        /// <summary>
+        /// Regresa el estatus del login, invocado por el servidor
+        /// </summary>
+        /// <param name="status"> estado del logueo</param>
+        /// <param name="idUser"> id del usuario solicitante </param>
         public void LoginStatus(int status, int idUser) 
         {
             btnBack.IsEnabled = true;
@@ -61,22 +73,34 @@ namespace Cliente
             }
         }
 
-        private void Login_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Verifica los campos, verifica la conexión y manda petición del logueo al servidor
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LoginClick(object sender, RoutedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtUsername.Text) && (!string.IsNullOrEmpty(pssPassword.Password)))
+            if (!string.IsNullOrEmpty(txtUsername.Text) && (!string.IsNullOrEmpty(pbPassword.Password)))
             {
-                btnBack.IsEnabled = false;
-                btnLogin.IsEnabled = false;
-                try
+                if ((CountSpaces(txtUsername.Text) != 0) || (CountSpaces(pbPassword.Password) != 0))
                 {
-                    server.Login(txtUsername.Text, pssPassword.Password);
+                    MessageBox.Show(Lang.noSpaces);
                 }
-                catch (EndpointNotFoundException)
+                else
                 {
-                    MessageBox.Show(Lang.noConecction);
-                    MainWindow mainWindow = new MainWindow();
-                    mainWindow.Show();
-                    this.Close();
+                    btnBack.IsEnabled = false;
+                    btnLogin.IsEnabled = false;
+                    try
+                    {
+                        server.Login(txtUsername.Text, pbPassword.Password);
+                    }
+                    catch (EndpointNotFoundException)
+                    {
+                        MessageBox.Show(Lang.noConecction);
+                        MainWindow mainWindow = new MainWindow();
+                        mainWindow.Show();
+                        this.Close();
+                    }
                 }
                 
             }
@@ -86,11 +110,38 @@ namespace Cliente
             }
         }
 
-        private void Back_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Cierra la ventana y abre MainWindow
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BackClick(object sender, RoutedEventArgs e)
         {
             MainWindow mainw = new MainWindow();
             mainw.Show();
             this.Close();
+        }
+
+        /// <summary>
+        /// Cuenta los espacios en blanco de un texto.
+        /// </summary>
+        /// <param name="text"> texto a evaluar</param>
+        /// <returns>regresa count con el numero de espacios en blanco.</returns>
+        public int CountSpaces(string text)
+        {
+            int cont = 0;
+            string letter;
+
+            for (int i = 0; i < text.Length; i++)
+            {
+                letter = text.Substring(i, 1);
+
+                if (letter == " ")
+                {
+                    cont++;
+                }
+            }
+            return cont;
         }
     }
 }

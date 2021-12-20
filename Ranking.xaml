@@ -19,6 +19,6 @@
             </ListView.View>
         </ListView>
         <Label > </Label>
-        <Button x:Name="BtnExit" Content="{x:Static language:Lang.exit}" HorizontalAlignment="Right" Margin="0,353,41,0" VerticalAlignment="Top" Width="85" Click="BtnExit_Click" Foreground="white" Background="Transparent" BorderBrush="Transparent" Height="27"/>
+        <Button x:Name="BtnExit" Content="{x:Static language:Lang.exit}" HorizontalAlignment="Right" Margin="0,353,41,0" VerticalAlignment="Top" Width="85" Click="ExitClick" Foreground="white" Background="Transparent" BorderBrush="Transparent" Height="27"/>
     </Grid>
 </Window>

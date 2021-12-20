@@ -1,4 +1,13 @@
-﻿using System;
+﻿/******************************************************************/
+/* Archivo: GetCodeMatch.xaml.cs                                 */
+/* Programador: Raul Arturo Peredo Estudillo                     */
+/* Fecha: 3/Oct/2021                                             */
+/* Fecha modificación:  9/Nov/2021                               */
+/* Descripción: Ventana para aceptar o rechazar solicitus de      */
+/*              amistad                                           */
+/******************************************************************/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
@@ -18,20 +27,25 @@ using Cliente.Properties.Langs;
 namespace Cliente
 {
     /// <summary>
-    /// Interaction logic for GetCodeMatch.xaml
+    /// logica de interaciion para GetCodeMatch.xaml
     /// </summary>
     public partial class GetCodeMatch : Window, ISendInvitationServiceCallback
     {
         public SendInvitationServiceClient server;
         public int idUser;
         public string codeMatch;
-        public GetCodeMatch(int idUser_)
+
+        /// <summary>
+        /// Incia la ventana GetCodeMatch y verifica la conexion con el servidor.
+        /// </summary>
+        /// <param name="idUser"> id del usuario solicitante</param>
+        public GetCodeMatch(int idUser)
         {
             InitializeComponent();
-            idUser = idUser_;
-
+            this.idUser = idUser;
             InstanceContext instanceContext = new InstanceContext(this);
             server = new SendInvitationServiceClient(instanceContext);
+
             try
             {
                 server.GenerateCodeInvitation(idUser);
@@ -39,28 +53,47 @@ namespace Cliente
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show(Lang.noConecction);
-                Connected.IsConnected = false;
+                Connected.is_Connected = false;
                 this.Close();
             }
             
         }
 
-        public void JoinMatch(string usernameRival, string username, string codeMatch, bool white)
+        /// <summary>
+        /// Inicia la ventana Play.
+        /// </summary>
+        /// <param name="usernameRival"> nombre del rival</param>
+        /// <param name="username"> nombre del solicitante</param>
+        /// <param name="codeMatch"> codigo de la partida</param>
+        /// <param name="isWhite"> juega blancas o no</param>
+        public void JoinMatch(string usernameRival, string username, string codeMatch, bool isWhite)
         {
-            Play play = new Play(idUser, usernameRival, username, codeMatch, white);
+            Play play = new Play(idUser, usernameRival, username, codeMatch, isWhite);
             play.Show();
             this.Close();
         }
 
-        public void ValidateCodeStatus(int status, string usernameRival, string username, string MatchCode, bool white)
+        /// <summary>
+        /// Metodo no implementado.
+        /// </summary>
+        /// <param name="status"></param>
+        /// <param name="usernameRival"></param>
+        /// <param name="username"></param>
+        /// <param name="codeMatch"></param>
+        /// <param name="isWhite"></param>
+        public void ValidateCodeStatus(int status, string usernameRival, string username, string codeMatch, bool isWhite)
         {
             throw new NotImplementedException();
 
         }
 
-        private void BtnExit_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Cierra la ventana y elimina el codigo del servidor
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ExitClick(object sender, RoutedEventArgs e)
         {
-
             try
             {
                 server.DeleteCodeInvitation(codeMatch);
@@ -68,14 +101,17 @@ namespace Cliente
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show(Lang.noConecction);
-                Connected.IsConnected = false;
+                Connected.is_Connected = false;
                 this.Close();
-
             }
-            
             this.Close();
         }
 
+        /// <summary>
+        /// el servidor manda el codigo de la partida
+        /// </summary>
+        /// <param name="status"> status del codigo</param>
+        /// <param name="code"> codigo de la partida</param>
         void ISendInvitationServiceCallback.GetCodeMatch(bool status, string code)
         {
             codeMatch = code;

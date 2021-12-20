@@ -1,4 +1,12 @@
-﻿using Cliente.Properties.Langs;
+﻿/******************************************************************/
+/* Archivo: Configuration.xaml.cs                                 */
+/* Programador: Raul Arturo Peredo Estudillo                      */
+/* Fecha: 26/Oct/2021                                             */
+/* Fecha modificación:  29/Oct/2021                               */
+/* Descripción: Cambia de idioma el cliente                       */
+/******************************************************************/
+
+using Cliente.Properties.Langs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,14 +30,24 @@ namespace Cliente
     public partial class Configuration : Window
     {
         int seleccionLanguage = -1;
-        int id;
-        public Configuration(int id_)
+        int idUser;
+
+        /// <summary>
+        /// Incia la ventana Configuracion
+        /// </summary>
+        /// <param name="idUser"> id del usuario solicitante</param>
+        public Configuration(int idUser)
         {
             InitializeComponent();
-            id = id_;
+            this.idUser = idUser;
         }
 
-        private void Load_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Verifica la seleccion y actualiza el idioma usando un archivo de tipo resx.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LoadClick(object sender, RoutedEventArgs e)
         {
             if (seleccionLanguage == 0)
             {
@@ -48,7 +66,12 @@ namespace Cliente
             
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        /// <summary>
+        /// Identifica la seleccion dentro del combo box.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ComboBoxSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if(cmbLanguage.SelectedIndex == 0)
             {
@@ -60,9 +83,14 @@ namespace Cliente
             }
         }
 
-        private void Close_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Cierra la ventana.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CloseClick(object sender, RoutedEventArgs e)
         {
-            MainChess mainChess = new MainChess(id);
+            MainChess mainChess = new MainChess(idUser);
             mainChess.Show();
             this.Close();
         }

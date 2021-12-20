@@ -337,7 +337,7 @@
     <value>White</value>
   </data>
   <data name="win" xml:space="preserve">
-    <value>Win %:</value>
+    <value>Matches Win:</value>
   </data>
   <data name="you" xml:space="preserve">
     <value>You</value>

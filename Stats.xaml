@@ -22,6 +22,6 @@
         <Label x:Name="lbWinP" Content="{x:Static language:Lang.win}" Margin="44,101,251,265" d:LayoutOverrides="HorizontalAlignment"></Label>
         <Label x:Name="lbEloM" Content="{x:Static language:Lang.eloMax}" Margin="44,159,251,193" d:LayoutOverrides="HorizontalAlignment"></Label>
         <Label x:Name="lbEloA" Content="{x:Static language:Lang.elo}" Margin="44,237,251,129" d:LayoutOverrides="HorizontalAlignment"></Label>
-        <Button x:Name="btnExit" Margin="510,333,50,57" Content="{x:Static language:Lang.exit}" Click="btnExit_Click"></Button>
+        <Button x:Name="btnExit" Margin="510,333,50,57" Content="{x:Static language:Lang.exit}" Click="ExitClick"></Button>
     </Grid>
 </Window>

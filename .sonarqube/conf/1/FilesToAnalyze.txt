@@ -1,0 +1,75 @@
+﻿C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\App.xaml
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Configuration.xaml.cs
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Connected.cs
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\GetCodeMatch.xaml.cs
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Invitations.xaml.cs
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\JoinMatch.xaml.cs
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\MainChess.xaml.cs
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Play.xaml.cs
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\play_logic\ButtonInfo.cs
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\play_logic\Moves.cs
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Ranking.xaml.cs
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Register.xaml.cs
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Stats.xaml.cs
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\App.xaml.cs
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Login.xaml.cs
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\MainWindow.xaml.cs
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Properties\AssemblyInfo.cs
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Properties\Langs\Lang.resx
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Properties\Resources.resx
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Properties\Langs\Lang.es.resx
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Connected Services\ChessService\ChessService.wsdl
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Connected Services\ChessService\item.xsd
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Connected Services\ChessService\item1.xsd
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Connected Services\ChessService\item2.xsd
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Connected Services\ChessService\item3.xsd
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Properties\Settings.settings
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\App.config
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Connected Services\ChessService\configuration91.svcinfo
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Connected Services\ChessService\configuration.svcinfo
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Connected Services\ChessService\Reference.svcmap
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Configuration.xaml
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\GetCodeMatch.xaml
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Invitations.xaml
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\JoinMatch.xaml
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Login.xaml
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\MainChess.xaml
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\MainWindow.xaml
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Play.xaml
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Ranking.xaml
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Register.xaml
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Stats.xaml
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Resource\Login.png
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Resource\Main.png
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Resource\Boton3.png
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Resource\Boton6.png
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Resource\Register.png
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Resource\MainChess.png
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Resource\Fondo.png
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Images\BlackBishop.png
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Images\BlackBishopToDefeat.png
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Images\BlackKing.png
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Images\BlackKingToDefeat.png
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Images\BlackKnight.png
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Images\BlackKnightToDefeat.png
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Images\BlackPawn.png
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Images\BlackPawnToDefeat.png
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Images\BlackQueen.png
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Images\BlackQueenToDefeat.png
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Images\BlackTower.png
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Images\BlackTowerToDefeat.png
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Images\Celtics.png
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Images\Disable.png
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Images\Knicks.png
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Images\WhiteBishop.png
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Images\WhiteBishopToDefeat.png
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Images\WhiteKing.png
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Images\WhiteKingToDefeat.png
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Images\WhiteKnight.png
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Images\WhiteKnightToDefeat.png
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Images\WhitePawn.png
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Images\WhitePawnToDefeat.png
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Images\WhiteQueen.png
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Images\WhiteQueenToDefeat.png
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Images\WhiteTower.png
+C:\Users\peres\Desktop\ClientePreliminar\ClientePreliminar\Cliente\Images\WhiteTowerToDefeat.png

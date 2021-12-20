@@ -337,7 +337,7 @@
     <value>Blancas</value>
   </data>
   <data name="win" xml:space="preserve">
-    <value>Ganadas %:</value>
+    <value>Partidas Ganadas:</value>
   </data>
   <data name="you" xml:space="preserve">
     <value>Usted</value>

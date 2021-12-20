@@ -12,7 +12,7 @@
         <Image Source="/resource/Fondo.png" />
         <Label Content="{x:Static language:Lang.yourCode}" HorizontalAlignment="Left" Margin="40,127,0,0" VerticalAlignment="Top" Width="148" FontSize="20" FontFamily="Bold"/>
         <Label x:Name="lbCode" Content="" HorizontalAlignment="Left" Margin="193,127,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Bold" Foreground="Red"/>
-        <Button x:Name="BtnExit" Content="{x:Static language:Lang.exit}" HorizontalAlignment="Right" Margin="0,353,39,0" VerticalAlignment="Top" Width="85" Click="BtnExit_Click" Foreground="white" Background="Transparent" BorderBrush="Transparent" Height="27"/>
+        <Button x:Name="BtnExit" Content="{x:Static language:Lang.exit}" HorizontalAlignment="Right" Margin="0,353,39,0" VerticalAlignment="Top" Width="85" Click="ExitClick" Foreground="white" Background="Transparent" BorderBrush="Transparent" Height="27"/>
 
     </Grid>
 </Window>

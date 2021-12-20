@@ -6,88 +6,88 @@
         xmlns:local="clr-namespace:Cliente"
         xmlns:language ="clr-namespace:Cliente.Properties.Langs"
         mc:Ignorable="d"
-        Title="Partida" Height="666" Width="1024" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Closing="Window_Closing">
+        Title="Partida" Height="666" Width="1024" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Closing="WindowClosing">
     <Grid>
         <Image Source="/resource/register.png" Margin="-81,-79,-11,-2" />
-        <ListView x:Name="listVMessages" Margin="579,109,38,151">
+        <ListView x:Name="lvMessages" Margin="579,109,38,151">
         </ListView>
-        <Button x:Name="BtnSend" Content="{x:Static language:Lang.send}" HorizontalAlignment="Left" Margin="886,509,0,0" VerticalAlignment="Top" Width="94" Click="BtnSend_Click" Height="81"/>
-        <TextBox x:Name="TextBMessage" Margin="579,509,137,47"/>
-        <Button x:Name="BtnRendirse" Content="{x:Static language:Lang.giveUP}" Margin="479,521,463,0" VerticalAlignment="Top" Click="BtnRendirse_Click" Height="55"/>
-        <Label x:Name="LbTurn" Content="" Margin="479,115,411,459"/>
+        <Button x:Name="btnSend" Content="{x:Static language:Lang.send}" HorizontalAlignment="Left" Margin="886,509,0,0" VerticalAlignment="Top" Width="94" Click="SendClick" Height="81"/>
+        <TextBox x:Name="tbMessage" Margin="579,509,137,47"/>
+        <Button x:Name="btnRendirse" Content="{x:Static language:Lang.giveUP}" Margin="479,521,463,0" VerticalAlignment="Top" Click="RendirseClick" Height="55"/>
+        <Label x:Name="lbTurn" Content="" Margin="479,115,411,459"/>
         <Label Content="{x:Static language:Lang.you}" Margin="75,20,830,554"/>
         <Label x:Name="lbUserTime" Content="Time Left 00:00" Margin="129,53,776,550"/>
-        <Label x:Name="LbRivalName" Content="Rival" Margin="260,20,645,554"/>
-        <Label x:Name="LbRivalTime" Content="Time Left 00:00" Margin="322,53,583,550"/>
+        <Label x:Name="lbRivalName" Content="Rival" Margin="260,20,645,554"/>
+        <Label x:Name="lbRivalTime" Content="Time Left 00:00" Margin="322,53,583,550"/>
         <Canvas Margin="56,140,572,97" Height="400" Width="400">
-            <Button x:Name="a8" Content="" Canvas.Top="0" Canvas.Left="0" Width="50" Height="50" Background="White" Click="a8_Click"/>
-            <Button x:Name="b8" Content="" Canvas.Top="0" Canvas.Left="50" Width="50" Height="50" Background="Brown" Click="b8_Click" />
-            <Button x:Name="c8" Content="" Canvas.Top="0" Canvas.Left="100" Width="50" Height="50" Background="White" Click="c8_Click" />
-            <Button x:Name="d8" Content="" Canvas.Top="0" Canvas.Left="150" Width="50" Height="50" Background="Brown" Click="d8_Click" />
-            <Button x:Name="e8" Content="" Canvas.Top="0" Canvas.Left="200" Width="50" Height="50" Background="White" Click="e8_Click" />
-            <Button x:Name="f8" Content="" Canvas.Top="0" Canvas.Left="250" Width="50" Height="50" Background="Brown" Click="f8_Click"/>
-            <Button x:Name="g8" Content="" Canvas.Top="0" Canvas.Left="300" Width="50" Height="50" Background="White" Click="g8_Click"/>
-            <Button x:Name="h8" Content="" Canvas.Top="0" Canvas.Left="350" Width="50" Height="50" Background="Brown" Click="h8_Click"/>
-            <Button x:Name="a7" Content="" Canvas.Top="50" Canvas.Left="0" Width="50" Height="50" Background="Brown" Click="a7_Click"/>
-            <Button x:Name="b7" Content="" Canvas.Top="50" Canvas.Left="50" Width="50" Height="50" Background="White" Click="b7_Click"/>
-            <Button x:Name="c7" Content="" Canvas.Top="50" Canvas.Left="100" Width="50" Height="50" Background="Brown" Click="c7_Click"/>
-            <Button x:Name="d7" Content="" Canvas.Top="50" Canvas.Left="150" Width="50" Height="50" Background="White" Click="d7_Click"/>
-            <Button x:Name="e7" Content="" Canvas.Top="50" Canvas.Left="200" Width="50" Height="50" Background="Brown" Click="e7_Click"/>
-            <Button x:Name="f7" Content="" Canvas.Top="50" Canvas.Left="250" Width="50" Height="50" Background="White" Click="f7_Click"/>
-            <Button x:Name="g7" Content="" Canvas.Top="50" Canvas.Left="300" Width="50" Height="50" Background="Brown" Click="g7_Click"/>
-            <Button x:Name="h7" Content="" Canvas.Top="50" Canvas.Left="350" Width="50" Height="50" Background="White" Click="h7_Click"/>
-            <Button x:Name="a6" Content="" Canvas.Top="100" Canvas.Left="0" Width="50" Height="50" Background="White" Click="a6_Click"/>
-            <Button x:Name="b6" Content="" Canvas.Top="100" Canvas.Left="50" Width="50" Height="50" Background="Brown" Click="b6_Click"/>
-            <Button x:Name="c6" Content="" Canvas.Top="100" Canvas.Left="100" Width="50" Height="50" Background="White" Click="c6_Click"/>
-            <Button x:Name="d6" Content="" Canvas.Top="100" Canvas.Left="150" Width="50" Height="50" Background="Brown" Click="d6_Click"/>
-            <Button x:Name="e6" Content="" Canvas.Top="100" Canvas.Left="200" Width="50" Height="50" Background="White" Click="e6_Click"/>
-            <Button x:Name="f6" Content="" Canvas.Top="100" Canvas.Left="250" Width="50" Height="50" Background="Brown" Click="f6_Click"/>
-            <Button x:Name="g6" Content="" Canvas.Top="100" Canvas.Left="300" Width="50" Height="50" Background="White" Click="g6_Click"/>
-            <Button x:Name="h6" Content="" Canvas.Top="100" Canvas.Left="350" Width="50" Height="50" Background="Brown" Click="h6_Click"/>
-            <Button x:Name="a5" Content="" Canvas.Top="150" Canvas.Left="0" Width="50" Height="50" Background="Brown" Click="a5_Click"/>
-            <Button x:Name="b5" Content="" Canvas.Top="150" Canvas.Left="50" Width="50" Height="50" Background="White" Click="b5_Click"/>
-            <Button x:Name="c5" Content="" Canvas.Top="150" Canvas.Left="100" Width="50" Height="50" Background="Brown" Click="c5_Click"/>
-            <Button x:Name="d5" Content="" Canvas.Top="150" Canvas.Left="150" Width="50" Height="50" Background="White" Click="d5_Click"/>
-            <Button x:Name="e5" Content="" Canvas.Top="150" Canvas.Left="200" Width="50" Height="50" Background="Brown" Click="e5_Click"/>
-            <Button x:Name="f5" Content="" Canvas.Top="150" Canvas.Left="250" Width="50" Height="50" Background="White" Click="f5_Click"/>
-            <Button x:Name="g5" Content="" Canvas.Top="150" Canvas.Left="300" Width="50" Height="50" Background="Brown" Click="g5_Click"/>
-            <Button x:Name="h5" Content="" Canvas.Top="150" Canvas.Left="350" Width="50" Height="50" Background="White" Click="h5_Click"/>
-            <Button x:Name="a4" Content="" Canvas.Top="200" Canvas.Left="0" Width="50" Height="50" Background="White" Click="a4_Click"/>
-            <Button x:Name="b4" Content="" Canvas.Top="200" Canvas.Left="50" Width="50" Height="50" Background="Brown" Click="b4_Click"/>
-            <Button x:Name="c4" Content="" Canvas.Top="200" Canvas.Left="100" Width="50" Height="50" Background="White" Click="c4_Click"/>
-            <Button x:Name="d4" Content="" Canvas.Top="200" Canvas.Left="150" Width="50" Height="50" Background="Brown" Click="d4_Click"/>
-            <Button x:Name="e4" Content="" Canvas.Top="200" Canvas.Left="200" Width="50" Height="50" Background="White" Click="e4_Click"/>
-            <Button x:Name="f4" Content="" Canvas.Top="200" Canvas.Left="250" Width="50" Height="50" Background="Brown" Click="f4_Click"/>
-            <Button x:Name="g4" Content="" Canvas.Top="200" Canvas.Left="300" Width="50" Height="50" Background="White" Click="g4_Click"/>
-            <Button x:Name="h4" Content="" Canvas.Top="200" Canvas.Left="350" Width="50" Height="50" Background="Brown" Click="h4_Click"/>
-            <Button x:Name="a3" Content="" Canvas.Top="250" Canvas.Left="0" Width="50" Height="50" Background="Brown" Click="a3_Click"/>
-            <Button x:Name="b3" Content="" Canvas.Top="250" Canvas.Left="50" Width="50" Height="50" Background="White" Click="b3_Click"/>
-            <Button x:Name="c3" Content="" Canvas.Top="250" Canvas.Left="100" Width="50" Height="50" Background="Brown" Click="c3_Click"/>
-            <Button x:Name="d3" Content="" Canvas.Top="250" Canvas.Left="150" Width="50" Height="50" Background="White" Click="d3_Click"/>
-            <Button x:Name="e3" Content="" Canvas.Top="250" Canvas.Left="200" Width="50" Height="50" Background="Brown" Click="e3_Click"/>
-            <Button x:Name="f3" Content="" Canvas.Top="250" Canvas.Left="250" Width="50" Height="50" Background="White" Click="f3_Click"/>
-            <Button x:Name="g3" Content="" Canvas.Top="250" Canvas.Left="300" Width="50" Height="50" Background="Brown" Click="g3_Click"/>
-            <Button x:Name="h3" Content="" Canvas.Top="250" Canvas.Left="350" Width="50" Height="50" Background="White" Click="h3_Click"/>
-            <Button x:Name="a2" Content="" Canvas.Top="300" Canvas.Left="0" Width="50" Height="50" Background="White" Click="a2_Click"/>
-            <Button x:Name="b2" Content="" Canvas.Top="300" Canvas.Left="50" Width="50" Height="50" Background="Brown" Click="b2_Click"/>
-            <Button x:Name="c2" Content="" Canvas.Top="300" Canvas.Left="100" Width="50" Height="50" Background="White" Click="c2_Click"/>
-            <Button x:Name="d2" Content="" Canvas.Top="300" Canvas.Left="150" Width="50" Height="50" Background="Brown" Click="d2_Click"/>
-            <Button x:Name="e2" Content="" Canvas.Top="300" Canvas.Left="200" Width="50" Height="50" Background="White" Click="e2_Click"/>
-            <Button x:Name="f2" Content="" Canvas.Top="300" Canvas.Left="250" Width="50" Height="50" Background="Brown" Click="f2_Click"/>
-            <Button x:Name="g2" Content="" Canvas.Top="300" Canvas.Left="300" Width="50" Height="50" Background="White" Click="g2_Click"/>
-            <Button x:Name="h2" Content="" Canvas.Top="300" Canvas.Left="350" Width="50" Height="50" Background="Brown" Click="h2_Click"/>
-            <Button x:Name="a1" Content="" Canvas.Top="350" Canvas.Left="0" Width="50" Height="50" Background="Brown" Click="a1_Click"/>
-            <Button x:Name="b1" Content="" Canvas.Top="350" Canvas.Left="50" Width="50" Height="50" Background="White" Click="b1_Click"/>
-            <Button x:Name="c1" Content="" Canvas.Top="350" Canvas.Left="100" Width="50" Height="50" Background="Brown" Click="c1_Click"/>
-            <Button x:Name="d1" Content="" Canvas.Top="350" Canvas.Left="150" Width="50" Height="50" Background="White" Click="d1_Click"/>
-            <Button x:Name="e1" Content="" Canvas.Top="350" Canvas.Left="200" Width="50" Height="50" Background="Brown" Click="e1_Click"/>
-            <Button x:Name="f1" Content="" Canvas.Top="350" Canvas.Left="250" Width="50" Height="50" Background="White" Click="f1_Click"/>
-            <Button x:Name="g1" Content="" Canvas.Top="350" Canvas.Left="300" Width="50" Height="50" Background="Brown" Click="g1_Click"/>
-            <Button x:Name="h1" Content="" Canvas.Top="350" Canvas.Left="350" Width="50" Height="50" Background="White" Click="h1_Click"/>
+            <Button x:Name="a8" Content="" Canvas.Top="0" Canvas.Left="0" Width="50" Height="50" Background="White" Click="a8Click"/>
+            <Button x:Name="b8" Content="" Canvas.Top="0" Canvas.Left="50" Width="50" Height="50" Background="Brown" Click="b8Click" />
+            <Button x:Name="c8" Content="" Canvas.Top="0" Canvas.Left="100" Width="50" Height="50" Background="White" Click="c8Click" />
+            <Button x:Name="d8" Content="" Canvas.Top="0" Canvas.Left="150" Width="50" Height="50" Background="Brown" Click="d8Click" />
+            <Button x:Name="e8" Content="" Canvas.Top="0" Canvas.Left="200" Width="50" Height="50" Background="White" Click="e8Click" />
+            <Button x:Name="f8" Content="" Canvas.Top="0" Canvas.Left="250" Width="50" Height="50" Background="Brown" Click="f8Click"/>
+            <Button x:Name="g8" Content="" Canvas.Top="0" Canvas.Left="300" Width="50" Height="50" Background="White" Click="g8Click"/>
+            <Button x:Name="h8" Content="" Canvas.Top="0" Canvas.Left="350" Width="50" Height="50" Background="Brown" Click="h8Click"/>
+            <Button x:Name="a7" Content="" Canvas.Top="50" Canvas.Left="0" Width="50" Height="50" Background="Brown" Click="a7Click"/>
+            <Button x:Name="b7" Content="" Canvas.Top="50" Canvas.Left="50" Width="50" Height="50" Background="White" Click="b7Click"/>
+            <Button x:Name="c7" Content="" Canvas.Top="50" Canvas.Left="100" Width="50" Height="50" Background="Brown" Click="c7Click"/>
+            <Button x:Name="d7" Content="" Canvas.Top="50" Canvas.Left="150" Width="50" Height="50" Background="White" Click="d7Click"/>
+            <Button x:Name="e7" Content="" Canvas.Top="50" Canvas.Left="200" Width="50" Height="50" Background="Brown" Click="e7Click"/>
+            <Button x:Name="f7" Content="" Canvas.Top="50" Canvas.Left="250" Width="50" Height="50" Background="White" Click="f7Click"/>
+            <Button x:Name="g7" Content="" Canvas.Top="50" Canvas.Left="300" Width="50" Height="50" Background="Brown" Click="g7Click"/>
+            <Button x:Name="h7" Content="" Canvas.Top="50" Canvas.Left="350" Width="50" Height="50" Background="White" Click="h7Click"/>
+            <Button x:Name="a6" Content="" Canvas.Top="100" Canvas.Left="0" Width="50" Height="50" Background="White" Click="a6Click"/>
+            <Button x:Name="b6" Content="" Canvas.Top="100" Canvas.Left="50" Width="50" Height="50" Background="Brown" Click="b6Click"/>
+            <Button x:Name="c6" Content="" Canvas.Top="100" Canvas.Left="100" Width="50" Height="50" Background="White" Click="c6Click"/>
+            <Button x:Name="d6" Content="" Canvas.Top="100" Canvas.Left="150" Width="50" Height="50" Background="Brown" Click="d6Click"/>
+            <Button x:Name="e6" Content="" Canvas.Top="100" Canvas.Left="200" Width="50" Height="50" Background="White" Click="e6Click"/>
+            <Button x:Name="f6" Content="" Canvas.Top="100" Canvas.Left="250" Width="50" Height="50" Background="Brown" Click="f6Click"/>
+            <Button x:Name="g6" Content="" Canvas.Top="100" Canvas.Left="300" Width="50" Height="50" Background="White" Click="g6Click"/>
+            <Button x:Name="h6" Content="" Canvas.Top="100" Canvas.Left="350" Width="50" Height="50" Background="Brown" Click="h6Click"/>
+            <Button x:Name="a5" Content="" Canvas.Top="150" Canvas.Left="0" Width="50" Height="50" Background="Brown" Click="a5Click"/>
+            <Button x:Name="b5" Content="" Canvas.Top="150" Canvas.Left="50" Width="50" Height="50" Background="White" Click="b5Click"/>
+            <Button x:Name="c5" Content="" Canvas.Top="150" Canvas.Left="100" Width="50" Height="50" Background="Brown" Click="c5Click"/>
+            <Button x:Name="d5" Content="" Canvas.Top="150" Canvas.Left="150" Width="50" Height="50" Background="White" Click="d5Click"/>
+            <Button x:Name="e5" Content="" Canvas.Top="150" Canvas.Left="200" Width="50" Height="50" Background="Brown" Click="e5Click"/>
+            <Button x:Name="f5" Content="" Canvas.Top="150" Canvas.Left="250" Width="50" Height="50" Background="White" Click="f5Click"/>
+            <Button x:Name="g5" Content="" Canvas.Top="150" Canvas.Left="300" Width="50" Height="50" Background="Brown" Click="g5Click"/>
+            <Button x:Name="h5" Content="" Canvas.Top="150" Canvas.Left="350" Width="50" Height="50" Background="White" Click="h5Click"/>
+            <Button x:Name="a4" Content="" Canvas.Top="200" Canvas.Left="0" Width="50" Height="50" Background="White" Click="a4Click"/>
+            <Button x:Name="b4" Content="" Canvas.Top="200" Canvas.Left="50" Width="50" Height="50" Background="Brown" Click="b4Click"/>
+            <Button x:Name="c4" Content="" Canvas.Top="200" Canvas.Left="100" Width="50" Height="50" Background="White" Click="c4Click"/>
+            <Button x:Name="d4" Content="" Canvas.Top="200" Canvas.Left="150" Width="50" Height="50" Background="Brown" Click="d4Click"/>
+            <Button x:Name="e4" Content="" Canvas.Top="200" Canvas.Left="200" Width="50" Height="50" Background="White" Click="e4Click"/>
+            <Button x:Name="f4" Content="" Canvas.Top="200" Canvas.Left="250" Width="50" Height="50" Background="Brown" Click="f4Click"/>
+            <Button x:Name="g4" Content="" Canvas.Top="200" Canvas.Left="300" Width="50" Height="50" Background="White" Click="g4Click"/>
+            <Button x:Name="h4" Content="" Canvas.Top="200" Canvas.Left="350" Width="50" Height="50" Background="Brown" Click="h4Click"/>
+            <Button x:Name="a3" Content="" Canvas.Top="250" Canvas.Left="0" Width="50" Height="50" Background="Brown" Click="a3Click"/>
+            <Button x:Name="b3" Content="" Canvas.Top="250" Canvas.Left="50" Width="50" Height="50" Background="White" Click="b3Click"/>
+            <Button x:Name="c3" Content="" Canvas.Top="250" Canvas.Left="100" Width="50" Height="50" Background="Brown" Click="c3Click"/>
+            <Button x:Name="d3" Content="" Canvas.Top="250" Canvas.Left="150" Width="50" Height="50" Background="White" Click="d3Click"/>
+            <Button x:Name="e3" Content="" Canvas.Top="250" Canvas.Left="200" Width="50" Height="50" Background="Brown" Click="e3Click"/>
+            <Button x:Name="f3" Content="" Canvas.Top="250" Canvas.Left="250" Width="50" Height="50" Background="White" Click="f3Click"/>
+            <Button x:Name="g3" Content="" Canvas.Top="250" Canvas.Left="300" Width="50" Height="50" Background="Brown" Click="g3Click"/>
+            <Button x:Name="h3" Content="" Canvas.Top="250" Canvas.Left="350" Width="50" Height="50" Background="White" Click="h3Click"/>
+            <Button x:Name="a2" Content="" Canvas.Top="300" Canvas.Left="0" Width="50" Height="50" Background="White" Click="a2Click"/>
+            <Button x:Name="b2" Content="" Canvas.Top="300" Canvas.Left="50" Width="50" Height="50" Background="Brown" Click="b2Click"/>
+            <Button x:Name="c2" Content="" Canvas.Top="300" Canvas.Left="100" Width="50" Height="50" Background="White" Click="c2Click"/>
+            <Button x:Name="d2" Content="" Canvas.Top="300" Canvas.Left="150" Width="50" Height="50" Background="Brown" Click="d2Click"/>
+            <Button x:Name="e2" Content="" Canvas.Top="300" Canvas.Left="200" Width="50" Height="50" Background="White" Click="e2Click"/>
+            <Button x:Name="f2" Content="" Canvas.Top="300" Canvas.Left="250" Width="50" Height="50" Background="Brown" Click="f2Click"/>
+            <Button x:Name="g2" Content="" Canvas.Top="300" Canvas.Left="300" Width="50" Height="50" Background="White" Click="g2Click"/>
+            <Button x:Name="h2" Content="" Canvas.Top="300" Canvas.Left="350" Width="50" Height="50" Background="Brown" Click="h2Click"/>
+            <Button x:Name="a1" Content="" Canvas.Top="350" Canvas.Left="0" Width="50" Height="50" Background="Brown" Click="a1Click"/>
+            <Button x:Name="b1" Content="" Canvas.Top="350" Canvas.Left="50" Width="50" Height="50" Background="White" Click="b1Click"/>
+            <Button x:Name="c1" Content="" Canvas.Top="350" Canvas.Left="100" Width="50" Height="50" Background="Brown" Click="c1Click"/>
+            <Button x:Name="d1" Content="" Canvas.Top="350" Canvas.Left="150" Width="50" Height="50" Background="White" Click="d1Click"/>
+            <Button x:Name="e1" Content="" Canvas.Top="350" Canvas.Left="200" Width="50" Height="50" Background="Brown" Click="e1Click"/>
+            <Button x:Name="f1" Content="" Canvas.Top="350" Canvas.Left="250" Width="50" Height="50" Background="White" Click="f1Click"/>
+            <Button x:Name="g1" Content="" Canvas.Top="350" Canvas.Left="300" Width="50" Height="50" Background="Brown" Click="g1Click"/>
+            <Button x:Name="h1" Content="" Canvas.Top="350" Canvas.Left="350" Width="50" Height="50" Background="White" Click="h1Click"/>
 
         </Canvas>
-        <Image x:Name="image_you" Source="Images/WhiteKing.png" HorizontalAlignment="Left" Height="66" Margin="56,44,0,0" VerticalAlignment="Top" Width="85"/>
-        <Image x:Name="image_rival" Source="Images/BlackKing.png" HorizontalAlignment="Left" Height="66" Margin="247,44,0,0" VerticalAlignment="Top" Width="85"/>
+        <Image x:Name="imageYou" Source="Images/WhiteKing.png" HorizontalAlignment="Left" Height="66" Margin="56,44,0,0" VerticalAlignment="Top" Width="85"/>
+        <Image x:Name="imageRival" Source="Images/BlackKing.png" HorizontalAlignment="Left" Height="66" Margin="247,44,0,0" VerticalAlignment="Top" Width="85"/>
         <Label Content="{x:Static language:Lang.TurnOf}" Margin="479,92,463,509"></Label>
     </Grid>
 </Window>

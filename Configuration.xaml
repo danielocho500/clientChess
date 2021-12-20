@@ -11,12 +11,12 @@
         <Image Source="/resource/Fondo.png" />
         <ComboBox 
             Name="cmbLanguage"
-            SelectionChanged="ComboBox_SelectionChanged"
+            SelectionChanged="ComboBoxSelectionChanged"
             HorizontalAlignment="Left" Height="46" VerticalAlignment="Top" Width="318" Margin="68,138,0,0" >
             <ComboBoxItem Content="{x:Static language:Lang.en}"/>
             <ComboBoxItem Content="{x:Static language:Lang.es}"/>
         </ComboBox>
-        <Button Content="{x:Static language:Lang.load}" Click="Load_Click" Margin="0,138,88,0" Height="46" VerticalAlignment="Top" HorizontalAlignment="Right" Width="139" d:LayoutOverrides="HorizontalAlignment" />
-        <Button Content="{x:Static language:Lang.close}" Click="Close_Click" Margin="0,0,26,29" HorizontalAlignment="Right" Width="120" Height="40" VerticalAlignment="Bottom" />
+        <Button Content="{x:Static language:Lang.load}" Click="LoadClick" Margin="0,138,88,0" Height="46" VerticalAlignment="Top" HorizontalAlignment="Right" Width="139" d:LayoutOverrides="HorizontalAlignment" />
+        <Button Content="{x:Static language:Lang.close}" Click="CloseClick" Margin="0,0,26,29" HorizontalAlignment="Right" Width="120" Height="40" VerticalAlignment="Bottom" />
     </Grid>
 </Window>

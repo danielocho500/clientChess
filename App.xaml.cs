@@ -9,9 +9,15 @@ using System.Windows;
 
 namespace Cliente
 {
-
+    /// <summary>
+    /// Lógica de interacción para App.xaml.cs
+    /// </summary>
     public partial class App : Application
     {
+        /// <summary>
+        /// Para inicar archivos de lang cuando con el idioma especificado.
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnStartup(StartupEventArgs e)
         {
             var langCode = Cliente.Properties.Settings.Default.languageCode;

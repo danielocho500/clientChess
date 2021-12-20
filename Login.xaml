@@ -13,12 +13,12 @@
         <Label Content="{x:Static language:Lang.welcome}" Margin="0,0,96,436" Grid.Column="0" Grid.Row="0" FontSize="29" Height="50" VerticalAlignment="Bottom" Foreground="White" FontWeight="Bold" HorizontalAlignment="Right" Width="212"/>
 
         <TextBox Name="txtUsername"  HorizontalAlignment="Right" Width="258" Margin="0,263,102,0" Grid.Column="0" Grid.Row="0" FontSize="20" FontStyle="Oblique" FontWeight="Thin" Height="38" VerticalAlignment="Top"/>
-        <PasswordBox Name="pssPassword" HorizontalAlignment="Right" Width="258" Margin="0,0,102,247" Height="38" VerticalAlignment="Bottom" FontSize="20" ></PasswordBox>
+        <PasswordBox Name="pbPassword" HorizontalAlignment="Right" Width="258" Margin="0,0,102,247" Height="38" VerticalAlignment="Bottom" FontSize="20" ></PasswordBox>
 
         <Label Name="lbPassword" Content="{x:Static language:Lang.password}" HorizontalAlignment="Right" Margin="0,306,104,285" Width="256" Foreground="White" FontSize="20"></Label>
         <Label Name="lbUsername" Content="{x:Static language:Lang.username}" HorizontalAlignment="Right" Margin="0,225,104,0" Width="256" Foreground="White" FontSize="20" Height="38" VerticalAlignment="Top"></Label>
 
-        <Button x:Name="btnLogin" Content="{x:Static language:Lang.login}" Height="90" Margin="0,0,96,129" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="258" Click="Login_Click" d:LayoutOverrides="VerticalAlignment" FontSize="25" Foreground="White" Background="Transparent" BorderBrush="Transparent" RenderTransformOrigin="0.337,-0.242"></Button>
-        <Button x:Name="btnBack" Content="{x:Static language:Lang.back}" Height="35" Margin="25,0,0,12" VerticalAlignment="Bottom" Background="Transparent" Foreground="White" FontSize="20" BorderBrush="Transparent" d:LayoutOverrides="VerticalAlignment" HorizontalAlignment="Left" Width="98" Click="Back_Click"/>
+        <Button x:Name="btnLogin" Content="{x:Static language:Lang.login}" Height="90" Margin="0,0,96,129" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="258" Click="LoginClick" d:LayoutOverrides="VerticalAlignment" FontSize="25" Foreground="White" Background="Transparent" BorderBrush="Transparent" RenderTransformOrigin="0.337,-0.242"></Button>
+        <Button x:Name="btnBack" Content="{x:Static language:Lang.back}" Height="35" Margin="25,0,0,12" VerticalAlignment="Bottom" Background="Transparent" Foreground="White" FontSize="20" BorderBrush="Transparent" d:LayoutOverrides="VerticalAlignment" HorizontalAlignment="Left" Width="98" Click="BackClick"/>
     </Grid>
 </Window>

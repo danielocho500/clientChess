@@ -27,10 +27,16 @@ using System.Windows.Shapes;
 
 namespace Cliente
 {
+    /// <summary>
+    /// Logica de interaccion para el archivo Register.xaml.cs
+    /// </summary>
     public partial class Register : Window, IRegisterServiceCallback
     {
         public RegisterServiceClient server;
 
+        /// <summary>
+        /// Inicializa la ventana Register.xaml
+        /// </summary>
         public Register()
         {
             InitializeComponent();
@@ -38,26 +44,32 @@ namespace Cliente
             server = new RegisterServiceClient(instanceContext);
         }
 
-        private void Register_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Evalua todos los campos y envia peticion de registro al servidor con la informacion evaluada.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RegisterClick(object sender, RoutedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtUsername.Text) || !string.IsNullOrEmpty(txtEmail.Text) || !string.IsNullOrEmpty(pssPassword1.Password) || !string.IsNullOrEmpty(pssPassword2.Password))
+            if (!string.IsNullOrEmpty(txtUsername.Text) || !string.IsNullOrEmpty(txtEmail.Text) || !string.IsNullOrEmpty(pbPassword1.Password) || !string.IsNullOrEmpty(pbPassword2.Password))
             {
-                if (CountSpaces(txtUsername.Text) != 0 || CountSpaces(txtEmail.Text) != 0 || CountSpaces(pssPassword1.Password) != 0 || CountSpaces(pssPassword2.Password) != 0)
+                if (CountSpaces(txtUsername.Text) != 0 || CountSpaces(txtEmail.Text) != 0 || CountSpaces(pbPassword1.Password) != 0 || CountSpaces(pbPassword2.Password) != 0)
                 {
                     MessageBox.Show(Lang.noSpaces);
                     return;
                 }
-                if (Check_Passwords () == true)
+
+                if (CheckPasswords () == true)
                 {
-                    
-                    if (Validate_Email())
+
+                    if (ValidateEmail())
                     {
 
-                        if (Safe_Password(pssPassword1.Password))
+                        if (SafePassword(pbPassword1.Password))
                         {
                             try
                             {
-                                server.GenerateCodeRegister(txtUsername.Text, pssPassword1.Password, txtEmail.Text);
+                                server.GenerateCodeRegister(txtUsername.Text, pbPassword1.Password, txtEmail.Text);
                             }
                             catch (EndpointNotFoundException)
                             {
@@ -78,7 +90,7 @@ namespace Cliente
                 }
                 else
                 {
-                    if (Check_Passwords() == false)
+                    if (CheckPasswords() == false)
                     {
                         MessageBox.Show(Lang.samePass);
                     }
@@ -90,23 +102,55 @@ namespace Cliente
             }
         }
 
-        private void Cancel_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Cierra la ventana Register
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CancelClick(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             this.Close();
         }
 
-        private void Validate_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Pregunta al server si el codigo de verificacion es codigo es correcto. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ValidateClick(object sender, RoutedEventArgs e)
         {
-            server.VerificateCode(txtCode.Text);
+            if (!string.IsNullOrEmpty(txtCode.Text))
+            {
+                if (CountSpaces(txtCode.Text) !=0 )
+                {
+                    try
+                    {
+                        server.VerificateCode(txtCode.Text);
+                    }
+                    catch (EndpointNotFoundException)
+                    {
+                        MainWindow mainWindow = new MainWindow();
+                        mainWindow.Show();
+                        this.Close();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(Lang.emptyFields);
+                }
+            }
         }
 
-
-        private bool Check_Passwords()
+        /// <summary>
+        /// Verifica si las contraseñas son iguales
+        /// </summary>
+        /// <returns>Regresa true o false segun sea el caso</returns>
+        private bool CheckPasswords()
         {
-            string pass1 = pssPassword1.Password;
-            string pass2 = pssPassword2.Password;
+            string pass1 = pbPassword1.Password;
+            string pass2 = pbPassword2.Password;
             if (pass1 == pass2)
             {
                 return true;
@@ -117,13 +161,22 @@ namespace Cliente
             }
         }
 
-        private bool Validate_Email()
+        /// <summary>
+        /// Evalua si el email cumple con las reglas escritas.
+        /// </summary>
+        /// <returns> regresa si el email es valído </returns>
+        private bool ValidateEmail()
         {
             Regex regex = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", RegexOptions.CultureInvariant | RegexOptions.Singleline);
             return regex.IsMatch(txtEmail.Text);
         }
 
-        static bool Safe_Password(string passWord)
+        /// <summary>
+        /// Evalua si la contraseña es segura o confiable.
+        /// </summary>
+        /// <param name="passWord"></param>
+        /// <returns> regresa true o false dependiendo si la contraseña es o no segura</returns>
+        static bool SafePassword(string passWord)
         {
             int validConditions = 0;
             foreach (char c in passWord)
@@ -160,6 +213,10 @@ namespace Cliente
             return true;
         }
 
+        /// <summary>
+        /// El server manda el estatus del código.
+        /// </summary>
+        /// <param name="status"> indica el estado del código </param>
         public void ValidateCode(int status)
         {
             if (status == 0)
@@ -181,6 +238,11 @@ namespace Cliente
             }
         }
 
+        /// <summary>
+        /// Cuenta los espacios en blanco de un texto.
+        /// </summary>
+        /// <param name="text"> texto a evaluar</param>
+        /// <returns>regresa count con el numero de espacios en blanco.</returns>
         public int CountSpaces(string text)
         {
             int cont = 0;
@@ -199,6 +261,10 @@ namespace Cliente
             return cont;
         }
 
+        /// <summary>
+        /// Regresa si se puedo generar el código o no, invocado por el servidor.
+        /// </summary>
+        /// <param name="status"> estado del código</param>
         public void CodeRecieve(int status)
         {
             if (status== 0)
@@ -213,11 +279,11 @@ namespace Cliente
                 txtEmail.Text = "";
                 txtEmail.IsEnabled = false;
 
-                pssPassword1.Password = "";
-                pssPassword1.IsEnabled = false;
+                pbPassword1.Password = "";
+                pbPassword1.IsEnabled = false;
 
-                pssPassword2.Password = "";
-                pssPassword2.IsEnabled = false;
+                pbPassword2.Password = "";
+                pbPassword2.IsEnabled = false;
             }
             else if (status == 1)
             {

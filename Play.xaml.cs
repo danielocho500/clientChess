@@ -1,5 +1,16 @@
-﻿using Cliente.ChessService;
-using Cliente.play_logic;
+﻿/******************************************************************/
+/* Archivo: MainWindow.xaml.cs                                    */
+/* Programador: Raul Arturo Peredo Estudillo                      */
+/*              Daniel Diaz Rossell                               */
+/* Fecha: 10/Nov/2021                                             */
+/* Fecha modificación:  10/Dic/2021                               */
+/* Descripción: Ventana del juego creacion de tablero,            */
+/*              funcionalidad etc                                 */
+/******************************************************************/
+
+
+using Cliente.ChessService;
+using Cliente.playLogic;
 using Cliente.Properties.Langs;
 using System;
 using System.Collections.Generic;
@@ -12,72 +23,85 @@ using System.Windows.Media.Imaging;
 
 namespace Cliente
 {
+    /// <summary>
+    /// Logica de interaccion para el archivo Play.xaml.cs
+    /// </summary>
     public partial class Play : Window, IMatchServiceCallback
     {
-        public int IdUser;
-        public string Rival;
-        public string MatchCode;
-        public bool IsWhite;
-        public string UsernameActual;
+        public int idUser;
+        public string rival;
+        public string matchCode;
+        public bool isWhite;
+        public string usernameActual;
 
         public bool isTurn = true;
-        public bool givenUP = false;
+        public bool givenUp = false;
 
-        public MatchServiceClient server_match;
+        public MatchServiceClient serverMatch;
 
-        private Dictionary<string, ButtonInfo> Squares = new Dictionary<string, ButtonInfo>();
+        private Dictionary<string, ButtonInfo> squares = new Dictionary<string, ButtonInfo>();
 
         private string selectedSquare;
         private SquareStatus selectedSquareValue = SquareStatus.disabled;
 
-        private SquareStatus[] whitePieces = new SquareStatus[] { SquareStatus.WhitePawn, SquareStatus.WhiteBishop, SquareStatus.WhiteKing, SquareStatus.WhiteQueen, SquareStatus.WhiteKnight, SquareStatus.WhiteTower };
-        private SquareStatus[] blackPieces = new SquareStatus[] { SquareStatus.BlackPawn, SquareStatus.BlackBishop, SquareStatus.BlackKing, SquareStatus.BlackQueen, SquareStatus.BlackKnight, SquareStatus.BlackTower };
-        private SquareStatus[] toDefeatPieces = new SquareStatus[] { SquareStatus.BlackPawnToDefeat, SquareStatus.WhitePawnToDefeat, SquareStatus.BlackBishopToDefeat, SquareStatus.WhiteBishopToDefeat, SquareStatus.BlackKingToDefeat, SquareStatus.WhiteKingToDefeat, SquareStatus.BlackKnightToDefeat, SquareStatus.WhiteKingToDefeat, SquareStatus.BlackQueenToDefeat, SquareStatus.WhiteQueenToDefeat, SquareStatus.BlackTowerToDefeat, SquareStatus.WhiteTowerToDefeat };
+        private SquareStatus[] whitePieces = new SquareStatus[] { SquareStatus.whitePawn, SquareStatus.whiteBishop, SquareStatus.whiteKing, SquareStatus.whiteQueen, SquareStatus.whiteKnight, SquareStatus.whiteTower };
+        private SquareStatus[] blackPieces = new SquareStatus[] { SquareStatus.blackPawn, SquareStatus.blackBishop, SquareStatus.blackKing, SquareStatus.blackQueen, SquareStatus.blackKnight, SquareStatus.blackTower };
+        private SquareStatus[] toDefeatPieces = new SquareStatus[] { SquareStatus.blackPawnToDefeat, SquareStatus.whitePawnToDefeat, SquareStatus.blackBishopToDefeat, SquareStatus.whiteBishopToDefeat, SquareStatus.blackKingToDefeat, SquareStatus.whiteKingToDefeat, SquareStatus.blackKnightToDefeat, SquareStatus.whiteKnightToDefeat, SquareStatus.blackQueenToDefeat, SquareStatus.whiteQueenToDefeat, SquareStatus.blackTowerToDefeat, SquareStatus.whiteTowerToDefeat };
 
         System.Windows.Threading.DispatcherTimer dispatcherTimer;
         private int timeLeftuser = 100;
         private int timeLeftRival = 100;
 
-
-        public Play(int idUser_, string username_, string rival_, string MatchCode_, bool white_)
+        /// <summary>
+        /// Inicia la ventana con los datos de la partida.
+        /// </summary>
+        /// <param name="idUser"> id usuario</param>
+        /// <param name="username"> nombre del usuario</param>
+        /// <param name="rival"> usuario del oponente</param>
+        /// <param name="MatchCode"> codigo de la partida</param>
+        /// <param name="white"> si esta jugando blancas o negras</param>
+        public Play(int idUser, string username, string rival, string MatchCode, bool isWhite)
         {
             InitializeComponent();
-
             InstanceContext instanceContext = new InstanceContext(this);
-            server_match = new MatchServiceClient(instanceContext);
+            serverMatch = new MatchServiceClient(instanceContext);
 
-            IdUser = idUser_;
-            Rival = rival_;
-            MatchCode = MatchCode_;
-            IsWhite = white_;
-            UsernameActual = username_;
+            this.idUser = idUser;
+            this.rival = rival;
+            this.matchCode = MatchCode;
+            this.isWhite = isWhite;
+            this.usernameActual = username;
 
-            if (!IsWhite)
+            if (!isWhite)
             {
-                image_you.Margin = new Thickness(247,44,0,0);
-                image_rival.Margin = new Thickness(56, 44, 0, 0);
+                imageYou.Margin = new Thickness(247, 44, 0, 0);
+                imageRival.Margin = new Thickness(56, 44, 0, 0);
             }
-            
+
             try
             {
-                server_match.SendConnection(IsWhite, MatchCode);
+                serverMatch.SendConnection(isWhite, matchCode);
             }
             catch (EndpointNotFoundException)
             {
                 MessageBox.Show(Lang.noConecction);
-                Connected.IsConnected = false;
+                Connected.is_Connected = false;
                 this.Close();
             }
 
-            if (IsWhite)
+            if (isWhite)
+            {
                 isTurn = true;
+            }
             else
+            {
                 isTurn = false;
+            }
 
-            LbRivalName.Content = Rival;
+            lbRivalName.Content = rival;
 
             dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
-            dispatcherTimer.Tick += new EventHandler(DispatcherTimer_Tick);
+            dispatcherTimer.Tick += new EventHandler(DispatcherTimerTick);
             dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
             dispatcherTimer.Start();
 
@@ -87,7 +111,7 @@ namespace Cliente
 
         }
 
-        private void DispatcherTimer_Tick(object sender, EventArgs e)
+        private void DispatcherTimerTick(object sender, EventArgs e)
         {
             if (isTurn)
                 timeLeftuser--;
@@ -95,7 +119,7 @@ namespace Cliente
                 timeLeftRival--;
 
             lbUserTime.Content = GetTimeLeftFormat(timeLeftuser);
-            LbRivalTime.Content = GetTimeLeftFormat(timeLeftRival);
+            lbRivalTime.Content = GetTimeLeftFormat(timeLeftRival);
 
             if (timeLeftRival != 0 && timeLeftuser != 0)
                 return;
@@ -106,18 +130,23 @@ namespace Cliente
             {
                 try
                 {
-                    server_match.Win(!IsWhite, true, MatchCode);
+                    serverMatch.Win(!isWhite, true, matchCode);
                 }
                 catch (Exception)
                 {
                     MessageBox.Show(Lang.noConecction);
-                    Connected.IsConnected = false;
+                    Connected.is_Connected = false;
                     this.Close();
                 }
             }
-                
+
         }
 
+        /// <summary>
+        /// Convierte el tiempo en segundos a formato con minutos.
+        /// </summary>
+        /// <param name="secs"> segundos </param>
+        /// <returns>el tiempo en formato con minutos format </returns>
         public string GetTimeLeftFormat(int secs)
         {
             string format;
@@ -127,58 +156,74 @@ namespace Cliente
                 minutes++;
                 secs -= 60;
             }
+
             format = "0" + minutes.ToString() + ":";
-
             format += (secs >= 10) ? secs.ToString() : "0" + secs.ToString();
-
-
             return format;
         }
 
-        private void BtnSend_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Evalua el campo tbMessage, la conexion y manda un mensaje a el otro usuario
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SendClick(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(TextBMessage.Text.Trim()))
+            if (string.IsNullOrEmpty(tbMessage.Text.Trim()))
             {
                 MessageBox.Show(Lang.mustWrite);
                 return;
             }
-            string message = TextBMessage.Text;
-            listVMessages.Items.Add(GetHourFormat() + " " + UsernameActual + ": " + message);
-            listVMessages.ScrollIntoView(listVMessages.Items.Count - 1);
+
+            string message = tbMessage.Text;
+            lvMessages.Items.Add(GetHourFormat() + " " + usernameActual + ": " + message);
+            lvMessages.ScrollIntoView(lvMessages.Items.Count - 1);
+
             try
             {
-                server_match.SendMessage(IsWhite, message, MatchCode);
+                serverMatch.SendMessage(isWhite, message, matchCode);
             }
             catch (Exception)
             {
                 MessageBox.Show(Lang.noConecction);
-                Connected.IsConnected = false;
+                Connected.is_Connected = false;
                 this.Close();
             }
-            TextBMessage.Text = "";
+
+            tbMessage.Text = "";
         }
 
-        private void BtnRendirse_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// verifica conexion con el server y Manda al servidor peticion de rendicion
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RendirseClick(object sender, RoutedEventArgs e)
         {
             if (MessageBox.Show(Lang.surrender, Lang.confirm, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 try
                 {
-                    server_match.GiveUp(IsWhite, MatchCode);
+                    serverMatch.GiveUp(isWhite, matchCode);
                 }
                 catch (Exception)
                 {
                     MessageBox.Show(Lang.noConecction);
-                    Connected.IsConnected = false;
+                    Connected.is_Connected = false;
                     this.Close();
                 }
             }
         }
 
+        /// <summary>
+        /// Recive mensajes y escribe en el list view
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="time"></param>
         public void ReciveMessage(string message, string time)
         {
-            listVMessages.Items.Add(time + " " + Rival + ": " + message);
-            listVMessages.ScrollIntoView(listVMessages.Items.Count - 1);
+            lvMessages.Items.Add(time + " " + rival + ": " + message);
+            lvMessages.ScrollIntoView(lvMessages.Items.Count - 1);
         }
 
         private string GetHourFormat()
@@ -189,27 +234,34 @@ namespace Cliente
             return "[" + hour + ":" + minute + "]";
         }
 
-
-
+        /// <summary>
+        /// Es llamada por el server e indica si el jugador gano o perdio la partida
+        /// </summary>
+        /// <param name="youWon"> si ganaste o no</param>
+        /// <param name="oldElo"> elo anterior </param>
+        /// <param name="newElo"> elo actual</param>
         public void MatchEnds(bool youWon, int oldElo, int newElo)
-        {           
-            givenUP = true;
+        {
+            givenUp = true;
             string msg = (youWon) ? Lang.youWin : Lang.youLose;
             msg += "  Elo: " + oldElo + " -> " + newElo;
             MessageBox.Show(msg);
             this.Close();
         }
 
+        /// <summary>
+        /// Actualiza las imagenes de los botones segun su estado
+        /// </summary>
         private void Update()
         {
             if (isTurn)
-                LbTurn.Content = Lang.you;
+                lbTurn.Content = Lang.you;
             else
-                LbTurn.Content = Rival;
-            foreach (string key in Squares.Keys)
+                lbTurn.Content = rival;
+            foreach (string key in squares.Keys)
             {
-                ButtonInfo buttonInfo = Squares[key];
-                Button button = buttonInfo.GetBtn();
+                ButtonInfo buttonInfo = squares[key];
+                Button button = buttonInfo.GetButton();
 
                 switch (buttonInfo.GetSquareStatus())
                 {
@@ -234,214 +286,220 @@ namespace Cliente
                         button.Content = imgToMoveB;
                         break;
 
-                    case SquareStatus.WhitePawn:
-                        Image imgWhitePawn = new Image();
-                        imgWhitePawn.Source = new BitmapImage(new Uri("Images/WhitePawn.png", UriKind.Relative));
-                        imgWhitePawn.Stretch = Stretch.Fill;
-                        button.Content = imgWhitePawn;
+                    case SquareStatus.whitePawn:
+                        Image imgwhitePawn = new Image();
+                        imgwhitePawn.Source = new BitmapImage(new Uri("Images/whitePawn.png", UriKind.Relative));
+                        imgwhitePawn.Stretch = Stretch.Fill;
+                        button.Content = imgwhitePawn;
                         break;
 
-                    case SquareStatus.WhitePawnToDefeat:
-                        Image imgWhitePawnToDefeat = new Image();
-                        imgWhitePawnToDefeat.Source = new BitmapImage(new Uri("Images/WhitePawnToDefeat.png", UriKind.Relative));
-                        imgWhitePawnToDefeat.Stretch = Stretch.Fill;
-                        button.Content = imgWhitePawnToDefeat;
+                    case SquareStatus.whitePawnToDefeat:
+                        Image imgwhitePawnToDefeat = new Image();
+                        imgwhitePawnToDefeat.Source = new BitmapImage(new Uri("Images/whitePawnToDefeat.png", UriKind.Relative));
+                        imgwhitePawnToDefeat.Stretch = Stretch.Fill;
+                        button.Content = imgwhitePawnToDefeat;
                         break;
 
-                    case SquareStatus.BlackPawn:
-                        Image imgBlackPawn = new Image();
-                        imgBlackPawn.Source = new BitmapImage(new Uri("Images/BlackPawn.png", UriKind.Relative));
-                        imgBlackPawn.Stretch = Stretch.Fill;
-                        button.Content = imgBlackPawn;
+                    case SquareStatus.blackPawn:
+                        Image imgblackPawn = new Image();
+                        imgblackPawn.Source = new BitmapImage(new Uri("Images/blackPawn.png", UriKind.Relative));
+                        imgblackPawn.Stretch = Stretch.Fill;
+                        button.Content = imgblackPawn;
                         break;
 
-                    case SquareStatus.BlackPawnToDefeat:
-                        Image imgBlackPawnToDefeat = new Image();
-                        imgBlackPawnToDefeat.Source = new BitmapImage(new Uri("Images/BlackPawnToDefeat.png", UriKind.Relative));
-                        imgBlackPawnToDefeat.Stretch = Stretch.Fill;
-                        button.Content = imgBlackPawnToDefeat;
+                    case SquareStatus.blackPawnToDefeat:
+                        Image imgblackPawnToDefeat = new Image();
+                        imgblackPawnToDefeat.Source = new BitmapImage(new Uri("Images/blackPawnToDefeat.png", UriKind.Relative));
+                        imgblackPawnToDefeat.Stretch = Stretch.Fill;
+                        button.Content = imgblackPawnToDefeat;
                         break;
 
-                    case SquareStatus.WhiteKing:
-                        Image imgWhiteKing = new Image();
-                        imgWhiteKing.Source = new BitmapImage(new Uri("Images/WhiteKing.png", UriKind.Relative));
-                        imgWhiteKing.Stretch = Stretch.Fill;
-                        button.Content = imgWhiteKing;
+                    case SquareStatus.whiteKing:
+                        Image imgwhiteKing = new Image();
+                        imgwhiteKing.Source = new BitmapImage(new Uri("Images/whiteKing.png", UriKind.Relative));
+                        imgwhiteKing.Stretch = Stretch.Fill;
+                        button.Content = imgwhiteKing;
                         break;
 
-                    case SquareStatus.WhiteKingToDefeat:
-                        Image imgWhiteKingToDefeat = new Image();
-                        imgWhiteKingToDefeat.Source = new BitmapImage(new Uri("Images/WhiteKingToDefeat.png", UriKind.Relative));
-                        imgWhiteKingToDefeat.Stretch = Stretch.Fill;
-                        button.Content = imgWhiteKingToDefeat;
+                    case SquareStatus.whiteKingToDefeat:
+                        Image imgwhiteKingToDefeat = new Image();
+                        imgwhiteKingToDefeat.Source = new BitmapImage(new Uri("Images/whiteKingToDefeat.png", UriKind.Relative));
+                        imgwhiteKingToDefeat.Stretch = Stretch.Fill;
+                        button.Content = imgwhiteKingToDefeat;
                         break;
 
-                    case SquareStatus.BlackKing:
-                        Image imgBlackKing = new Image();
-                        imgBlackKing.Source = new BitmapImage(new Uri("Images/BlackKing.png", UriKind.Relative));
-                        imgBlackKing.Stretch = Stretch.Fill;
-                        button.Content = imgBlackKing;
+                    case SquareStatus.blackKing:
+                        Image imgblackKing = new Image();
+                        imgblackKing.Source = new BitmapImage(new Uri("Images/blackKing.png", UriKind.Relative));
+                        imgblackKing.Stretch = Stretch.Fill;
+                        button.Content = imgblackKing;
                         break;
 
-                    case SquareStatus.BlackKingToDefeat:
-                        Image imgBlackKingToDefeat = new Image();
-                        imgBlackKingToDefeat.Source = new BitmapImage(new Uri("Images/BlackKingToDefeat.png", UriKind.Relative));
-                        imgBlackKingToDefeat.Stretch = Stretch.Fill;
-                        button.Content = imgBlackKingToDefeat;
+                    case SquareStatus.blackKingToDefeat:
+                        Image imgblackKingToDefeat = new Image();
+                        imgblackKingToDefeat.Source = new BitmapImage(new Uri("Images/blackKingToDefeat.png", UriKind.Relative));
+                        imgblackKingToDefeat.Stretch = Stretch.Fill;
+                        button.Content = imgblackKingToDefeat;
                         break;
 
-                    case SquareStatus.WhiteKnight:
-                        Image imgWhiteKnight = new Image();
-                        imgWhiteKnight.Source = new BitmapImage(new Uri("Images/WhiteKnight.png", UriKind.Relative));
-                        imgWhiteKnight.Stretch = Stretch.Fill;
-                        button.Content = imgWhiteKnight;
+                    case SquareStatus.whiteKnight:
+                        Image imgwhiteKnight = new Image();
+                        imgwhiteKnight.Source = new BitmapImage(new Uri("Images/whiteKnight.png", UriKind.Relative));
+                        imgwhiteKnight.Stretch = Stretch.Fill;
+                        button.Content = imgwhiteKnight;
                         break;
 
-                    case SquareStatus.WhiteKnightToDefeat:
-                        Image imgWhiteKnightToDefeat = new Image();
-                        imgWhiteKnightToDefeat.Source = new BitmapImage(new Uri("Images/WhiteKnightToDefeat.png", UriKind.Relative));
-                        imgWhiteKnightToDefeat.Stretch = Stretch.Fill;
-                        button.Content = imgWhiteKnightToDefeat;
+                    case SquareStatus.whiteKnightToDefeat:
+                        Image imgwhiteKnightToDefeat = new Image();
+                        imgwhiteKnightToDefeat.Source = new BitmapImage(new Uri("Images/whiteKnightToDefeat.png", UriKind.Relative));
+                        imgwhiteKnightToDefeat.Stretch = Stretch.Fill;
+                        button.Content = imgwhiteKnightToDefeat;
                         break;
 
-                    case SquareStatus.BlackKnight:
-                        Image imgBlackKnightg = new Image();
-                        imgBlackKnightg.Source = new BitmapImage(new Uri("Images/BlackKnight.png", UriKind.Relative));
-                        imgBlackKnightg.Stretch = Stretch.Fill;
-                        button.Content = imgBlackKnightg;
+                    case SquareStatus.blackKnight:
+                        Image imgblackKnightg = new Image();
+                        imgblackKnightg.Source = new BitmapImage(new Uri("Images/blackKnight.png", UriKind.Relative));
+                        imgblackKnightg.Stretch = Stretch.Fill;
+                        button.Content = imgblackKnightg;
                         break;
 
-                    case SquareStatus.BlackKnightToDefeat:
-                        Image imgBlackKnightToDefeat = new Image();
-                        imgBlackKnightToDefeat.Source = new BitmapImage(new Uri("Images/BlackKnightToDefeat.png", UriKind.Relative));
-                        imgBlackKnightToDefeat.Stretch = Stretch.Fill;
-                        button.Content = imgBlackKnightToDefeat;
+                    case SquareStatus.blackKnightToDefeat:
+                        Image imgblackKnightToDefeat = new Image();
+                        imgblackKnightToDefeat.Source = new BitmapImage(new Uri("Images/blackKnightToDefeat.png", UriKind.Relative));
+                        imgblackKnightToDefeat.Stretch = Stretch.Fill;
+                        button.Content = imgblackKnightToDefeat;
                         break;
 
-                    case SquareStatus.WhiteTower:
-                        Image imgWhiteTower = new Image();
-                        imgWhiteTower.Source = new BitmapImage(new Uri("Images/WhiteTower.png", UriKind.Relative));
-                        imgWhiteTower.Stretch = Stretch.Fill;
-                        button.Content = imgWhiteTower;
+                    case SquareStatus.whiteTower:
+                        Image imgwhiteTower = new Image();
+                        imgwhiteTower.Source = new BitmapImage(new Uri("Images/whiteTower.png", UriKind.Relative));
+                        imgwhiteTower.Stretch = Stretch.Fill;
+                        button.Content = imgwhiteTower;
                         break;
 
-                    case SquareStatus.WhiteTowerToDefeat:
-                        Image imgWhiteTowerToDefeat = new Image();
-                        imgWhiteTowerToDefeat.Source = new BitmapImage(new Uri("Images/WhiteTowerToDefeat.png", UriKind.Relative));
-                        imgWhiteTowerToDefeat.Stretch = Stretch.Fill;
-                        button.Content = imgWhiteTowerToDefeat;
+                    case SquareStatus.whiteTowerToDefeat:
+                        Image imgwhiteTowerToDefeat = new Image();
+                        imgwhiteTowerToDefeat.Source = new BitmapImage(new Uri("Images/whiteTowerToDefeat.png", UriKind.Relative));
+                        imgwhiteTowerToDefeat.Stretch = Stretch.Fill;
+                        button.Content = imgwhiteTowerToDefeat;
                         break;
 
-                    case SquareStatus.BlackTower:
-                        Image imgBlackTower = new Image();
-                        imgBlackTower.Source = new BitmapImage(new Uri("Images/BlackTower.png", UriKind.Relative));
-                        imgBlackTower.Stretch = Stretch.Fill;
-                        button.Content = imgBlackTower;
+                    case SquareStatus.blackTower:
+                        Image imgblackTower = new Image();
+                        imgblackTower.Source = new BitmapImage(new Uri("Images/blackTower.png", UriKind.Relative));
+                        imgblackTower.Stretch = Stretch.Fill;
+                        button.Content = imgblackTower;
                         break;
 
-                    case SquareStatus.BlackTowerToDefeat:
-                        Image imgBlackTowerToDefeat = new Image();
-                        imgBlackTowerToDefeat.Source = new BitmapImage(new Uri("Images/BlackTowerToDefeat.png", UriKind.Relative));
-                        imgBlackTowerToDefeat.Stretch = Stretch.Fill;
-                        button.Content = imgBlackTowerToDefeat;
+                    case SquareStatus.blackTowerToDefeat:
+                        Image imgblackTowerToDefeat = new Image();
+                        imgblackTowerToDefeat.Source = new BitmapImage(new Uri("Images/blackTowerToDefeat.png", UriKind.Relative));
+                        imgblackTowerToDefeat.Stretch = Stretch.Fill;
+                        button.Content = imgblackTowerToDefeat;
                         break;
 
-                    case SquareStatus.WhiteBishop:
-                        Image imgWhiteBishop = new Image();
-                        imgWhiteBishop.Source = new BitmapImage(new Uri("Images/WhiteBishop.png", UriKind.Relative));
-                        imgWhiteBishop.Stretch = Stretch.Fill;
-                        button.Content = imgWhiteBishop;
+                    case SquareStatus.whiteBishop:
+                        Image imgwhiteBishop = new Image();
+                        imgwhiteBishop.Source = new BitmapImage(new Uri("Images/whiteBishop.png", UriKind.Relative));
+                        imgwhiteBishop.Stretch = Stretch.Fill;
+                        button.Content = imgwhiteBishop;
                         break;
 
-                    case SquareStatus.WhiteBishopToDefeat:
-                        Image imgWhiteBishopToDefeat = new Image();
-                        imgWhiteBishopToDefeat.Source = new BitmapImage(new Uri("Images/WhiteBishopToDefeat.png", UriKind.Relative));
-                        imgWhiteBishopToDefeat.Stretch = Stretch.Fill;
-                        button.Content = imgWhiteBishopToDefeat;
+                    case SquareStatus.whiteBishopToDefeat:
+                        Image imgwhiteBishopToDefeat = new Image();
+                        imgwhiteBishopToDefeat.Source = new BitmapImage(new Uri("Images/whiteBishopToDefeat.png", UriKind.Relative));
+                        imgwhiteBishopToDefeat.Stretch = Stretch.Fill;
+                        button.Content = imgwhiteBishopToDefeat;
                         break;
 
-                    case SquareStatus.BlackBishop:
-                        Image imgBlackBishop = new Image();
-                        imgBlackBishop.Source = new BitmapImage(new Uri("Images/BlackBishop.png", UriKind.Relative));
-                        imgBlackBishop.Stretch = Stretch.Fill;
-                        button.Content = imgBlackBishop;
+                    case SquareStatus.blackBishop:
+                        Image imgblackBishop = new Image();
+                        imgblackBishop.Source = new BitmapImage(new Uri("Images/blackBishop.png", UriKind.Relative));
+                        imgblackBishop.Stretch = Stretch.Fill;
+                        button.Content = imgblackBishop;
                         break;
 
-                    case SquareStatus.BlackBishopToDefeat:
-                        Image imgBlackBishopToDefeat = new Image();
-                        imgBlackBishopToDefeat.Source = new BitmapImage(new Uri("Images/BlackBishopToDefeat.png", UriKind.Relative));
-                        imgBlackBishopToDefeat.Stretch = Stretch.Fill;
-                        button.Content = imgBlackBishopToDefeat;
+                    case SquareStatus.blackBishopToDefeat:
+                        Image imgblackBishopToDefeat = new Image();
+                        imgblackBishopToDefeat.Source = new BitmapImage(new Uri("Images/blackBishopToDefeat.png", UriKind.Relative));
+                        imgblackBishopToDefeat.Stretch = Stretch.Fill;
+                        button.Content = imgblackBishopToDefeat;
                         break;
 
-                    case SquareStatus.WhiteQueen:
-                        Image imgWhiteQueen = new Image();
-                        imgWhiteQueen.Source = new BitmapImage(new Uri("Images/WhiteQueen.png", UriKind.Relative));
-                        imgWhiteQueen.Stretch = Stretch.Fill;
-                        button.Content = imgWhiteQueen;
+                    case SquareStatus.whiteQueen:
+                        Image imgwhiteQueen = new Image();
+                        imgwhiteQueen.Source = new BitmapImage(new Uri("Images/whiteQueen.png", UriKind.Relative));
+                        imgwhiteQueen.Stretch = Stretch.Fill;
+                        button.Content = imgwhiteQueen;
                         break;
 
-                    case SquareStatus.WhiteQueenToDefeat:
-                        Image imgWhiteQueenToDefeat = new Image();
-                        imgWhiteQueenToDefeat.Source = new BitmapImage(new Uri("Images/WhiteQueenToDefeat.png", UriKind.Relative));
-                        imgWhiteQueenToDefeat.Stretch = Stretch.Fill;
-                        button.Content = imgWhiteQueenToDefeat;
+                    case SquareStatus.whiteQueenToDefeat:
+                        Image imgwhiteQueenToDefeat = new Image();
+                        imgwhiteQueenToDefeat.Source = new BitmapImage(new Uri("Images/whiteQueenToDefeat.png", UriKind.Relative));
+                        imgwhiteQueenToDefeat.Stretch = Stretch.Fill;
+                        button.Content = imgwhiteQueenToDefeat;
                         break;
 
-                    case SquareStatus.BlackQueen:
-                        Image imgBlackQueen = new Image();
-                        imgBlackQueen.Source = new BitmapImage(new Uri("Images/BlackQueen.png", UriKind.Relative));
-                        imgBlackQueen.Stretch = Stretch.Fill;
-                        button.Content = imgBlackQueen;
+                    case SquareStatus.blackQueen:
+                        Image imgblackQueen = new Image();
+                        imgblackQueen.Source = new BitmapImage(new Uri("Images/blackQueen.png", UriKind.Relative));
+                        imgblackQueen.Stretch = Stretch.Fill;
+                        button.Content = imgblackQueen;
                         break;
 
-                    case SquareStatus.BlackQueenToDefeat:
-                        Image imgBlackQueenToDefeat = new Image();
-                        imgBlackQueenToDefeat.Source = new BitmapImage(new Uri("Images/BlackQueenToDefeat.png", UriKind.Relative));
-                        imgBlackQueenToDefeat.Stretch = Stretch.Fill;
-                        button.Content = imgBlackQueenToDefeat;
+                    case SquareStatus.blackQueenToDefeat:
+                        Image imgblackQueenToDefeat = new Image();
+                        imgblackQueenToDefeat.Source = new BitmapImage(new Uri("Images/blackQueenToDefeat.png", UriKind.Relative));
+                        imgblackQueenToDefeat.Stretch = Stretch.Fill;
+                        button.Content = imgblackQueenToDefeat;
                         break;
                 }
             }
         }
 
-        private void Clic(string btn)
+        /// <summary>
+        /// checa el estado del boton para realizar una accion, verifica conexion, ver a que boton cliqueaste y en base a eso realiza un accion
+        /// </summary>
+        /// <param name="button"> cordenada del boton</param>
+        private void Clic(string button)
         {
             if (!isTurn)
+            {
                 return;
+            }
 
-            ButtonInfo buttonInfo = Squares[btn];
+            ButtonInfo buttonInfo = squares[button];
             SquareStatus buttonStatus = buttonInfo.GetSquareStatus();
 
-            if (IsWhite && blackPieces.Contains(buttonStatus))
+            if (isWhite && blackPieces.Contains(buttonStatus))
+            {
                 return;
-            if (!IsWhite && whitePieces.Contains(buttonStatus))
+            }
+
+            if (!isWhite && whitePieces.Contains(buttonStatus))
+            {
                 return;
+            }
 
             if (buttonStatus == SquareStatus.toMoveWhite || buttonStatus == SquareStatus.toMoveBlack || toDefeatPieces.Contains(buttonStatus))
             {
                 try
                 {
-                    server_match.Move(IsWhite, MatchCode, selectedSquare, btn, timeLeftuser);
+                    serverMatch.Move(isWhite, matchCode, selectedSquare, button, timeLeftuser);
                 }
                 catch (Exception)
                 {
                     MessageBox.Show(Lang.noConecction);
-                    Connected.IsConnected = false;
+                    Connected.is_Connected = false;
                     this.Close();
                 }
+
                 isTurn = false;
-
-                Squares[selectedSquare].setSquareStatus(SquareStatus.disabled);
-                Squares[btn].setSquareStatus(selectedSquareValue);
-
-
+                squares[selectedSquare].SetSquareStatus(SquareStatus.disabled);
+                squares[button].SetSquareStatus(selectedSquareValue);
                 selectedSquareValue = SquareStatus.disabled;
                 selectedSquare = "";
                 DisableOptionsToMove();
-
-
-
                 Update();
                 return;
             }
@@ -455,117 +513,119 @@ namespace Cliente
                 return;
             }
 
-
-            selectedSquare = btn;
-
+            selectedSquare = button;
             List<string> btnMove = new List<string>();
 
             switch (buttonStatus)
             {
-                case SquareStatus.WhitePawn:
-                    btnMove = Moves.getMovesWhitePawn(buttonInfo.GetColumn(), buttonInfo.GetRow(),Squares);
-                    selectedSquareValue = SquareStatus.WhitePawn;
+                case SquareStatus.whitePawn:
+                    btnMove = Moves.GetMovesWhitePawn(buttonInfo.GetColumn(), buttonInfo.GetRow(), squares);
+                    selectedSquareValue = SquareStatus.whitePawn;
                     break;
-                case SquareStatus.BlackPawn:
-                    btnMove = Moves.getMovesBlackPawn(buttonInfo.GetColumn(), buttonInfo.GetRow(), Squares);
-                    selectedSquareValue = SquareStatus.BlackPawn;
+                case SquareStatus.blackPawn:
+                    btnMove = Moves.GetMovesBlackPawn(buttonInfo.GetColumn(), buttonInfo.GetRow(), squares);
+                    selectedSquareValue = SquareStatus.blackPawn;
                     break;
-                case SquareStatus.WhiteKing:
-                    btnMove = Moves.getMovesKing(true, buttonInfo.GetColumn(), buttonInfo.GetRow(), Squares);
-                    selectedSquareValue = SquareStatus.WhiteKing;
+                case SquareStatus.whiteKing:
+                    btnMove = Moves.GetMovesKing(true, buttonInfo.GetColumn(), buttonInfo.GetRow(), squares);
+                    selectedSquareValue = SquareStatus.whiteKing;
                     break;
-                case SquareStatus.BlackKing:
-                    btnMove = Moves.getMovesKing(false, buttonInfo.GetColumn(), buttonInfo.GetRow(), Squares);
-                    selectedSquareValue = SquareStatus.BlackKing;
+                case SquareStatus.blackKing:
+                    btnMove = Moves.GetMovesKing(false, buttonInfo.GetColumn(), buttonInfo.GetRow(), squares);
+                    selectedSquareValue = SquareStatus.blackKing;
                     break;
-                case SquareStatus.WhiteKnight:
-                    btnMove = Moves.getMovesKnight(true, buttonInfo.GetColumn(), buttonInfo.GetRow(), Squares);
-                    selectedSquareValue = SquareStatus.WhiteKnight;
+                case SquareStatus.whiteKnight:
+                    btnMove = Moves.GetMovesKnight(true, buttonInfo.GetColumn(), buttonInfo.GetRow(), squares);
+                    selectedSquareValue = SquareStatus.whiteKnight;
                     break;
-                case SquareStatus.BlackKnight:
-                    btnMove = Moves.getMovesKnight(false, buttonInfo.GetColumn(), buttonInfo.GetRow(), Squares);
-                    selectedSquareValue = SquareStatus.BlackKnight;
+                case SquareStatus.blackKnight:
+                    btnMove = Moves.GetMovesKnight(false, buttonInfo.GetColumn(), buttonInfo.GetRow(), squares);
+                    selectedSquareValue = SquareStatus.blackKnight;
                     break;
-                case SquareStatus.WhiteTower:
-                    btnMove = Moves.getMovesTower(true, buttonInfo.GetColumn(), buttonInfo.GetRow(), Squares);
-                    selectedSquareValue = SquareStatus.WhiteTower;
+                case SquareStatus.whiteTower:
+                    btnMove = Moves.GetMovesTower(true, buttonInfo.GetColumn(), buttonInfo.GetRow(), squares);
+                    selectedSquareValue = SquareStatus.whiteTower;
                     break;
-                case SquareStatus.BlackTower:
-                    btnMove = Moves.getMovesTower(false, buttonInfo.GetColumn(), buttonInfo.GetRow(), Squares);
-                    selectedSquareValue = SquareStatus.BlackTower;
+                case SquareStatus.blackTower:
+                    btnMove = Moves.GetMovesTower(false, buttonInfo.GetColumn(), buttonInfo.GetRow(), squares);
+                    selectedSquareValue = SquareStatus.blackTower;
                     break;
-                case SquareStatus.WhiteBishop:
-                    btnMove = Moves.getMovesBishop(true, buttonInfo.GetColumn(), buttonInfo.GetRow(), Squares);
-                    selectedSquareValue = SquareStatus.WhiteBishop;
+                case SquareStatus.whiteBishop:
+                    btnMove = Moves.GetMovesBishop(true, buttonInfo.GetColumn(), buttonInfo.GetRow(), squares);
+                    selectedSquareValue = SquareStatus.whiteBishop;
                     break;
-                case SquareStatus.BlackBishop:
-                    btnMove = Moves.getMovesBishop(false, buttonInfo.GetColumn(), buttonInfo.GetRow(), Squares);
-                    selectedSquareValue = SquareStatus.BlackBishop;
+                case SquareStatus.blackBishop:
+                    btnMove = Moves.GetMovesBishop(false, buttonInfo.GetColumn(), buttonInfo.GetRow(), squares);
+                    selectedSquareValue = SquareStatus.blackBishop;
                     break;
-                case SquareStatus.WhiteQueen:
-                    btnMove = Moves.getMovesQueen(true, buttonInfo.GetColumn(), buttonInfo.GetRow(), Squares);
-                    selectedSquareValue = SquareStatus.WhiteQueen;
+                case SquareStatus.whiteQueen:
+                    btnMove = Moves.GetMovesQueen(true, buttonInfo.GetColumn(), buttonInfo.GetRow(), squares);
+                    selectedSquareValue = SquareStatus.whiteQueen;
                     break;
-                case SquareStatus.BlackQueen:
-                    btnMove = Moves.getMovesQueen(false, buttonInfo.GetColumn(), buttonInfo.GetRow(), Squares);
-                    selectedSquareValue = SquareStatus.BlackQueen;
+                case SquareStatus.blackQueen:
+                    btnMove = Moves.GetMovesQueen(false, buttonInfo.GetColumn(), buttonInfo.GetRow(), squares);
+                    selectedSquareValue = SquareStatus.blackQueen;
                     break;
             }
+
             SetOptionMoves(btnMove);
         }
 
-
+        /// <summary>
+        /// Cambia las imagende los botones indicando que es posible moverse a ellas.
+        /// </summary>
+        /// <param name="btnMove"></param>
         public void SetOptionMoves(List<string> btnMove)
         {
             string moveColor = blackPieces.Contains(selectedSquareValue) ? Lang.black : Lang.white;
             foreach (string btn in btnMove)
             {
-                if (Squares[btn].GetSquareStatus() == SquareStatus.disabled)
+                if (squares[btn].GetSquareStatus() == SquareStatus.disabled)
                 {
                     if (moveColor == Lang.black)
-                        Squares[btn].setSquareStatus(SquareStatus.toMoveBlack);
+                        squares[btn].SetSquareStatus(SquareStatus.toMoveBlack);
                     else
-                        Squares[btn].setSquareStatus(SquareStatus.toMoveWhite);
+                        squares[btn].SetSquareStatus(SquareStatus.toMoveWhite);
                 }
                 else
                 {
-                    switch (Squares[btn].GetSquareStatus())
+                    switch (squares[btn].GetSquareStatus())
                     {
-                        case SquareStatus.BlackPawn:
-                            Squares[btn].setSquareStatus(SquareStatus.BlackPawnToDefeat);
+                        case SquareStatus.blackPawn:
+                            squares[btn].SetSquareStatus(SquareStatus.blackPawnToDefeat);
                             break;
-                        case SquareStatus.WhitePawn:
-                            Squares[btn].setSquareStatus(SquareStatus.WhitePawnToDefeat);
+                        case SquareStatus.whitePawn:
+                            squares[btn].SetSquareStatus(SquareStatus.whitePawnToDefeat);
                             break;
-                        case SquareStatus.BlackKing:
-                            Squares[btn].setSquareStatus(SquareStatus.BlackKingToDefeat);
+                        case SquareStatus.blackKing:
+                            squares[btn].SetSquareStatus(SquareStatus.blackKingToDefeat);
                             break;
-                        case SquareStatus.WhiteKing:
-                            Squares[btn].setSquareStatus(SquareStatus.WhiteKingToDefeat);
+                        case SquareStatus.whiteKing:
+                            squares[btn].SetSquareStatus(SquareStatus.whiteKingToDefeat);
                             break;
-                        case SquareStatus.WhiteKnight:
-                            Squares[btn].setSquareStatus(SquareStatus.WhiteKnightToDefeat);
+                        case SquareStatus.whiteKnight:
+                            squares[btn].SetSquareStatus(SquareStatus.whiteKnightToDefeat);
                             break;
-                        case SquareStatus.BlackKnight:
-                            Squares[btn].setSquareStatus(SquareStatus.BlackKnightToDefeat);
+                        case SquareStatus.blackKnight:
+                            squares[btn].SetSquareStatus(SquareStatus.blackKnightToDefeat);
                             break;
-                        case SquareStatus.WhiteTower:
-                            Squares[btn].setSquareStatus(SquareStatus.WhiteTowerToDefeat);
+                        case SquareStatus.whiteTower:
+                            squares[btn].SetSquareStatus(SquareStatus.whiteTowerToDefeat);
                             break;
-                        case SquareStatus.BlackTower:
-                            Squares[btn].setSquareStatus(SquareStatus.BlackTowerToDefeat);
+                        case SquareStatus.blackTower:
+                            squares[btn].SetSquareStatus(SquareStatus.blackTowerToDefeat);
                             break;
-                        case SquareStatus.WhiteBishop:
-                            Squares[btn].setSquareStatus(SquareStatus.WhiteBishopToDefeat);
+                        case SquareStatus.whiteBishop:
+                            squares[btn].SetSquareStatus(SquareStatus.whiteBishopToDefeat);
                             break;
-                        case SquareStatus.BlackBishop:
-                            Squares[btn].setSquareStatus(SquareStatus.BlackBishopToDefeat);
+                        case SquareStatus.blackBishop:
+                            squares[btn].SetSquareStatus(SquareStatus.blackBishopToDefeat);
                             break;
-                        case SquareStatus.WhiteQueen:
-                            Squares[btn].setSquareStatus(SquareStatus.WhiteQueenToDefeat);
+                        case SquareStatus.whiteQueen:
+                            squares[btn].SetSquareStatus(SquareStatus.whiteQueenToDefeat);
                             break;
-                        case SquareStatus.BlackQueen:
-                            Squares[btn].setSquareStatus(SquareStatus.BlackQueenToDefeat);
+                        case SquareStatus.blackQueen:
+                            squares[btn].SetSquareStatus(SquareStatus.blackQueenToDefeat);
                             break;
                     }
                 }
@@ -573,175 +633,194 @@ namespace Cliente
             Update();
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        /// <summary>
+        /// Cierra la ventana, termina la partida y elimna la conexion.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (!givenUP)
+            if (!givenUp)
             {
                 try
                 {
-                    server_match.Win(IsWhite, false, MatchCode);
+                    serverMatch.Win(isWhite, false, matchCode);
                 }
                 catch (Exception)
                 {
                     MessageBox.Show(Lang.noConecction);
-                    Connected.IsConnected = false;
+                    Connected.is_Connected = false;
                     try
                     {
                         this.Close();
                     }
-                    catch (Exception) { 
+                    catch (Exception)
+                    {
                     }
                 }
             }
-                
+
         }
 
+
+        /// <summary>
+        /// Lo llama el servidor e indica un  movimiento del enemigo
+        /// </summary>
+        /// <param name="previousPosition"> posicion previa </param>
+        /// <param name="newPosition"> entrega Nueva posicion</param>
+        /// <param name="newTime"> nuevo tiempo de juego</param>
         public void MovePiece(string previousPosition, string newPosition, int newTime)
         {
-            if ((IsWhite && Squares[newPosition].GetSquareStatus() == SquareStatus.WhiteKing) || (!IsWhite && Squares[newPosition].GetSquareStatus() == SquareStatus.BlackKing))
+            if ((isWhite && squares[newPosition].GetSquareStatus() == SquareStatus.whiteKing) || (!isWhite && squares[newPosition].GetSquareStatus() == SquareStatus.blackKing))
             {
                 try
                 {
-                    server_match.Win(IsWhite, false, MatchCode);
+                    serverMatch.Win(isWhite, false, matchCode);
                 }
                 catch (EndpointNotFoundException)
                 {
                     MessageBox.Show(Lang.noConecction);
-                    Connected.IsConnected = false;
+                    Connected.is_Connected = false;
                     this.Close();
                 }
             }
-                
+
 
             timeLeftRival = newTime;
 
             isTurn = true;
-            SquareStatus sqAuxiliar = Squares[previousPosition].GetSquareStatus();
-            Squares[previousPosition].setSquareStatus(SquareStatus.disabled);
+            SquareStatus sqAuxiliar = squares[previousPosition].GetSquareStatus();
+            squares[previousPosition].SetSquareStatus(SquareStatus.disabled);
 
-            Squares[newPosition].setSquareStatus(sqAuxiliar);
+            squares[newPosition].SetSquareStatus(sqAuxiliar);
 
             Update();
         }
 
+        /// <summary>
+        /// Crear el diccionario de los botones
+        /// </summary>
         public void PrepareDictionary()
         {
-            Squares["a1"] = new ButtonInfo(SquareStatus.WhiteTower, 1, 1, a1);
-            Squares["a2"] = new ButtonInfo(SquareStatus.WhitePawn, 1, 2, a2);
-            Squares["a3"] = new ButtonInfo(SquareStatus.disabled, 1, 3, a3);
-            Squares["a4"] = new ButtonInfo(SquareStatus.disabled, 1, 4, a4);
-            Squares["a5"] = new ButtonInfo(SquareStatus.disabled, 1, 5, a5);
-            Squares["a6"] = new ButtonInfo(SquareStatus.disabled, 1, 6, a6);
-            Squares["a7"] = new ButtonInfo(SquareStatus.BlackPawn, 1, 7, a7);
-            Squares["a8"] = new ButtonInfo(SquareStatus.BlackTower, 1, 8, a8);
+            squares["a1"] = new ButtonInfo(SquareStatus.whiteTower, 1, 1, a1);
+            squares["a2"] = new ButtonInfo(SquareStatus.whitePawn, 1, 2, a2);
+            squares["a3"] = new ButtonInfo(SquareStatus.disabled, 1, 3, a3);
+            squares["a4"] = new ButtonInfo(SquareStatus.disabled, 1, 4, a4);
+            squares["a5"] = new ButtonInfo(SquareStatus.disabled, 1, 5, a5);
+            squares["a6"] = new ButtonInfo(SquareStatus.disabled, 1, 6, a6);
+            squares["a7"] = new ButtonInfo(SquareStatus.blackPawn, 1, 7, a7);
+            squares["a8"] = new ButtonInfo(SquareStatus.blackTower, 1, 8, a8);
 
-            Squares["b1"] = new ButtonInfo(SquareStatus.WhiteKnight, 2, 1, b1);
-            Squares["b2"] = new ButtonInfo(SquareStatus.WhitePawn, 2, 2, b2);
-            Squares["b3"] = new ButtonInfo(SquareStatus.disabled, 2, 3, b3);
-            Squares["b4"] = new ButtonInfo(SquareStatus.disabled, 2, 4, b4);
-            Squares["b5"] = new ButtonInfo(SquareStatus.disabled, 2, 5, b5);
-            Squares["b6"] = new ButtonInfo(SquareStatus.disabled, 2, 6, b6);
-            Squares["b7"] = new ButtonInfo(SquareStatus.BlackPawn, 2, 7, b7);
-            Squares["b8"] = new ButtonInfo(SquareStatus.BlackKnight, 2, 8, b8);
+            squares["b1"] = new ButtonInfo(SquareStatus.whiteKnight, 2, 1, b1);
+            squares["b2"] = new ButtonInfo(SquareStatus.whitePawn, 2, 2, b2);
+            squares["b3"] = new ButtonInfo(SquareStatus.disabled, 2, 3, b3);
+            squares["b4"] = new ButtonInfo(SquareStatus.disabled, 2, 4, b4);
+            squares["b5"] = new ButtonInfo(SquareStatus.disabled, 2, 5, b5);
+            squares["b6"] = new ButtonInfo(SquareStatus.disabled, 2, 6, b6);
+            squares["b7"] = new ButtonInfo(SquareStatus.blackPawn, 2, 7, b7);
+            squares["b8"] = new ButtonInfo(SquareStatus.blackKnight, 2, 8, b8);
 
-            Squares["c1"] = new ButtonInfo(SquareStatus.WhiteBishop, 3, 1, c1);
-            Squares["c2"] = new ButtonInfo(SquareStatus.WhitePawn, 3, 2, c2);
-            Squares["c3"] = new ButtonInfo(SquareStatus.disabled, 3, 3, c3);
-            Squares["c4"] = new ButtonInfo(SquareStatus.disabled, 3, 4, c4);
-            Squares["c5"] = new ButtonInfo(SquareStatus.disabled, 3, 5, c5);
-            Squares["c6"] = new ButtonInfo(SquareStatus.disabled, 3, 6, c6);
-            Squares["c7"] = new ButtonInfo(SquareStatus.BlackPawn, 3, 7, c7);
-            Squares["c8"] = new ButtonInfo(SquareStatus.BlackBishop, 3, 8, c8);
+            squares["c1"] = new ButtonInfo(SquareStatus.whiteBishop, 3, 1, c1);
+            squares["c2"] = new ButtonInfo(SquareStatus.whitePawn, 3, 2, c2);
+            squares["c3"] = new ButtonInfo(SquareStatus.disabled, 3, 3, c3);
+            squares["c4"] = new ButtonInfo(SquareStatus.disabled, 3, 4, c4);
+            squares["c5"] = new ButtonInfo(SquareStatus.disabled, 3, 5, c5);
+            squares["c6"] = new ButtonInfo(SquareStatus.disabled, 3, 6, c6);
+            squares["c7"] = new ButtonInfo(SquareStatus.blackPawn, 3, 7, c7);
+            squares["c8"] = new ButtonInfo(SquareStatus.blackBishop, 3, 8, c8);
 
-            Squares["d1"] = new ButtonInfo(SquareStatus.WhiteQueen, 4, 1, d1);
-            Squares["d2"] = new ButtonInfo(SquareStatus.WhitePawn, 4, 2, d2);
-            Squares["d3"] = new ButtonInfo(SquareStatus.disabled, 4, 3, d3);
-            Squares["d4"] = new ButtonInfo(SquareStatus.disabled, 4, 4, d4);
-            Squares["d5"] = new ButtonInfo(SquareStatus.disabled, 4, 5, d5);
-            Squares["d6"] = new ButtonInfo(SquareStatus.disabled, 4, 6, d6);
-            Squares["d7"] = new ButtonInfo(SquareStatus.BlackPawn, 4, 7, d7);
-            Squares["d8"] = new ButtonInfo(SquareStatus.BlackQueen, 4, 8, d8);
+            squares["d1"] = new ButtonInfo(SquareStatus.whiteQueen, 4, 1, d1);
+            squares["d2"] = new ButtonInfo(SquareStatus.whitePawn, 4, 2, d2);
+            squares["d3"] = new ButtonInfo(SquareStatus.disabled, 4, 3, d3);
+            squares["d4"] = new ButtonInfo(SquareStatus.disabled, 4, 4, d4);
+            squares["d5"] = new ButtonInfo(SquareStatus.disabled, 4, 5, d5);
+            squares["d6"] = new ButtonInfo(SquareStatus.disabled, 4, 6, d6);
+            squares["d7"] = new ButtonInfo(SquareStatus.blackPawn, 4, 7, d7);
+            squares["d8"] = new ButtonInfo(SquareStatus.blackQueen, 4, 8, d8);
 
-            Squares["e1"] = new ButtonInfo(SquareStatus.WhiteKing, 5, 1, e1);
-            Squares["e2"] = new ButtonInfo(SquareStatus.WhitePawn, 5, 2, e2);
-            Squares["e3"] = new ButtonInfo(SquareStatus.disabled, 5, 3, e3);
-            Squares["e4"] = new ButtonInfo(SquareStatus.disabled, 5, 4, e4);
-            Squares["e5"] = new ButtonInfo(SquareStatus.disabled, 5, 5, e5);
-            Squares["e6"] = new ButtonInfo(SquareStatus.disabled, 5, 6, e6);
-            Squares["e7"] = new ButtonInfo(SquareStatus.BlackPawn, 5, 7, e7);
-            Squares["e8"] = new ButtonInfo(SquareStatus.BlackKing, 5, 8, e8);
+            squares["e1"] = new ButtonInfo(SquareStatus.whiteKing, 5, 1, e1);
+            squares["e2"] = new ButtonInfo(SquareStatus.whitePawn, 5, 2, e2);
+            squares["e3"] = new ButtonInfo(SquareStatus.disabled, 5, 3, e3);
+            squares["e4"] = new ButtonInfo(SquareStatus.disabled, 5, 4, e4);
+            squares["e5"] = new ButtonInfo(SquareStatus.disabled, 5, 5, e5);
+            squares["e6"] = new ButtonInfo(SquareStatus.disabled, 5, 6, e6);
+            squares["e7"] = new ButtonInfo(SquareStatus.blackPawn, 5, 7, e7);
+            squares["e8"] = new ButtonInfo(SquareStatus.blackKing, 5, 8, e8);
 
-            Squares["f1"] = new ButtonInfo(SquareStatus.WhiteBishop, 6, 1, f1);
-            Squares["f2"] = new ButtonInfo(SquareStatus.WhitePawn, 6, 2, f2);
-            Squares["f3"] = new ButtonInfo(SquareStatus.disabled, 6, 3, f3);
-            Squares["f4"] = new ButtonInfo(SquareStatus.disabled, 6, 4, f4);
-            Squares["f5"] = new ButtonInfo(SquareStatus.disabled, 6, 5, f5);
-            Squares["f6"] = new ButtonInfo(SquareStatus.disabled, 6, 6, f6);
-            Squares["f7"] = new ButtonInfo(SquareStatus.BlackPawn, 6, 7, f7);
-            Squares["f8"] = new ButtonInfo(SquareStatus.BlackBishop, 6, 8, f8);
+            squares["f1"] = new ButtonInfo(SquareStatus.whiteBishop, 6, 1, f1);
+            squares["f2"] = new ButtonInfo(SquareStatus.whitePawn, 6, 2, f2);
+            squares["f3"] = new ButtonInfo(SquareStatus.disabled, 6, 3, f3);
+            squares["f4"] = new ButtonInfo(SquareStatus.disabled, 6, 4, f4);
+            squares["f5"] = new ButtonInfo(SquareStatus.disabled, 6, 5, f5);
+            squares["f6"] = new ButtonInfo(SquareStatus.disabled, 6, 6, f6);
+            squares["f7"] = new ButtonInfo(SquareStatus.blackPawn, 6, 7, f7);
+            squares["f8"] = new ButtonInfo(SquareStatus.blackBishop, 6, 8, f8);
 
-            Squares["g1"] = new ButtonInfo(SquareStatus.WhiteKnight, 7, 1, g1);
-            Squares["g2"] = new ButtonInfo(SquareStatus.WhitePawn, 7, 2, g2);
-            Squares["g3"] = new ButtonInfo(SquareStatus.disabled, 7, 3, g3);
-            Squares["g4"] = new ButtonInfo(SquareStatus.disabled, 7, 4, g4);
-            Squares["g5"] = new ButtonInfo(SquareStatus.disabled, 7, 5, g5);
-            Squares["g6"] = new ButtonInfo(SquareStatus.disabled, 7, 6, g6);
-            Squares["g7"] = new ButtonInfo(SquareStatus.BlackPawn, 7, 7, g7);
-            Squares["g8"] = new ButtonInfo(SquareStatus.BlackKnight, 7, 8, g8);
+            squares["g1"] = new ButtonInfo(SquareStatus.whiteKnight, 7, 1, g1);
+            squares["g2"] = new ButtonInfo(SquareStatus.whitePawn, 7, 2, g2);
+            squares["g3"] = new ButtonInfo(SquareStatus.disabled, 7, 3, g3);
+            squares["g4"] = new ButtonInfo(SquareStatus.disabled, 7, 4, g4);
+            squares["g5"] = new ButtonInfo(SquareStatus.disabled, 7, 5, g5);
+            squares["g6"] = new ButtonInfo(SquareStatus.disabled, 7, 6, g6);
+            squares["g7"] = new ButtonInfo(SquareStatus.blackPawn, 7, 7, g7);
+            squares["g8"] = new ButtonInfo(SquareStatus.blackKnight, 7, 8, g8);
 
-            Squares["h1"] = new ButtonInfo(SquareStatus.WhiteTower, 8, 1, h1);
-            Squares["h2"] = new ButtonInfo(SquareStatus.WhitePawn, 8, 2, h2);
-            Squares["h3"] = new ButtonInfo(SquareStatus.disabled, 8, 3, h3);
-            Squares["h4"] = new ButtonInfo(SquareStatus.disabled, 8, 4, h4);
-            Squares["h5"] = new ButtonInfo(SquareStatus.disabled, 8, 5, h5);
-            Squares["h6"] = new ButtonInfo(SquareStatus.disabled, 8, 6, h6);
-            Squares["h7"] = new ButtonInfo(SquareStatus.BlackPawn, 8, 7, h7);
-            Squares["h8"] = new ButtonInfo(SquareStatus.BlackTower, 8, 8, h8);
+            squares["h1"] = new ButtonInfo(SquareStatus.whiteTower, 8, 1, h1);
+            squares["h2"] = new ButtonInfo(SquareStatus.whitePawn, 8, 2, h2);
+            squares["h3"] = new ButtonInfo(SquareStatus.disabled, 8, 3, h3);
+            squares["h4"] = new ButtonInfo(SquareStatus.disabled, 8, 4, h4);
+            squares["h5"] = new ButtonInfo(SquareStatus.disabled, 8, 5, h5);
+            squares["h6"] = new ButtonInfo(SquareStatus.disabled, 8, 6, h6);
+            squares["h7"] = new ButtonInfo(SquareStatus.blackPawn, 8, 7, h7);
+            squares["h8"] = new ButtonInfo(SquareStatus.blackTower, 8, 8, h8);
         }
 
+        /// <summary>
+        /// Desactiva botones a los que te puedes mover
+        /// </summary>
         public void DisableOptionsToMove()
         {
-            foreach (string key in Squares.Keys)
+            foreach (string key in squares.Keys)
             {
-                SquareStatus buttonStatus = Squares[key].GetSquareStatus();
+                SquareStatus buttonStatus = squares[key].GetSquareStatus();
                 if (buttonStatus == SquareStatus.toMoveWhite || buttonStatus == SquareStatus.toMoveBlack)
                 {
-                    Squares[key].setSquareStatus(SquareStatus.disabled);
+                    squares[key].SetSquareStatus(SquareStatus.disabled);
                 }
 
                 else if (toDefeatPieces.Contains(buttonStatus))
                 {
                     switch (buttonStatus)
                     {
-                        case SquareStatus.BlackPawnToDefeat:
-                            Squares[key].setSquareStatus(SquareStatus.BlackPawn);
+                        case SquareStatus.blackPawnToDefeat:
+                            squares[key].SetSquareStatus(SquareStatus.blackPawn);
                             break;
-                        case SquareStatus.WhitePawnToDefeat:
-                            Squares[key].setSquareStatus(SquareStatus.WhitePawn);
+                        case SquareStatus.whitePawnToDefeat:
+                            squares[key].SetSquareStatus(SquareStatus.whitePawn);
                             break;
-                        case SquareStatus.BlackKingToDefeat:
-                            Squares[key].setSquareStatus(SquareStatus.BlackKing);
+                        case SquareStatus.blackKingToDefeat:
+                            squares[key].SetSquareStatus(SquareStatus.blackKing);
                             break;
-                        case SquareStatus.WhiteKingToDefeat:
-                            Squares[key].setSquareStatus(SquareStatus.WhiteKing);
+                        case SquareStatus.whiteKingToDefeat:
+                            squares[key].SetSquareStatus(SquareStatus.whiteKing);
                             break;
-                        case SquareStatus.BlackKnightToDefeat:
-                            Squares[key].setSquareStatus(SquareStatus.BlackKnight);
+                        case SquareStatus.blackKnightToDefeat:
+                            squares[key].SetSquareStatus(SquareStatus.blackKnight);
                             break;
-                        case SquareStatus.WhiteKnightToDefeat:
-                            Squares[key].setSquareStatus(SquareStatus.WhiteKnight);
+                        case SquareStatus.whiteKnightToDefeat:
+                            squares[key].SetSquareStatus(SquareStatus.whiteKnight);
                             break;
-                        case SquareStatus.BlackBishopToDefeat:
-                            Squares[key].setSquareStatus(SquareStatus.BlackBishop);
+                        case SquareStatus.blackBishopToDefeat:
+                            squares[key].SetSquareStatus(SquareStatus.blackBishop);
                             break;
-                        case SquareStatus.WhiteBishopToDefeat:
-                            Squares[key].setSquareStatus(SquareStatus.WhiteBishop);
+                        case SquareStatus.whiteBishopToDefeat:
+                            squares[key].SetSquareStatus(SquareStatus.whiteBishop);
                             break;
-                        case SquareStatus.BlackQueenToDefeat:
-                            Squares[key].setSquareStatus(SquareStatus.BlackQueen);
+                        case SquareStatus.blackQueenToDefeat:
+                            squares[key].SetSquareStatus(SquareStatus.blackQueen);
                             break;
-                        case SquareStatus.WhiteQueenToDefeat:
-                            Squares[key].setSquareStatus(SquareStatus.WhiteQueen);
+                        case SquareStatus.whiteQueenToDefeat:
+                            squares[key].SetSquareStatus(SquareStatus.whiteQueen);
                             break;
                     }
                 }
@@ -751,322 +830,322 @@ namespace Cliente
             Update();
         }
 
-        private void a8_Click(object sender, RoutedEventArgs e)
+        private void a8Click(object sender, RoutedEventArgs e)
         {
             Clic("a8");
         }
 
-        private void b8_Click(object sender, RoutedEventArgs e)
+        private void b8Click(object sender, RoutedEventArgs e)
         {
             Clic("b8");
         }
 
-        private void c8_Click(object sender, RoutedEventArgs e)
+        private void c8Click(object sender, RoutedEventArgs e)
         {
             Clic("c8");
         }
 
-        private void d8_Click(object sender, RoutedEventArgs e)
+        private void d8Click(object sender, RoutedEventArgs e)
         {
             Clic("d8");
         }
 
-        private void e8_Click(object sender, RoutedEventArgs e)
+        private void e8Click(object sender, RoutedEventArgs e)
         {
             Clic("e8");
         }
 
-        private void f8_Click(object sender, RoutedEventArgs e)
+        private void f8Click(object sender, RoutedEventArgs e)
         {
             Clic("f8");
         }
 
-        private void g8_Click(object sender, RoutedEventArgs e)
+        private void g8Click(object sender, RoutedEventArgs e)
         {
             Clic("g8");
         }
 
-        private void h8_Click(object sender, RoutedEventArgs e)
+        private void h8Click(object sender, RoutedEventArgs e)
         {
             Clic("h8");
         }
 
-        private void a7_Click(object sender, RoutedEventArgs e)
+        private void a7Click(object sender, RoutedEventArgs e)
         {
             Clic("a7");
         }
 
-        private void b7_Click(object sender, RoutedEventArgs e)
+        private void b7Click(object sender, RoutedEventArgs e)
         {
             Clic("b7");
         }
 
-        private void c7_Click(object sender, RoutedEventArgs e)
+        private void c7Click(object sender, RoutedEventArgs e)
         {
             Clic("c7");
         }
 
-        private void d7_Click(object sender, RoutedEventArgs e)
+        private void d7Click(object sender, RoutedEventArgs e)
         {
             Clic("d7");
         }
 
-        private void e7_Click(object sender, RoutedEventArgs e)
+        private void e7Click(object sender, RoutedEventArgs e)
         {
             Clic("e7");
         }
 
-        private void f7_Click(object sender, RoutedEventArgs e)
+        private void f7Click(object sender, RoutedEventArgs e)
         {
             Clic("f7");
         }
 
-        private void g7_Click(object sender, RoutedEventArgs e)
+        private void g7Click(object sender, RoutedEventArgs e)
         {
             Clic("g7");
         }
 
-        private void h7_Click(object sender, RoutedEventArgs e)
+        private void h7Click(object sender, RoutedEventArgs e)
         {
             Clic("h7");
         }
 
-        private void a6_Click(object sender, RoutedEventArgs e)
+        private void a6Click(object sender, RoutedEventArgs e)
         {
             Clic("a6");
         }
 
-        private void b6_Click(object sender, RoutedEventArgs e)
+        private void b6Click(object sender, RoutedEventArgs e)
         {
             Clic("b6");
         }
 
-        private void c6_Click(object sender, RoutedEventArgs e)
+        private void c6Click(object sender, RoutedEventArgs e)
         {
             Clic("c6");
         }
 
-        private void d6_Click(object sender, RoutedEventArgs e)
+        private void d6Click(object sender, RoutedEventArgs e)
         {
             Clic("d6");
         }
 
-        private void e6_Click(object sender, RoutedEventArgs e)
+        private void e6Click(object sender, RoutedEventArgs e)
         {
             Clic("e6");
         }
 
-        private void f6_Click(object sender, RoutedEventArgs e)
+        private void f6Click(object sender, RoutedEventArgs e)
         {
             Clic("f6");
         }
 
-        private void g6_Click(object sender, RoutedEventArgs e)
+        private void g6Click(object sender, RoutedEventArgs e)
         {
             Clic("g6");
         }
 
-        private void h6_Click(object sender, RoutedEventArgs e)
+        private void h6Click(object sender, RoutedEventArgs e)
         {
             Clic("h6");
         }
 
-        private void a5_Click(object sender, RoutedEventArgs e)
+        private void a5Click(object sender, RoutedEventArgs e)
         {
             Clic("a5");
         }
 
-        private void b5_Click(object sender, RoutedEventArgs e)
+        private void b5Click(object sender, RoutedEventArgs e)
         {
             Clic("b5");
         }
 
-        private void c5_Click(object sender, RoutedEventArgs e)
+        private void c5Click(object sender, RoutedEventArgs e)
         {
             Clic("c5");
         }
 
-        private void d5_Click(object sender, RoutedEventArgs e)
+        private void d5Click(object sender, RoutedEventArgs e)
         {
             Clic("d5");
         }
 
-        private void e5_Click(object sender, RoutedEventArgs e)
+        private void e5Click(object sender, RoutedEventArgs e)
         {
             Clic("e5");
         }
 
-        private void f5_Click(object sender, RoutedEventArgs e)
+        private void f5Click(object sender, RoutedEventArgs e)
         {
             Clic("f5");
         }
 
-        private void g5_Click(object sender, RoutedEventArgs e)
+        private void g5Click(object sender, RoutedEventArgs e)
         {
             Clic("g5");
         }
 
-        private void h5_Click(object sender, RoutedEventArgs e)
+        private void h5Click(object sender, RoutedEventArgs e)
         {
             Clic("h5");
         }
 
-        private void a4_Click(object sender, RoutedEventArgs e)
+        private void a4Click(object sender, RoutedEventArgs e)
         {
             Clic("a4");
         }
 
-        private void b4_Click(object sender, RoutedEventArgs e)
+        private void b4Click(object sender, RoutedEventArgs e)
         {
             Clic("b4");
         }
 
-        private void c4_Click(object sender, RoutedEventArgs e)
+        private void c4Click(object sender, RoutedEventArgs e)
         {
             Clic("c4");
         }
 
-        private void d4_Click(object sender, RoutedEventArgs e)
+        private void d4Click(object sender, RoutedEventArgs e)
         {
             Clic("d4");
         }
 
-        private void e4_Click(object sender, RoutedEventArgs e)
+        private void e4Click(object sender, RoutedEventArgs e)
         {
             Clic("e4");
         }
 
-        private void f4_Click(object sender, RoutedEventArgs e)
+        private void f4Click(object sender, RoutedEventArgs e)
         {
             Clic("f4");
         }
 
-        private void g4_Click(object sender, RoutedEventArgs e)
+        private void g4Click(object sender, RoutedEventArgs e)
         {
             Clic("g4");
         }
 
-        private void h4_Click(object sender, RoutedEventArgs e)
+        private void h4Click(object sender, RoutedEventArgs e)
         {
             Clic("h4");
         }
 
-        private void a3_Click(object sender, RoutedEventArgs e)
+        private void a3Click(object sender, RoutedEventArgs e)
         {
             Clic("a3");
         }
 
-        private void b3_Click(object sender, RoutedEventArgs e)
+        private void b3Click(object sender, RoutedEventArgs e)
         {
             Clic("b3");
         }
 
-        private void c3_Click(object sender, RoutedEventArgs e)
+        private void c3Click(object sender, RoutedEventArgs e)
         {
             Clic("c3");
         }
 
-        private void d3_Click(object sender, RoutedEventArgs e)
+        private void d3Click(object sender, RoutedEventArgs e)
         {
             Clic("d3");
         }
 
-        private void e3_Click(object sender, RoutedEventArgs e)
+        private void e3Click(object sender, RoutedEventArgs e)
         {
             Clic("e3");
         }
 
-        private void f3_Click(object sender, RoutedEventArgs e)
+        private void f3Click(object sender, RoutedEventArgs e)
         {
             Clic("f3");
         }
 
-        private void g3_Click(object sender, RoutedEventArgs e)
+        private void g3Click(object sender, RoutedEventArgs e)
         {
             Clic("g3");
         }
 
-        private void h3_Click(object sender, RoutedEventArgs e)
+        private void h3Click(object sender, RoutedEventArgs e)
         {
             Clic("h3");
         }
 
-        private void a2_Click(object sender, RoutedEventArgs e)
+        private void a2Click(object sender, RoutedEventArgs e)
         {
             Clic("a2");
         }
 
-        private void b2_Click(object sender, RoutedEventArgs e)
+        private void b2Click(object sender, RoutedEventArgs e)
         {
             Clic("b2");
         }
 
-        private void c2_Click(object sender, RoutedEventArgs e)
+        private void c2Click(object sender, RoutedEventArgs e)
         {
             Clic("c2");
         }
 
-        private void d2_Click(object sender, RoutedEventArgs e)
+        private void d2Click(object sender, RoutedEventArgs e)
         {
             Clic("d2");
         }
 
-        private void e2_Click(object sender, RoutedEventArgs e)
+        private void e2Click(object sender, RoutedEventArgs e)
         {
             Clic("e2");
         }
 
-        private void f2_Click(object sender, RoutedEventArgs e)
+        private void f2Click(object sender, RoutedEventArgs e)
         {
             Clic("f2");
         }
 
-        private void g2_Click(object sender, RoutedEventArgs e)
+        private void g2Click(object sender, RoutedEventArgs e)
         {
             Clic("g2");
         }
 
-        private void h2_Click(object sender, RoutedEventArgs e)
+        private void h2Click(object sender, RoutedEventArgs e)
         {
             Clic("h2");
         }
 
-        private void a1_Click(object sender, RoutedEventArgs e)
+        private void a1Click(object sender, RoutedEventArgs e)
         {
             Clic("a1");
         }
 
-        private void b1_Click(object sender, RoutedEventArgs e)
+        private void b1Click(object sender, RoutedEventArgs e)
         {
             Clic("b1");
         }
 
-        private void c1_Click(object sender, RoutedEventArgs e)
+        private void c1Click(object sender, RoutedEventArgs e)
         {
             Clic("c1");
         }
 
-        private void d1_Click(object sender, RoutedEventArgs e)
+        private void d1Click(object sender, RoutedEventArgs e)
         {
             Clic("d1");
         }
 
-        private void e1_Click(object sender, RoutedEventArgs e)
+        private void e1Click(object sender, RoutedEventArgs e)
         {
             Clic("e1");
         }
 
-        private void f1_Click(object sender, RoutedEventArgs e)
+        private void f1Click(object sender, RoutedEventArgs e)
         {
             Clic("f1");
         }
 
-        private void g1_Click(object sender, RoutedEventArgs e)
+        private void g1Click(object sender, RoutedEventArgs e)
         {
             Clic("g1");
         }
 
-        private void h1_Click(object sender, RoutedEventArgs e)
+        private void h1Click(object sender, RoutedEventArgs e)
         {
             Clic("h1");
         }
