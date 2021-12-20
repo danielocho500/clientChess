@@ -499,6 +499,18 @@ namespace Cliente.ChessService {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchService/giveUp")]
         System.Threading.Tasks.Task giveUpAsync(bool isWhite, string matchCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchService/win")]
+        void win(bool isWhite, bool won, string matchCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchService/win")]
+        System.Threading.Tasks.Task winAsync(bool isWhite, bool won, string matchCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchService/move")]
+        void move(bool isWhite, string matchCode, string previousPosition, string newPosition, int timeleft);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchService/move")]
+        System.Threading.Tasks.Task moveAsync(bool isWhite, string matchCode, string previousPosition, string newPosition, int timeleft);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -509,6 +521,9 @@ namespace Cliente.ChessService {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchService/MatchEnds")]
         void MatchEnds(bool youWon, int oldElo, int newElo);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchService/movePiece")]
+        void movePiece(string previousPosition, string newPosition, int timeLeft);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -561,6 +576,22 @@ namespace Cliente.ChessService {
         
         public System.Threading.Tasks.Task giveUpAsync(bool isWhite, string matchCode) {
             return base.Channel.giveUpAsync(isWhite, matchCode);
+        }
+        
+        public void win(bool isWhite, bool won, string matchCode) {
+            base.Channel.win(isWhite, won, matchCode);
+        }
+        
+        public System.Threading.Tasks.Task winAsync(bool isWhite, bool won, string matchCode) {
+            return base.Channel.winAsync(isWhite, won, matchCode);
+        }
+        
+        public void move(bool isWhite, string matchCode, string previousPosition, string newPosition, int timeleft) {
+            base.Channel.move(isWhite, matchCode, previousPosition, newPosition, timeleft);
+        }
+        
+        public System.Threading.Tasks.Task moveAsync(bool isWhite, string matchCode, string previousPosition, string newPosition, int timeleft) {
+            return base.Channel.moveAsync(isWhite, matchCode, previousPosition, newPosition, timeleft);
         }
     }
     

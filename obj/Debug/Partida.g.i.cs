@@ -651,201 +651,579 @@ namespace Cliente {
             return;
             case 6:
             this.a8 = ((System.Windows.Controls.Button)(target));
+            
+            #line 18 "..\..\Partida.xaml"
+            this.a8.Click += new System.Windows.RoutedEventHandler(this.a8_Click);
+            
+            #line default
+            #line hidden
             return;
             case 7:
             this.b8 = ((System.Windows.Controls.Button)(target));
+            
+            #line 19 "..\..\Partida.xaml"
+            this.b8.Click += new System.Windows.RoutedEventHandler(this.b8_Click);
+            
+            #line default
+            #line hidden
             return;
             case 8:
             this.c8 = ((System.Windows.Controls.Button)(target));
+            
+            #line 20 "..\..\Partida.xaml"
+            this.c8.Click += new System.Windows.RoutedEventHandler(this.c8_Click);
+            
+            #line default
+            #line hidden
             return;
             case 9:
             this.d8 = ((System.Windows.Controls.Button)(target));
+            
+            #line 21 "..\..\Partida.xaml"
+            this.d8.Click += new System.Windows.RoutedEventHandler(this.d8_Click);
+            
+            #line default
+            #line hidden
             return;
             case 10:
             this.e8 = ((System.Windows.Controls.Button)(target));
+            
+            #line 22 "..\..\Partida.xaml"
+            this.e8.Click += new System.Windows.RoutedEventHandler(this.e8_Click);
+            
+            #line default
+            #line hidden
             return;
             case 11:
             this.f8 = ((System.Windows.Controls.Button)(target));
+            
+            #line 23 "..\..\Partida.xaml"
+            this.f8.Click += new System.Windows.RoutedEventHandler(this.f8_Click);
+            
+            #line default
+            #line hidden
             return;
             case 12:
             this.g8 = ((System.Windows.Controls.Button)(target));
+            
+            #line 24 "..\..\Partida.xaml"
+            this.g8.Click += new System.Windows.RoutedEventHandler(this.g8_Click);
+            
+            #line default
+            #line hidden
             return;
             case 13:
             this.h8 = ((System.Windows.Controls.Button)(target));
+            
+            #line 25 "..\..\Partida.xaml"
+            this.h8.Click += new System.Windows.RoutedEventHandler(this.h8_Click);
+            
+            #line default
+            #line hidden
             return;
             case 14:
             this.a7 = ((System.Windows.Controls.Button)(target));
+            
+            #line 26 "..\..\Partida.xaml"
+            this.a7.Click += new System.Windows.RoutedEventHandler(this.a7_Click);
+            
+            #line default
+            #line hidden
             return;
             case 15:
             this.b7 = ((System.Windows.Controls.Button)(target));
+            
+            #line 27 "..\..\Partida.xaml"
+            this.b7.Click += new System.Windows.RoutedEventHandler(this.b7_Click);
+            
+            #line default
+            #line hidden
             return;
             case 16:
             this.c7 = ((System.Windows.Controls.Button)(target));
+            
+            #line 28 "..\..\Partida.xaml"
+            this.c7.Click += new System.Windows.RoutedEventHandler(this.c7_Click);
+            
+            #line default
+            #line hidden
             return;
             case 17:
             this.d7 = ((System.Windows.Controls.Button)(target));
+            
+            #line 29 "..\..\Partida.xaml"
+            this.d7.Click += new System.Windows.RoutedEventHandler(this.d7_Click);
+            
+            #line default
+            #line hidden
             return;
             case 18:
             this.e7 = ((System.Windows.Controls.Button)(target));
+            
+            #line 30 "..\..\Partida.xaml"
+            this.e7.Click += new System.Windows.RoutedEventHandler(this.e7_Click);
+            
+            #line default
+            #line hidden
             return;
             case 19:
             this.f7 = ((System.Windows.Controls.Button)(target));
+            
+            #line 31 "..\..\Partida.xaml"
+            this.f7.Click += new System.Windows.RoutedEventHandler(this.f7_Click);
+            
+            #line default
+            #line hidden
             return;
             case 20:
             this.g7 = ((System.Windows.Controls.Button)(target));
+            
+            #line 32 "..\..\Partida.xaml"
+            this.g7.Click += new System.Windows.RoutedEventHandler(this.g7_Click);
+            
+            #line default
+            #line hidden
             return;
             case 21:
             this.h7 = ((System.Windows.Controls.Button)(target));
+            
+            #line 33 "..\..\Partida.xaml"
+            this.h7.Click += new System.Windows.RoutedEventHandler(this.h7_Click);
+            
+            #line default
+            #line hidden
             return;
             case 22:
             this.a6 = ((System.Windows.Controls.Button)(target));
+            
+            #line 34 "..\..\Partida.xaml"
+            this.a6.Click += new System.Windows.RoutedEventHandler(this.a6_Click);
+            
+            #line default
+            #line hidden
             return;
             case 23:
             this.b6 = ((System.Windows.Controls.Button)(target));
+            
+            #line 35 "..\..\Partida.xaml"
+            this.b6.Click += new System.Windows.RoutedEventHandler(this.b6_Click);
+            
+            #line default
+            #line hidden
             return;
             case 24:
             this.c6 = ((System.Windows.Controls.Button)(target));
+            
+            #line 36 "..\..\Partida.xaml"
+            this.c6.Click += new System.Windows.RoutedEventHandler(this.c6_Click);
+            
+            #line default
+            #line hidden
             return;
             case 25:
             this.d6 = ((System.Windows.Controls.Button)(target));
+            
+            #line 37 "..\..\Partida.xaml"
+            this.d6.Click += new System.Windows.RoutedEventHandler(this.d6_Click);
+            
+            #line default
+            #line hidden
             return;
             case 26:
             this.e6 = ((System.Windows.Controls.Button)(target));
+            
+            #line 38 "..\..\Partida.xaml"
+            this.e6.Click += new System.Windows.RoutedEventHandler(this.e6_Click);
+            
+            #line default
+            #line hidden
             return;
             case 27:
             this.f6 = ((System.Windows.Controls.Button)(target));
+            
+            #line 39 "..\..\Partida.xaml"
+            this.f6.Click += new System.Windows.RoutedEventHandler(this.f6_Click);
+            
+            #line default
+            #line hidden
             return;
             case 28:
             this.g6 = ((System.Windows.Controls.Button)(target));
+            
+            #line 40 "..\..\Partida.xaml"
+            this.g6.Click += new System.Windows.RoutedEventHandler(this.g6_Click);
+            
+            #line default
+            #line hidden
             return;
             case 29:
             this.h6 = ((System.Windows.Controls.Button)(target));
+            
+            #line 41 "..\..\Partida.xaml"
+            this.h6.Click += new System.Windows.RoutedEventHandler(this.h6_Click);
+            
+            #line default
+            #line hidden
             return;
             case 30:
             this.a5 = ((System.Windows.Controls.Button)(target));
+            
+            #line 42 "..\..\Partida.xaml"
+            this.a5.Click += new System.Windows.RoutedEventHandler(this.a5_Click);
+            
+            #line default
+            #line hidden
             return;
             case 31:
             this.b5 = ((System.Windows.Controls.Button)(target));
+            
+            #line 43 "..\..\Partida.xaml"
+            this.b5.Click += new System.Windows.RoutedEventHandler(this.b5_Click);
+            
+            #line default
+            #line hidden
             return;
             case 32:
             this.c5 = ((System.Windows.Controls.Button)(target));
+            
+            #line 44 "..\..\Partida.xaml"
+            this.c5.Click += new System.Windows.RoutedEventHandler(this.c5_Click);
+            
+            #line default
+            #line hidden
             return;
             case 33:
             this.d5 = ((System.Windows.Controls.Button)(target));
+            
+            #line 45 "..\..\Partida.xaml"
+            this.d5.Click += new System.Windows.RoutedEventHandler(this.d5_Click);
+            
+            #line default
+            #line hidden
             return;
             case 34:
             this.e5 = ((System.Windows.Controls.Button)(target));
+            
+            #line 46 "..\..\Partida.xaml"
+            this.e5.Click += new System.Windows.RoutedEventHandler(this.e5_Click);
+            
+            #line default
+            #line hidden
             return;
             case 35:
             this.f5 = ((System.Windows.Controls.Button)(target));
+            
+            #line 47 "..\..\Partida.xaml"
+            this.f5.Click += new System.Windows.RoutedEventHandler(this.f5_Click);
+            
+            #line default
+            #line hidden
             return;
             case 36:
             this.g5 = ((System.Windows.Controls.Button)(target));
+            
+            #line 48 "..\..\Partida.xaml"
+            this.g5.Click += new System.Windows.RoutedEventHandler(this.g5_Click);
+            
+            #line default
+            #line hidden
             return;
             case 37:
             this.h5 = ((System.Windows.Controls.Button)(target));
+            
+            #line 49 "..\..\Partida.xaml"
+            this.h5.Click += new System.Windows.RoutedEventHandler(this.h5_Click);
+            
+            #line default
+            #line hidden
             return;
             case 38:
             this.a4 = ((System.Windows.Controls.Button)(target));
             
             #line 50 "..\..\Partida.xaml"
-            this.a4.Click += new System.Windows.RoutedEventHandler(this.Button_Click);
+            this.a4.Click += new System.Windows.RoutedEventHandler(this.a4_Click);
             
             #line default
             #line hidden
             return;
             case 39:
             this.b4 = ((System.Windows.Controls.Button)(target));
+            
+            #line 51 "..\..\Partida.xaml"
+            this.b4.Click += new System.Windows.RoutedEventHandler(this.b4_Click);
+            
+            #line default
+            #line hidden
             return;
             case 40:
             this.c4 = ((System.Windows.Controls.Button)(target));
+            
+            #line 52 "..\..\Partida.xaml"
+            this.c4.Click += new System.Windows.RoutedEventHandler(this.c4_Click);
+            
+            #line default
+            #line hidden
             return;
             case 41:
             this.d4 = ((System.Windows.Controls.Button)(target));
+            
+            #line 53 "..\..\Partida.xaml"
+            this.d4.Click += new System.Windows.RoutedEventHandler(this.d4_Click);
+            
+            #line default
+            #line hidden
             return;
             case 42:
             this.e4 = ((System.Windows.Controls.Button)(target));
+            
+            #line 54 "..\..\Partida.xaml"
+            this.e4.Click += new System.Windows.RoutedEventHandler(this.e4_Click);
+            
+            #line default
+            #line hidden
             return;
             case 43:
             this.f4 = ((System.Windows.Controls.Button)(target));
+            
+            #line 55 "..\..\Partida.xaml"
+            this.f4.Click += new System.Windows.RoutedEventHandler(this.f4_Click);
+            
+            #line default
+            #line hidden
             return;
             case 44:
             this.g4 = ((System.Windows.Controls.Button)(target));
+            
+            #line 56 "..\..\Partida.xaml"
+            this.g4.Click += new System.Windows.RoutedEventHandler(this.g4_Click);
+            
+            #line default
+            #line hidden
             return;
             case 45:
             this.h4 = ((System.Windows.Controls.Button)(target));
+            
+            #line 57 "..\..\Partida.xaml"
+            this.h4.Click += new System.Windows.RoutedEventHandler(this.h4_Click);
+            
+            #line default
+            #line hidden
             return;
             case 46:
             this.a3 = ((System.Windows.Controls.Button)(target));
+            
+            #line 58 "..\..\Partida.xaml"
+            this.a3.Click += new System.Windows.RoutedEventHandler(this.a3_Click);
+            
+            #line default
+            #line hidden
             return;
             case 47:
             this.b3 = ((System.Windows.Controls.Button)(target));
+            
+            #line 59 "..\..\Partida.xaml"
+            this.b3.Click += new System.Windows.RoutedEventHandler(this.b3_Click);
+            
+            #line default
+            #line hidden
             return;
             case 48:
             this.c3 = ((System.Windows.Controls.Button)(target));
+            
+            #line 60 "..\..\Partida.xaml"
+            this.c3.Click += new System.Windows.RoutedEventHandler(this.c3_Click);
+            
+            #line default
+            #line hidden
             return;
             case 49:
             this.d3 = ((System.Windows.Controls.Button)(target));
+            
+            #line 61 "..\..\Partida.xaml"
+            this.d3.Click += new System.Windows.RoutedEventHandler(this.d3_Click);
+            
+            #line default
+            #line hidden
             return;
             case 50:
             this.e3 = ((System.Windows.Controls.Button)(target));
+            
+            #line 62 "..\..\Partida.xaml"
+            this.e3.Click += new System.Windows.RoutedEventHandler(this.e3_Click);
+            
+            #line default
+            #line hidden
             return;
             case 51:
             this.f3 = ((System.Windows.Controls.Button)(target));
+            
+            #line 63 "..\..\Partida.xaml"
+            this.f3.Click += new System.Windows.RoutedEventHandler(this.f3_Click);
+            
+            #line default
+            #line hidden
             return;
             case 52:
             this.g3 = ((System.Windows.Controls.Button)(target));
+            
+            #line 64 "..\..\Partida.xaml"
+            this.g3.Click += new System.Windows.RoutedEventHandler(this.g3_Click);
+            
+            #line default
+            #line hidden
             return;
             case 53:
             this.h3 = ((System.Windows.Controls.Button)(target));
+            
+            #line 65 "..\..\Partida.xaml"
+            this.h3.Click += new System.Windows.RoutedEventHandler(this.h3_Click);
+            
+            #line default
+            #line hidden
             return;
             case 54:
             this.a2 = ((System.Windows.Controls.Button)(target));
+            
+            #line 66 "..\..\Partida.xaml"
+            this.a2.Click += new System.Windows.RoutedEventHandler(this.a2_Click);
+            
+            #line default
+            #line hidden
             return;
             case 55:
             this.b2 = ((System.Windows.Controls.Button)(target));
+            
+            #line 67 "..\..\Partida.xaml"
+            this.b2.Click += new System.Windows.RoutedEventHandler(this.b2_Click);
+            
+            #line default
+            #line hidden
             return;
             case 56:
             this.c2 = ((System.Windows.Controls.Button)(target));
+            
+            #line 68 "..\..\Partida.xaml"
+            this.c2.Click += new System.Windows.RoutedEventHandler(this.c2_Click);
+            
+            #line default
+            #line hidden
             return;
             case 57:
             this.d2 = ((System.Windows.Controls.Button)(target));
+            
+            #line 69 "..\..\Partida.xaml"
+            this.d2.Click += new System.Windows.RoutedEventHandler(this.d2_Click);
+            
+            #line default
+            #line hidden
             return;
             case 58:
             this.e2 = ((System.Windows.Controls.Button)(target));
+            
+            #line 70 "..\..\Partida.xaml"
+            this.e2.Click += new System.Windows.RoutedEventHandler(this.e2_Click);
+            
+            #line default
+            #line hidden
             return;
             case 59:
             this.f2 = ((System.Windows.Controls.Button)(target));
+            
+            #line 71 "..\..\Partida.xaml"
+            this.f2.Click += new System.Windows.RoutedEventHandler(this.f2_Click);
+            
+            #line default
+            #line hidden
             return;
             case 60:
             this.g2 = ((System.Windows.Controls.Button)(target));
+            
+            #line 72 "..\..\Partida.xaml"
+            this.g2.Click += new System.Windows.RoutedEventHandler(this.g2_Click);
+            
+            #line default
+            #line hidden
             return;
             case 61:
             this.h2 = ((System.Windows.Controls.Button)(target));
+            
+            #line 73 "..\..\Partida.xaml"
+            this.h2.Click += new System.Windows.RoutedEventHandler(this.h2_Click);
+            
+            #line default
+            #line hidden
             return;
             case 62:
             this.a1 = ((System.Windows.Controls.Button)(target));
+            
+            #line 74 "..\..\Partida.xaml"
+            this.a1.Click += new System.Windows.RoutedEventHandler(this.a1_Click);
+            
+            #line default
+            #line hidden
             return;
             case 63:
             this.b1 = ((System.Windows.Controls.Button)(target));
+            
+            #line 75 "..\..\Partida.xaml"
+            this.b1.Click += new System.Windows.RoutedEventHandler(this.b1_Click);
+            
+            #line default
+            #line hidden
             return;
             case 64:
             this.c1 = ((System.Windows.Controls.Button)(target));
+            
+            #line 76 "..\..\Partida.xaml"
+            this.c1.Click += new System.Windows.RoutedEventHandler(this.c1_Click);
+            
+            #line default
+            #line hidden
             return;
             case 65:
             this.d1 = ((System.Windows.Controls.Button)(target));
+            
+            #line 77 "..\..\Partida.xaml"
+            this.d1.Click += new System.Windows.RoutedEventHandler(this.d1_Click);
+            
+            #line default
+            #line hidden
             return;
             case 66:
             this.e1 = ((System.Windows.Controls.Button)(target));
+            
+            #line 78 "..\..\Partida.xaml"
+            this.e1.Click += new System.Windows.RoutedEventHandler(this.e1_Click);
+            
+            #line default
+            #line hidden
             return;
             case 67:
             this.f1 = ((System.Windows.Controls.Button)(target));
+            
+            #line 79 "..\..\Partida.xaml"
+            this.f1.Click += new System.Windows.RoutedEventHandler(this.f1_Click);
+            
+            #line default
+            #line hidden
             return;
             case 68:
             this.g1 = ((System.Windows.Controls.Button)(target));
+            
+            #line 80 "..\..\Partida.xaml"
+            this.g1.Click += new System.Windows.RoutedEventHandler(this.g1_Click);
+            
+            #line default
+            #line hidden
             return;
             case 69:
             this.h1 = ((System.Windows.Controls.Button)(target));
+            
+            #line 81 "..\..\Partida.xaml"
+            this.h1.Click += new System.Windows.RoutedEventHandler(this.h1_Click);
+            
+            #line default
+            #line hidden
             return;
             }
             this._contentLoaded = true;

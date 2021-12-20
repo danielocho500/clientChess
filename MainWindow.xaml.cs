@@ -30,23 +30,23 @@ using System.Windows.Shapes;
 namespace Cliente
 {
 
-    public partial class MainWindow : Window//, IConnectionServiceCallback
+    public partial class MainWindow : Window, IConnectionServiceCallback
     {
 
-        //public ConnectionServiceClient server;
+        public ConnectionServiceClient server;
         public MainWindow()
         {
             InitializeComponent();
 
-            //btnLogin.IsEnabled = false;
-            //btnRegister.IsEnabled = false;
+            btnLogin.IsEnabled = false;
+            btnRegister.IsEnabled = false;
 
             InstanceContext instanceContext = new InstanceContext(this);
-            //server = new ConnectionServiceClient(instanceContext);
+            server = new ConnectionServiceClient(instanceContext);
 
             try
             {
-                //server.Check();
+                server.Check();
             }
             catch (Exception e)
             {

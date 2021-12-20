@@ -16,18 +16,15 @@ using Cliente.ChessService;
 
 namespace Cliente
 {
-    /// <summary>
-    /// Interaction logic for Stats.xaml
-    /// </summary>
-    public partial class Stats : Window//, IGetStatsServiceCallback
+    public partial class Stats : Window, IGetStatsServiceCallback
     {
-        //public GetStatsServiceClient server;
+        public GetStatsServiceClient server;
         public Stats(int id)
         {
             InitializeComponent();
             InstanceContext instanceContext = new InstanceContext(this);
-            //server = new GetStatsServiceClient(instanceContext);
-            //server.getStats(id);
+            server = new GetStatsServiceClient(instanceContext);
+            server.getStats(id);
         }
 
         public void ShowStats(int Matches_played, int Matches_win, decimal WinP, int eloMax, int eloActual)

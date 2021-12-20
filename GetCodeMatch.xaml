@@ -5,12 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cliente"
         mc:Ignorable="d"
+        
+        xmlns:language ="clr-namespace:Cliente.Properties.Langs"
         Title="GetCodeMatch" Height="450" Width="656.061">
     <Grid>
         <Image Source="/resource/Fondo.png" />
-        <Label Content="Your Code is:" HorizontalAlignment="Left" Margin="40,127,0,0" VerticalAlignment="Top" Width="148" FontSize="20" FontFamily="Bold"/>
+        <Label Content="{x:Static language:Lang.yourCode}" HorizontalAlignment="Left" Margin="40,127,0,0" VerticalAlignment="Top" Width="148" FontSize="20" FontFamily="Bold"/>
         <Label x:Name="lbCode" Content="" HorizontalAlignment="Left" Margin="193,127,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Bold" Foreground="Red"/>
-        <Button x:Name="BtnExit" Content="Exit" HorizontalAlignment="Right" Margin="0,358,45,0" VerticalAlignment="Top" Width="76" Click="BtnExit_Click" Foreground="white" Background="Transparent" BorderBrush="Transparent"/>
+        <Button x:Name="BtnExit" Content="{x:Static language:Lang.exit}" HorizontalAlignment="Right" Margin="0,355,39,0" VerticalAlignment="Top" Width="85" Click="BtnExit_Click" Foreground="white" Background="Transparent" BorderBrush="Transparent" Height="27"/>
 
     </Grid>
 </Window>

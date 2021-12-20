@@ -72,6 +72,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Configuration.xaml.cs">
+      <DependentUpon>Configuration.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\ChessService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -89,8 +92,20 @@
     <Compile Include="MainChess.xaml.cs">
       <DependentUpon>MainChess.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Partida.xaml.cs">
-      <DependentUpon>Partida.xaml</DependentUpon>
+    <Compile Include="Play.xaml.cs">
+      <DependentUpon>Play.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="play_logic\ButtonInfo.cs" />
+    <Compile Include="play_logic\Moves.cs" />
+    <Compile Include="Properties\Langs\Lang.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Lang.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Langs\Lang.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Lang.es.resx</DependentUpon>
     </Compile>
     <Compile Include="Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
@@ -98,6 +113,10 @@
     <Compile Include="Stats.xaml.cs">
       <DependentUpon>Stats.xaml</DependentUpon>
     </Compile>
+    <Page Include="Configuration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GetCodeMatch.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -133,7 +152,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Partida.xaml">
+    <Page Include="Play.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -160,6 +179,14 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Properties\Langs\Lang.es.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Lang.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Langs\Lang.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Lang.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -233,20 +260,34 @@
   <ItemGroup>
     <Resource Include="Resource\Fondo.png" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Resource Include="Images\BlackBishop.png" />
+    <Resource Include="Images\BlackBishopToDefeat.png" />
     <Resource Include="Images\BlackKing.png" />
+    <Resource Include="Images\BlackKingToDefeat.png" />
     <Resource Include="Images\BlackKnight.png" />
+    <Resource Include="Images\BlackKnightToDefeat.png" />
     <Resource Include="Images\BlackPawn.png" />
+    <Resource Include="Images\BlackPawnToDefeat.png" />
     <Resource Include="Images\BlackQueen.png" />
+    <Resource Include="Images\BlackQueenToDefeat.png" />
     <Resource Include="Images\BlackTower.png" />
+    <Resource Include="Images\BlackTowerToDefeat.png" />
+    <Resource Include="Images\Celtics.png" />
+    <Resource Include="Images\Disable.png" />
+    <Resource Include="Images\Knicks.png" />
     <Resource Include="Images\WhiteBishop.png" />
+    <Resource Include="Images\WhiteBishopToDefeat.png" />
     <Resource Include="Images\WhiteKing.png" />
+    <Resource Include="Images\WhiteKingToDefeat.png" />
     <Resource Include="Images\WhiteKnight.png" />
+    <Resource Include="Images\WhiteKnightToDefeat.png" />
     <Resource Include="Images\WhitePawn.png" />
+    <Resource Include="Images\WhitePawnToDefeat.png" />
     <Resource Include="Images\WhiteQueen.png" />
+    <Resource Include="Images\WhiteQueenToDefeat.png" />
     <Resource Include="Images\WhiteTower.png" />
+    <Resource Include="Images\WhiteTowerToDefeat.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cliente"
         mc:Ignorable="d"
+        xmlns:language ="clr-namespace:Cliente.Properties.Langs"
         Title="Invitations" Height="666" Width="1024" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Label  Content="Invitations" Margin="398,10,398,0" FontSize="40" FontWeight="Bold" RenderTransformOrigin="0.485,-0.321" Foreground="Black" Height="68" VerticalAlignment="Top"/>
         <ListBox x:Name="lboxRequest" Margin="232,78,270,274" ></ListBox>
-        <Button x:Name="btnAccept" Content="_Accept" Height="40" Margin="0,0,66,517" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="146" Click="Accept_Click" Background="Transparent" Foreground="Black" FontSize="20" BorderBrush="Black"/>
-        <Button x:Name="btnDeny" Content="_Deny" Height="40" Margin="0,0,66,472" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="146" Click="Deny_Click" Background="Transparent" Foreground="Black" FontSize="20" BorderBrush="Black"/>
-        <Button x:Name="btnClose" Content="_Close" Height="40" Margin="0,0,66,54" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="146" Click="Close_Click" Background="Transparent" Foreground="Black" FontSize="20" BorderBrush="Black" d:LayoutOverrides="VerticalAlignment"/>
+        <Button x:Name="btnAccept" Content="{x:Static language:Lang.accept}" Height="40" Margin="0,0,66,517" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="146" Click="Accept_Click" Background="Transparent" Foreground="Black" FontSize="20" BorderBrush="Black"/>
+        <Button x:Name="btnDeny" Content="{x:Static language:Lang.deny}" Height="40" Margin="0,0,66,472" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="146" Click="Deny_Click" Background="Transparent" Foreground="Black" FontSize="20" BorderBrush="Black"/>
+        <Button x:Name="btnClose" Content="{x:Static language:Lang.close}" Height="40" Margin="0,0,66,54" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="146" Click="Close_Click" Background="Transparent" Foreground="Black" FontSize="20" BorderBrush="Black" d:LayoutOverrides="VerticalAlignment"/>
     </Grid>
 </Window>

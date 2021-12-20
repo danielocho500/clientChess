@@ -5,12 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cliente"
         mc:Ignorable="d"
+        
+        xmlns:language ="clr-namespace:Cliente.Properties.Langs"
+        
         Title="SuperChess" Height="666" Width="1024" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Image Source="/resource/Main.png" Margin="-36,-33,-36,-2"></Image>
-        <Label Content="¿You don't have account?" Margin="412,0,421,228" Grid.Column="0" Grid.Row="0" FontSize="15" Height="30" VerticalAlignment="Bottom" Foreground="White" d:LayoutOverrides="VerticalAlignment"/>
-        <Button x:Name="btnLogin" Content="_Login" Margin="380,258,386,291" FontSize="25" Click="Login_Click" Background="Transparent" BorderBrush="Transparent" Foreground="Black" />
-        <Button x:Name="btnRegister" Content="_Register" Margin="429,0,436,160" FontSize="20" Click="Register_Click" Background="Transparent" BorderBrush="Transparent" Foreground="White" Height="50" VerticalAlignment="Bottom" />
-        <Button x:Name="btnClose" Content="_Close" Margin="0,0,34,29" FontSize="20" Click="Close_Click" Background="Transparent" BorderBrush="Transparent" Foreground="White" Height="38" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="94"/>
+        <Label Content="{x:Static language:Lang.dontHaveAccount}" Margin="412,0,421,228" Grid.Column="0" Grid.Row="0" FontSize="15" Height="30" VerticalAlignment="Bottom" Foreground="White" d:LayoutOverrides="VerticalAlignment"/>
+        <Button x:Name="btnLogin" Content="{x:Static language:Lang.login}" Margin="380,258,386,291" FontSize="25" Click="Login_Click" Background="Transparent" BorderBrush="Transparent" Foreground="Black" />
+        <Button x:Name="btnRegister" Content="{x:Static language:Lang.register}" Margin="429,0,436,160" FontSize="20" Click="Register_Click" Background="Transparent" BorderBrush="Transparent" Foreground="White" Height="50" VerticalAlignment="Bottom" />
+        <Button x:Name="btnClose" Content="{x:Static language:Lang.close}" Margin="0,0,34,29" FontSize="20" Click="Close_Click" Background="Transparent" BorderBrush="Transparent" Foreground="White" Height="38" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="94"/>
     </Grid>
 </Window>

@@ -212,6 +212,26 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="win">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="isWhite" type="xs:boolean" />
+        <xs:element minOccurs="0" name="won" type="xs:boolean" />
+        <xs:element minOccurs="0" name="matchCode" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="move">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="isWhite" type="xs:boolean" />
+        <xs:element minOccurs="0" name="matchCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="previousPosition" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="newPosition" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="timeleft" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="ReciveMessage">
     <xs:complexType>
       <xs:sequence>
@@ -226,6 +246,15 @@
         <xs:element minOccurs="0" name="youWon" type="xs:boolean" />
         <xs:element minOccurs="0" name="oldElo" type="xs:int" />
         <xs:element minOccurs="0" name="newElo" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="movePiece">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="previousPosition" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="newPosition" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="timeLeft" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

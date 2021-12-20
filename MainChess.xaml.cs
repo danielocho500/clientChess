@@ -26,23 +26,23 @@ using System.Windows.Shapes;
 
 namespace Cliente
 {
-    public partial class MainChess : Window//, IFriendServiceCallback, IRequestServiceCallback
+    public partial class MainChess : Window, IFriendServiceCallback, IRequestServiceCallback
     {
-        //public RequestServiceClient server_Request;
-        //public FriendServiceClient server_friend;
+        public RequestServiceClient server_Request;
+        public FriendServiceClient server_friend;
         public int idUser;
-        //Aqui creamos dos arrays para guardarlos
+
         public string[] usersConnected;
         public string[] usersDisConnected;
 
         public MainChess(int idUser_)
         {
             InitializeComponent();
-            //InstanceContext instanceContext = new InstanceContext(this);
-            //server_Request = new RequestServiceClient(instanceContext);
-            //server_friend = new FriendServiceClient(instanceContext);
+            InstanceContext instanceContext = new InstanceContext(this);
+            server_Request = new RequestServiceClient(instanceContext);
+            server_friend = new FriendServiceClient(instanceContext);
             idUser = idUser_;
-            //server_friend.Connected(idUser_);
+            server_friend.Connected(idUser_);
         }
 
         private void NewGame_Click(object sender, RoutedEventArgs e)
@@ -78,7 +78,9 @@ namespace Cliente
 
         private void Config_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Config .... in development");
+            Configuration config = new Configuration(idUser);
+            config.Show();
+            this.Close();
         }
 
         private void Invitations_Click(object sender, RoutedEventArgs e)
@@ -91,7 +93,7 @@ namespace Cliente
         {
             if (!string.IsNullOrEmpty(txtAddUser.Text))
             {
-                //server_Request.SendRequest(txtAddUser.Text,idUser);
+                server_Request.SendRequest(txtAddUser.Text,idUser);
             }
             else
             {
@@ -142,7 +144,7 @@ namespace Cliente
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            //server_friend.Disconnected(idUser); 
+            server_friend.Disconnected(idUser); 
         }
 
         public void UpdadteUsers(string[] usernamesConneted, string[] usernamesDisconnected)

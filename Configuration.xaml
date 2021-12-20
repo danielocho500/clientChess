@@ -1,0 +1,21 @@
+﻿<Window x:Class="Cliente.Configuration"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Cliente"
+        mc:Ignorable="d"
+        xmlns:language ="clr-namespace:Cliente.Properties.Langs"
+        Title="Configuration" Height="450" Width="800">
+    <Grid>
+        <ComboBox 
+            Name="cmbLanguage"
+            SelectionChanged="ComboBox_SelectionChanged"
+            HorizontalAlignment="Left" Height="46" VerticalAlignment="Top" Width="318" Margin="68,138,0,0" >
+            <ComboBoxItem Content="{x:Static language:Lang.en}"/>
+            <ComboBoxItem Content="{x:Static language:Lang.es}"/>
+        </ComboBox>
+        <Button Content="{x:Static language:Lang.load}" Click="Load_Click" Margin="0,138,88,0" Height="46" VerticalAlignment="Top" HorizontalAlignment="Right" Width="298" />
+        <Button Content="{x:Static language:Lang.close}" Click="Close_Click" Margin="0,0,44,29" HorizontalAlignment="Right" Width="120" Height="40" VerticalAlignment="Bottom" />
+    </Grid>
+</Window>

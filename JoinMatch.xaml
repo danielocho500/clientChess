@@ -5,14 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cliente"
         mc:Ignorable="d"
+        xmlns:language ="clr-namespace:Cliente.Properties.Langs"
         Title="JoinMatch" Height="450" Width="656.061">
     <Grid>
         <Image Source="/resource/Fondo.png" />
-        <Image Source="/resource/Boton6.png" Margin="154,69,192,0" Height="119" VerticalAlignment="Top" />
-        <TextBox x:Name="TBCode" HorizontalAlignment="Left" Height="33" Margin="110,118,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="143" d:LayoutOverrides="HorizontalAlignment" FontSize="20"/>
-        <Label Content="Code" HorizontalAlignment="Left" Margin="44,113,0,0" VerticalAlignment="Top" Height="38" Width="66" FontSize="20"/>
-        <Button x:Name="BtnJoin"  Content="Join" Margin="268,125,305,0" VerticalAlignment="Top" Click="BtnJoin_Click" d:LayoutOverrides="VerticalAlignment" Foreground="white" Background="Transparent" BorderBrush="Transparent"/>
-        <Button x:Name="btnExit" Content="Exit" HorizontalAlignment="Left" Margin="527,358,0,0" VerticalAlignment="Top" Width="75" Click="btnExit_Click" Foreground="white" Background="Transparent" BorderBrush="Transparent"/>
+        <Image Source="/resource/Boton6.png" Margin="223,68,123,0" Height="119" VerticalAlignment="Top" />
+        <TextBox x:Name="TBCode" HorizontalAlignment="Left" Height="33" Margin="154,118,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="143" d:LayoutOverrides="HorizontalAlignment" FontSize="20"/>
+        <Label Content="{x:Static language:Lang.code}" HorizontalAlignment="Left" Margin="44,113,0,0" VerticalAlignment="Top" Height="38" Width="105" FontSize="20"/>
+        <Button x:Name="BtnJoin"  Content="{x:Static language:Lang.join}" Margin="0,123,236,0" VerticalAlignment="Top" Click="BtnJoin_Click" d:LayoutOverrides="VerticalAlignment" Foreground="white" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" Width="75"/>
+        <Button x:Name="btnExit" Content="{x:Static language:Lang.exit}" HorizontalAlignment="Left" Margin="527,358,0,0" VerticalAlignment="Top" Width="75" Click="btnExit_Click" Foreground="white" Background="Transparent" BorderBrush="Transparent"/>
 
     </Grid>
 </Window>

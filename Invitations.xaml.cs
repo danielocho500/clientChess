@@ -27,9 +27,9 @@ using System.Windows.Shapes;
 namespace Cliente
 {
 
-    public partial class Invitations : Window//, IRespondServiceCallback
+    public partial class Invitations : Window, IRespondServiceCallback
     {
-        //public RespondServiceClient server;
+        public RespondServiceClient server;
         public Dictionary<int, string> request;
         public int idUserSend;
 
@@ -37,8 +37,8 @@ namespace Cliente
         {
             InitializeComponent();
             InstanceContext instanceContext = new InstanceContext(this);
-            //server = new RespondServiceClient(instanceContext);
-            //server.GetRequests(idUser);
+            server = new RespondServiceClient(instanceContext);
+            server.GetRequests(idUser);
             idUserSend = idUser;
         }
 
@@ -83,8 +83,8 @@ namespace Cliente
 
                 }
 
-                //server.ConfirmRequest(true, idUserSend, idUserRecive);
-                //server.GetRequests(idUserSend);
+                server.ConfirmRequest(true, idUserSend, idUserRecive);
+                server.GetRequests(idUserSend);
             }
             
         }
@@ -111,8 +111,8 @@ namespace Cliente
                     }
                 }
 
-                //server.ConfirmRequest(false, idUserSend, idUserRecive);
-                //server.GetRequests(idUserSend);
+                server.ConfirmRequest(false, idUserSend, idUserRecive);
+                server.GetRequests(idUserSend);
             }
         }
     }
