@@ -1,19 +1,8 @@
 ﻿using Cliente.ChessService;
 using Cliente.Properties.Langs;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Cliente
 {
@@ -25,9 +14,9 @@ namespace Cliente
         {
             InitializeComponent();
 
-            /*idUser = idUser_;
+            idUser = idUser_;
             InstanceContext instanceContext = new InstanceContext(this);
-            server = new SendInvitationServiceClient(instanceContext);*/
+            server = new SendInvitationServiceClient(instanceContext);
 
         }
 
@@ -36,17 +25,24 @@ namespace Cliente
             throw new NotImplementedException();
         }
 
-        public void ValidateCodeStatus(bool status, string usernameRival, string username, string MatchCode, bool white)
+        public void ValidateCodeStatus(int status, string usernameRival, string username, string MatchCode, bool white)
         {
-            if (!status)
+            switch (status)
             {
-                MessageBox.Show(Lang.errorOcurred);
-                return;
-            }
+                case 0:
+                    Play play = new Play(idUser, usernameRival, username, MatchCode, white);
+                    play.Show();
+                    this.Close();
+                    break;
+                case 2:
+                    MessageBox.Show(Lang.codeIncorrect);
+                    break;
+                default:
+                    MessageBox.Show(Lang.errorOcurred);
+                    break;
 
-            Play play = new Play(idUser, usernameRival, username, MatchCode, white);
-            play.Show();
-            this.Close();
+            }
+           
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
@@ -62,8 +58,17 @@ namespace Cliente
                 return;
             }
             string code = TBCode.Text;
-            server.ValidateCodeInvitation(idUser,code);
-            
+            try
+            {
+                server.ValidateCodeInvitation(idUser, code);
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show(Lang.noConecction);
+                Connected.IsConnected = false;
+                this.Close();
+            }
+
         }
 
         void ISendInvitationServiceCallback.JoinMatch(string usernameRival, string username, string codeMatch, bool white)

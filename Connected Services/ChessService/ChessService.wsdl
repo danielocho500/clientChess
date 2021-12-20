@@ -184,6 +184,12 @@
   <wsdl:message name="IFriendService_NewDisconecction_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:NewDisconecction" />
   </wsdl:message>
+  <wsdl:message name="IFriendService_SeeConecction_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:SeeConecction" />
+  </wsdl:message>
+  <wsdl:message name="IFriendService_newFriend_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:newFriend" />
+  </wsdl:message>
   <wsdl:message name="ISendInvitationService_GenerateCodeInvitation_InputMessage">
     <wsdl:part name="parameters" element="tns:GenerateCodeInvitation" />
   </wsdl:message>
@@ -205,17 +211,17 @@
   <wsdl:message name="IMatchService_SendMessage_InputMessage">
     <wsdl:part name="parameters" element="tns:SendMessage" />
   </wsdl:message>
-  <wsdl:message name="IMatchService_sendConnection_InputMessage">
-    <wsdl:part name="parameters" element="tns:sendConnection" />
+  <wsdl:message name="IMatchService_SendConnection_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendConnection" />
   </wsdl:message>
-  <wsdl:message name="IMatchService_giveUp_InputMessage">
-    <wsdl:part name="parameters" element="tns:giveUp" />
+  <wsdl:message name="IMatchService_GiveUp_InputMessage">
+    <wsdl:part name="parameters" element="tns:GiveUp" />
   </wsdl:message>
-  <wsdl:message name="IMatchService_win_InputMessage">
-    <wsdl:part name="parameters" element="tns:win" />
+  <wsdl:message name="IMatchService_Win_InputMessage">
+    <wsdl:part name="parameters" element="tns:Win" />
   </wsdl:message>
-  <wsdl:message name="IMatchService_move_InputMessage">
-    <wsdl:part name="parameters" element="tns:move" />
+  <wsdl:message name="IMatchService_Move_InputMessage">
+    <wsdl:part name="parameters" element="tns:Move" />
   </wsdl:message>
   <wsdl:message name="IMatchService_ReciveMessage_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReciveMessage" />
@@ -223,17 +229,17 @@
   <wsdl:message name="IMatchService_MatchEnds_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:MatchEnds" />
   </wsdl:message>
-  <wsdl:message name="IMatchService_movePiece_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:movePiece" />
+  <wsdl:message name="IMatchService_MovePiece_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:MovePiece" />
   </wsdl:message>
-  <wsdl:message name="IGetStatsService_getStats_InputMessage">
-    <wsdl:part name="parameters" element="tns:getStats" />
+  <wsdl:message name="IGetStatsService_GetStats_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStats" />
   </wsdl:message>
   <wsdl:message name="IGetStatsService_ShowStats_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ShowStats" />
   </wsdl:message>
-  <wsdl:message name="IRankingService_getRanking_InputMessage">
-    <wsdl:part name="parameters" element="tns:getRanking" />
+  <wsdl:message name="IRankingService_GetRanking_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRanking" />
   </wsdl:message>
   <wsdl:message name="IRankingService_ShowRanking_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ShowRanking" />
@@ -303,6 +309,12 @@
     <wsdl:operation name="NewDisconecction">
       <wsdl:output wsaw:Action="http://tempuri.org/IFriendService/NewDisconecction" message="tns:IFriendService_NewDisconecction_OutputCallbackMessage" />
     </wsdl:operation>
+    <wsdl:operation name="SeeConecction">
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendService/SeeConecction" message="tns:IFriendService_SeeConecction_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="newFriend">
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendService/newFriend" message="tns:IFriendService_newFriend_OutputCallbackMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ISendInvitationService">
     <wsdl:operation name="GenerateCodeInvitation">
@@ -328,17 +340,17 @@
     <wsdl:operation name="SendMessage">
       <wsdl:input wsaw:Action="http://tempuri.org/IMatchService/SendMessage" message="tns:IMatchService_SendMessage_InputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="sendConnection">
-      <wsdl:input wsaw:Action="http://tempuri.org/IMatchService/sendConnection" message="tns:IMatchService_sendConnection_InputMessage" />
+    <wsdl:operation name="SendConnection">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchService/SendConnection" message="tns:IMatchService_SendConnection_InputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="giveUp">
-      <wsdl:input wsaw:Action="http://tempuri.org/IMatchService/giveUp" message="tns:IMatchService_giveUp_InputMessage" />
+    <wsdl:operation name="GiveUp">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchService/GiveUp" message="tns:IMatchService_GiveUp_InputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="win">
-      <wsdl:input wsaw:Action="http://tempuri.org/IMatchService/win" message="tns:IMatchService_win_InputMessage" />
+    <wsdl:operation name="Win">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchService/Win" message="tns:IMatchService_Win_InputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="move">
-      <wsdl:input wsaw:Action="http://tempuri.org/IMatchService/move" message="tns:IMatchService_move_InputMessage" />
+    <wsdl:operation name="Move">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchService/Move" message="tns:IMatchService_Move_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ReciveMessage">
       <wsdl:output wsaw:Action="http://tempuri.org/IMatchService/ReciveMessage" message="tns:IMatchService_ReciveMessage_OutputCallbackMessage" />
@@ -346,21 +358,21 @@
     <wsdl:operation name="MatchEnds">
       <wsdl:output wsaw:Action="http://tempuri.org/IMatchService/MatchEnds" message="tns:IMatchService_MatchEnds_OutputCallbackMessage" />
     </wsdl:operation>
-    <wsdl:operation name="movePiece">
-      <wsdl:output wsaw:Action="http://tempuri.org/IMatchService/movePiece" message="tns:IMatchService_movePiece_OutputCallbackMessage" />
+    <wsdl:operation name="MovePiece">
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchService/MovePiece" message="tns:IMatchService_MovePiece_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IGetStatsService">
-    <wsdl:operation name="getStats">
-      <wsdl:input wsaw:Action="http://tempuri.org/IGetStatsService/getStats" message="tns:IGetStatsService_getStats_InputMessage" />
+    <wsdl:operation name="GetStats">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGetStatsService/GetStats" message="tns:IGetStatsService_GetStats_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ShowStats">
       <wsdl:output wsaw:Action="http://tempuri.org/IGetStatsService/ShowStats" message="tns:IGetStatsService_ShowStats_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IRankingService">
-    <wsdl:operation name="getRanking">
-      <wsdl:input wsaw:Action="http://tempuri.org/IRankingService/getRanking" message="tns:IRankingService_getRanking_InputMessage" />
+    <wsdl:operation name="GetRanking">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRankingService/GetRanking" message="tns:IRankingService_GetRanking_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ShowRanking">
       <wsdl:output wsaw:Action="http://tempuri.org/IRankingService/ShowRanking" message="tns:IRankingService_ShowRanking_OutputCallbackMessage" />
@@ -497,6 +509,18 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="SeeConecction">
+      <soap12:operation soapAction="http://tempuri.org/IFriendService/SeeConecction" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="newFriend">
+      <soap12:operation soapAction="http://tempuri.org/IFriendService/newFriend" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="NetHttpBinding_ISendInvitationService" type="tns:ISendInvitationService">
     <wsp:PolicyReference URI="#NetHttpBinding_ISendInvitationService_policy" />
@@ -547,26 +571,26 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
-    <wsdl:operation name="sendConnection">
-      <soap12:operation soapAction="http://tempuri.org/IMatchService/sendConnection" style="document" />
+    <wsdl:operation name="SendConnection">
+      <soap12:operation soapAction="http://tempuri.org/IMatchService/SendConnection" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
-    <wsdl:operation name="giveUp">
-      <soap12:operation soapAction="http://tempuri.org/IMatchService/giveUp" style="document" />
+    <wsdl:operation name="GiveUp">
+      <soap12:operation soapAction="http://tempuri.org/IMatchService/GiveUp" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
-    <wsdl:operation name="win">
-      <soap12:operation soapAction="http://tempuri.org/IMatchService/win" style="document" />
+    <wsdl:operation name="Win">
+      <soap12:operation soapAction="http://tempuri.org/IMatchService/Win" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
-    <wsdl:operation name="move">
-      <soap12:operation soapAction="http://tempuri.org/IMatchService/move" style="document" />
+    <wsdl:operation name="Move">
+      <soap12:operation soapAction="http://tempuri.org/IMatchService/Move" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -583,8 +607,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="movePiece">
-      <soap12:operation soapAction="http://tempuri.org/IMatchService/movePiece" style="document" />
+    <wsdl:operation name="MovePiece">
+      <soap12:operation soapAction="http://tempuri.org/IMatchService/MovePiece" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
@@ -593,8 +617,8 @@
   <wsdl:binding name="NetHttpBinding_IGetStatsService" type="tns:IGetStatsService">
     <wsp:PolicyReference URI="#NetHttpBinding_IGetStatsService_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/websocket" />
-    <wsdl:operation name="getStats">
-      <soap12:operation soapAction="http://tempuri.org/IGetStatsService/getStats" style="document" />
+    <wsdl:operation name="GetStats">
+      <soap12:operation soapAction="http://tempuri.org/IGetStatsService/GetStats" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -609,8 +633,8 @@
   <wsdl:binding name="NetHttpBinding_IRankingService" type="tns:IRankingService">
     <wsp:PolicyReference URI="#NetHttpBinding_IRankingService_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/websocket" />
-    <wsdl:operation name="getRanking">
-      <soap12:operation soapAction="http://tempuri.org/IRankingService/getRanking" style="document" />
+    <wsdl:operation name="GetRanking">
+      <soap12:operation soapAction="http://tempuri.org/IRankingService/GetRanking" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

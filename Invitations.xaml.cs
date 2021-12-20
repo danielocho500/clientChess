@@ -37,10 +37,19 @@ namespace Cliente
         public Invitations(int idUser)
         {
             InitializeComponent();
-            /*InstanceContext instanceContext = new InstanceContext(this);
-            server = new RespondServiceClient(instanceContext);
-            server.GetRequests(idUser);
-            idUserSend = idUser;*/
+            InstanceContext instanceContext = new InstanceContext(this);
+            try
+            {
+                server = new RespondServiceClient(instanceContext);
+                server.GetRequests(idUser);
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show(Lang.noConecction);
+                Connected.IsConnected = false;
+                this.Close();
+            }   
+            idUserSend = idUser;
         }
 
         public void ReciveRequest(Dictionary<int, string> users)
@@ -84,8 +93,17 @@ namespace Cliente
 
                 }
 
-                server.ConfirmRequest(true, idUserSend, idUserRecive);
-                server.GetRequests(idUserSend);
+                try
+                {
+                    server.ConfirmRequest(true, idUserSend, idUserRecive);
+                    server.GetRequests(idUserSend);
+                }
+                catch (CommunicationObjectFaultedException)
+                {
+                    MessageBox.Show(Lang.noConecction);
+                    Connected.IsConnected = false;
+                    this.Close();
+                }
             }
             
         }
@@ -112,8 +130,17 @@ namespace Cliente
                     }
                 }
 
-                server.ConfirmRequest(false, idUserSend, idUserRecive);
-                server.GetRequests(idUserSend);
+                try
+                {
+                    server.ConfirmRequest(false, idUserSend, idUserRecive);
+                    server.GetRequests(idUserSend);
+                }
+                catch (EndpointNotFoundException)
+                {
+                    MessageBox.Show(Lang.noConecction);
+                    Connected.IsConnected = false;
+                    this.Close();
+                }
             }
         }
     }

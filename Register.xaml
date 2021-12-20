@@ -37,6 +37,5 @@
         <Label x:Name ="lbCode" Content="{x:Static language:Lang.code}" Margin="193,0,0,45" HorizontalAlignment="Left" Width="118" FontSize="25" Height="43" VerticalAlignment="Bottom" RenderTransformOrigin="0.485,-0.321" Visibility="Hidden" Foreground="White"/>
         <TextBox x:Name="txtCode" Margin="299,0,494,45" Height="43" VerticalAlignment="Bottom" Grid.Column="0" Grid.Row="0" FontSize="25" d:LayoutOverrides="VerticalAlignment" Visibility="Hidden"/>
         <Button x:Name="btnValidate" Content="{x:Static language:Lang.validate}" Height="40" Margin="0,0,338,46" VerticalAlignment="Bottom" Click="Validate_Click" Background="Transparent" Foreground="White" FontSize="20" BorderBrush="White" d:LayoutOverrides="VerticalAlignment" Visibility="Hidden" HorizontalAlignment="Right" Width="146"/>
-
     </Grid>
 </Window>

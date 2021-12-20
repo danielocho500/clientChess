@@ -129,6 +129,12 @@
   <data name="back" xml:space="preserve">
     <value>Regresar</value>
   </data>
+  <data name="badEmail" xml:space="preserve">
+    <value>El correo es inválido</value>
+  </data>
+  <data name="badPassword" xml:space="preserve">
+    <value>Las contraseñas son inválidas</value>
+  </data>
   <data name="black" xml:space="preserve">
     <value>Negras</value>
   </data>
@@ -204,6 +210,9 @@
   <data name="friends" xml:space="preserve">
     <value>Amigos</value>
   </data>
+  <data name="giveUp" xml:space="preserve">
+    <value>Rendirse</value>
+  </data>
   <data name="incorrectCredentials" xml:space="preserve">
     <value>Credenciales Incorrectas</value>
   </data>
@@ -236,6 +245,9 @@
   </data>
   <data name="noConecction" xml:space="preserve">
     <value>No hay conexión con el servidor</value>
+  </data>
+  <data name="noSpaces" xml:space="preserve">
+    <value>No dejar espacios en blanco en los campos</value>
   </data>
   <data name="passInclude" xml:space="preserve">
     <value>La contrasela debe tener</value>
@@ -291,8 +303,8 @@
   <data name="selectUser" xml:space="preserve">
     <value>Selecciona un usuario en la lista</value>
   </data>
-  <data name="space" xml:space="preserve">
-    <value>Campos con espacios en blanco</value>
+  <data name="send" xml:space="preserve">
+    <value>Enviar</value>
   </data>
   <data name="stats" xml:space="preserve">
     <value>Estadisticas</value>
@@ -302,6 +314,9 @@
   </data>
   <data name="surrender" xml:space="preserve">
     <value>¿Estas seguro que quieres rendirte?</value>
+  </data>
+  <data name="TurnOf" xml:space="preserve">
+    <value>Turno de:</value>
   </data>
   <data name="username" xml:space="preserve">
     <value>Usuario:</value>
@@ -325,7 +340,7 @@
     <value>Ganadas %:</value>
   </data>
   <data name="you" xml:space="preserve">
-    <value>Tu</value>
+    <value>Usted</value>
   </data>
   <data name="youLose" xml:space="preserve">
     <value>Perdiste :c</value>

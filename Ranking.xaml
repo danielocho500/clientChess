@@ -9,11 +9,12 @@
         Title="Ranking" Height="450" Width="656.061">
     <Grid>
         <Image Source="/resource/Fondo.png" />
-        <ListView Height="262" Width="450" Margin="21,90,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" x:Name="lvRank" >
+        <ListView Height="262" Width="400" Margin="21,90,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" x:Name="lvRank" >
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="User" Width="225" DisplayMemberBinding="{Binding UserName}"/>
-                    <GridViewColumn Header="Elo" Width="225" DisplayMemberBinding="{Binding Elo}"/>
+                    <GridViewColumn Header="Place" Width="100" DisplayMemberBinding="{Binding place}"/>
+                    <GridViewColumn Header="User" Width="200" DisplayMemberBinding="{Binding UserName}"/>
+                    <GridViewColumn Header="Elo" Width="100" DisplayMemberBinding="{Binding Elo}"/>
                 </GridView>
             </ListView.View>
         </ListView>

@@ -4,23 +4,21 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cliente"
+        xmlns:language ="clr-namespace:Cliente.Properties.Langs"
         mc:Ignorable="d"
         Title="Partida" Height="666" Width="1024" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Closing="Window_Closing">
     <Grid>
         <Image Source="/resource/register.png" Margin="-81,-79,-11,-2" />
         <ListView x:Name="listVMessages" Margin="579,109,38,151">
         </ListView>
-        <Button x:Name="BtnSend" Content="Send" HorizontalAlignment="Left" Margin="886,509,0,0" VerticalAlignment="Top" Width="94" Click="BtnSend_Click" Height="81"/>
+        <Button x:Name="BtnSend" Content="{x:Static language:Lang.send}" HorizontalAlignment="Left" Margin="886,509,0,0" VerticalAlignment="Top" Width="94" Click="BtnSend_Click" Height="81"/>
         <TextBox x:Name="TextBMessage" Margin="579,509,137,47"/>
-        <Button x:Name="BtnRendirse" Content="Give UP" Margin="479,521,463,0" VerticalAlignment="Top" Click="BtnRendirse_Click" Height="55"/>
-        <Label Content="Turn of:" Margin="56,584,834,-10"/>
-        <Label x:Name="LbTurn" Content="" Margin="129,584,761,-10"/>
-        <Label Content="You are: " Margin="56,545,834,47"/>
-        <Label x:Name="LbColor" Content="" Margin="129,545,761,29"/>
-        <Label Content="You" Margin="461,140,444,434"/>
-        <Label x:Name="lbUserTime" Content="Time Left 00:00" Margin="461,169,444,434"/>
-        <Label x:Name="LbRivalName" Content="Rival" Margin="461,250,444,324"/>
-        <Label x:Name="LbRivalTime" Content="Time Left 00:00" Margin="461,279,444,324"/>
+        <Button x:Name="BtnRendirse" Content="{x:Static language:Lang.giveUP}" Margin="479,521,463,0" VerticalAlignment="Top" Click="BtnRendirse_Click" Height="55"/>
+        <Label x:Name="LbTurn" Content="" Margin="479,115,411,459"/>
+        <Label Content="{x:Static language:Lang.you}" Margin="75,20,830,554"/>
+        <Label x:Name="lbUserTime" Content="Time Left 00:00" Margin="129,53,776,550"/>
+        <Label x:Name="LbRivalName" Content="Rival" Margin="260,20,645,554"/>
+        <Label x:Name="LbRivalTime" Content="Time Left 00:00" Margin="322,53,583,550"/>
         <Canvas Margin="56,140,572,97" Height="400" Width="400">
             <Button x:Name="a8" Content="" Canvas.Top="0" Canvas.Left="0" Width="50" Height="50" Background="White" Click="a8_Click"/>
             <Button x:Name="b8" Content="" Canvas.Top="0" Canvas.Left="50" Width="50" Height="50" Background="Brown" Click="b8_Click" />
@@ -88,5 +86,8 @@
             <Button x:Name="h1" Content="" Canvas.Top="350" Canvas.Left="350" Width="50" Height="50" Background="White" Click="h1_Click"/>
 
         </Canvas>
+        <Image x:Name="image_you" Source="Images/WhiteKing.png" HorizontalAlignment="Left" Height="66" Margin="56,44,0,0" VerticalAlignment="Top" Width="85"/>
+        <Image x:Name="image_rival" Source="Images/BlackKing.png" HorizontalAlignment="Left" Height="66" Margin="247,44,0,0" VerticalAlignment="Top" Width="85"/>
+        <Label Content="{x:Static language:Lang.TurnOf}" Margin="479,92,463,509"></Label>
     </Grid>
 </Window>

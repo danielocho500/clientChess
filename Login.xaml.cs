@@ -33,43 +33,52 @@ namespace Cliente
         public Login()
         {
             InitializeComponent();
-            /*InstanceContext instanceContext = new InstanceContext(this);
-            server = new LoginServiceClient(instanceContext);*/
+            InstanceContext instanceContext = new InstanceContext(this);
+            server = new LoginServiceClient(instanceContext);
         }
 
         public void LoginStatus(int status, int idUser) 
-        { 
-            if (status == 0)
-            {
-                MainChess mainchess = new MainChess(idUser);
-                mainchess.Show();
-                this.Close();
-            }
-            else if (status == 1)
-            {
-                MessageBox.Show(Lang.errorLogin);
-            }
-            else if (status == 2)
-            {
-                MessageBox.Show(Lang.incorrectCredentials);
-            }
-            else if (status == 4)
-            {
-                MessageBox.Show(Lang.alreadyLogged);
-            }
+        {
+            btnBack.IsEnabled = true;
+            btnLogin.IsEnabled = true;
 
+            switch (status)
+            {
+                case 0:
+                    MainChess mainchess = new MainChess(idUser);
+                    mainchess.Show();
+                    this.Close();
+                    break;
+                case 1:
+                    MessageBox.Show(Lang.errorLogin);
+                    break;
+                case 2:
+                    MessageBox.Show(Lang.incorrectCredentials);
+                    break;
+                case 3:
+                    MessageBox.Show(Lang.alreadyLogged);
+                    break;
+            }
         }
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(txtUsername.Text) && (!string.IsNullOrEmpty(pssPassword.Password)))
             {
-                //server.Login(txtUsername.Text, pssPassword.Password);
-                // solo por de prueba 
-                MainChess mainchess = new MainChess(1);
-                mainchess.Show();
-                this.Close();
-                // solo por de prueba
+                btnBack.IsEnabled = false;
+                btnLogin.IsEnabled = false;
+                try
+                {
+                    server.Login(txtUsername.Text, pssPassword.Password);
+                }
+                catch (EndpointNotFoundException)
+                {
+                    MessageBox.Show(Lang.noConecction);
+                    MainWindow mainWindow = new MainWindow();
+                    mainWindow.Show();
+                    this.Close();
+                }
+                
             }
             else
             {

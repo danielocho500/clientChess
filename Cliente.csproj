@@ -80,6 +80,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected.cs" />
     <Compile Include="GetCodeMatch.xaml.cs">
       <DependentUpon>GetCodeMatch.xaml</DependentUpon>
     </Compile>

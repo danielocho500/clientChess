@@ -134,6 +134,19 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="SeeConecction">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="newFriend">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="connected" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GenerateCodeInvitation">
     <xs:complexType>
       <xs:sequence>
@@ -167,7 +180,7 @@
   <xs:element name="ValidateCodeStatus">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="status" type="xs:boolean" />
+        <xs:element minOccurs="0" name="status" type="xs:int" />
         <xs:element minOccurs="0" name="usernameRival" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="codeMatch" nillable="true" type="xs:string" />
@@ -194,7 +207,7 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="sendConnection">
+  <xs:element name="SendConnection">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="isWhite" type="xs:boolean" />
@@ -202,7 +215,7 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="giveUp">
+  <xs:element name="GiveUp">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="isWhite" type="xs:boolean" />
@@ -210,7 +223,7 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="win">
+  <xs:element name="Win">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="isWhite" type="xs:boolean" />
@@ -219,7 +232,7 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="move">
+  <xs:element name="Move">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="isWhite" type="xs:boolean" />
@@ -247,7 +260,7 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="movePiece">
+  <xs:element name="MovePiece">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="previousPosition" nillable="true" type="xs:string" />
@@ -256,7 +269,7 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="getStats">
+  <xs:element name="GetStats">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="id" type="xs:int" />
@@ -274,9 +287,11 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="getRanking">
+  <xs:element name="GetRanking">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idUser" type="xs:int" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ShowRanking">

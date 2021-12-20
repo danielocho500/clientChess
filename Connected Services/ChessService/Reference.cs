@@ -345,6 +345,12 @@ namespace Cliente.ChessService {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IFriendService/NewDisconecction")]
         void NewDisconecction(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IFriendService/SeeConecction")]
+        void SeeConecction();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IFriendService/newFriend")]
+        void newFriend(string username, bool connected);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -422,7 +428,7 @@ namespace Cliente.ChessService {
         void GetCodeMatch(bool status, string code);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ISendInvitationService/ValidateCodeStatus")]
-        void ValidateCodeStatus(bool status, string usernameRival, string username, string codeMatch, bool white);
+        void ValidateCodeStatus(int status, string usernameRival, string username, string codeMatch, bool white);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ISendInvitationService/JoinMatch")]
         void JoinMatch(string usernameRival, string username, string codeMatch, bool white);
@@ -491,29 +497,29 @@ namespace Cliente.ChessService {
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchService/SendMessage")]
         System.Threading.Tasks.Task SendMessageAsync(bool isWhite, string message, string matchCode);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchService/sendConnection")]
-        void sendConnection(bool isWhite, string matchCode);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchService/SendConnection")]
+        void SendConnection(bool isWhite, string matchCode);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchService/sendConnection")]
-        System.Threading.Tasks.Task sendConnectionAsync(bool isWhite, string matchCode);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchService/SendConnection")]
+        System.Threading.Tasks.Task SendConnectionAsync(bool isWhite, string matchCode);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchService/giveUp")]
-        void giveUp(bool isWhite, string matchCode);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchService/GiveUp")]
+        void GiveUp(bool isWhite, string matchCode);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchService/giveUp")]
-        System.Threading.Tasks.Task giveUpAsync(bool isWhite, string matchCode);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchService/GiveUp")]
+        System.Threading.Tasks.Task GiveUpAsync(bool isWhite, string matchCode);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchService/win")]
-        void win(bool isWhite, bool won, string matchCode);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchService/Win")]
+        void Win(bool isWhite, bool won, string matchCode);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchService/win")]
-        System.Threading.Tasks.Task winAsync(bool isWhite, bool won, string matchCode);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchService/Win")]
+        System.Threading.Tasks.Task WinAsync(bool isWhite, bool won, string matchCode);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchService/move")]
-        void move(bool isWhite, string matchCode, string previousPosition, string newPosition, int timeleft);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchService/Move")]
+        void Move(bool isWhite, string matchCode, string previousPosition, string newPosition, int timeleft);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchService/move")]
-        System.Threading.Tasks.Task moveAsync(bool isWhite, string matchCode, string previousPosition, string newPosition, int timeleft);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchService/Move")]
+        System.Threading.Tasks.Task MoveAsync(bool isWhite, string matchCode, string previousPosition, string newPosition, int timeleft);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -525,8 +531,8 @@ namespace Cliente.ChessService {
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchService/MatchEnds")]
         void MatchEnds(bool youWon, int oldElo, int newElo);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchService/movePiece")]
-        void movePiece(string previousPosition, string newPosition, int timeLeft);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMatchService/MovePiece")]
+        void MovePiece(string previousPosition, string newPosition, int timeLeft);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -565,36 +571,36 @@ namespace Cliente.ChessService {
             return base.Channel.SendMessageAsync(isWhite, message, matchCode);
         }
         
-        public void sendConnection(bool isWhite, string matchCode) {
-            base.Channel.sendConnection(isWhite, matchCode);
+        public void SendConnection(bool isWhite, string matchCode) {
+            base.Channel.SendConnection(isWhite, matchCode);
         }
         
-        public System.Threading.Tasks.Task sendConnectionAsync(bool isWhite, string matchCode) {
-            return base.Channel.sendConnectionAsync(isWhite, matchCode);
+        public System.Threading.Tasks.Task SendConnectionAsync(bool isWhite, string matchCode) {
+            return base.Channel.SendConnectionAsync(isWhite, matchCode);
         }
         
-        public void giveUp(bool isWhite, string matchCode) {
-            base.Channel.giveUp(isWhite, matchCode);
+        public void GiveUp(bool isWhite, string matchCode) {
+            base.Channel.GiveUp(isWhite, matchCode);
         }
         
-        public System.Threading.Tasks.Task giveUpAsync(bool isWhite, string matchCode) {
-            return base.Channel.giveUpAsync(isWhite, matchCode);
+        public System.Threading.Tasks.Task GiveUpAsync(bool isWhite, string matchCode) {
+            return base.Channel.GiveUpAsync(isWhite, matchCode);
         }
         
-        public void win(bool isWhite, bool won, string matchCode) {
-            base.Channel.win(isWhite, won, matchCode);
+        public void Win(bool isWhite, bool won, string matchCode) {
+            base.Channel.Win(isWhite, won, matchCode);
         }
         
-        public System.Threading.Tasks.Task winAsync(bool isWhite, bool won, string matchCode) {
-            return base.Channel.winAsync(isWhite, won, matchCode);
+        public System.Threading.Tasks.Task WinAsync(bool isWhite, bool won, string matchCode) {
+            return base.Channel.WinAsync(isWhite, won, matchCode);
         }
         
-        public void move(bool isWhite, string matchCode, string previousPosition, string newPosition, int timeleft) {
-            base.Channel.move(isWhite, matchCode, previousPosition, newPosition, timeleft);
+        public void Move(bool isWhite, string matchCode, string previousPosition, string newPosition, int timeleft) {
+            base.Channel.Move(isWhite, matchCode, previousPosition, newPosition, timeleft);
         }
         
-        public System.Threading.Tasks.Task moveAsync(bool isWhite, string matchCode, string previousPosition, string newPosition, int timeleft) {
-            return base.Channel.moveAsync(isWhite, matchCode, previousPosition, newPosition, timeleft);
+        public System.Threading.Tasks.Task MoveAsync(bool isWhite, string matchCode, string previousPosition, string newPosition, int timeleft) {
+            return base.Channel.MoveAsync(isWhite, matchCode, previousPosition, newPosition, timeleft);
         }
     }
     
@@ -602,11 +608,11 @@ namespace Cliente.ChessService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ChessService.IGetStatsService", CallbackContract=typeof(Cliente.ChessService.IGetStatsServiceCallback))]
     public interface IGetStatsService {
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGetStatsService/getStats")]
-        void getStats(int id);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGetStatsService/GetStats")]
+        void GetStats(int id);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGetStatsService/getStats")]
-        System.Threading.Tasks.Task getStatsAsync(int id);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGetStatsService/GetStats")]
+        System.Threading.Tasks.Task GetStatsAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -644,12 +650,12 @@ namespace Cliente.ChessService {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public void getStats(int id) {
-            base.Channel.getStats(id);
+        public void GetStats(int id) {
+            base.Channel.GetStats(id);
         }
         
-        public System.Threading.Tasks.Task getStatsAsync(int id) {
-            return base.Channel.getStatsAsync(id);
+        public System.Threading.Tasks.Task GetStatsAsync(int id) {
+            return base.Channel.GetStatsAsync(id);
         }
     }
     
@@ -657,11 +663,11 @@ namespace Cliente.ChessService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ChessService.IRankingService", CallbackContract=typeof(Cliente.ChessService.IRankingServiceCallback))]
     public interface IRankingService {
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IRankingService/getRanking")]
-        void getRanking();
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IRankingService/GetRanking")]
+        void GetRanking(int idUser);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IRankingService/getRanking")]
-        System.Threading.Tasks.Task getRankingAsync();
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IRankingService/GetRanking")]
+        System.Threading.Tasks.Task GetRankingAsync(int idUser);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -699,12 +705,12 @@ namespace Cliente.ChessService {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public void getRanking() {
-            base.Channel.getRanking();
+        public void GetRanking(int idUser) {
+            base.Channel.GetRanking(idUser);
         }
         
-        public System.Threading.Tasks.Task getRankingAsync() {
-            return base.Channel.getRankingAsync();
+        public System.Threading.Tasks.Task GetRankingAsync(int idUser) {
+            return base.Channel.GetRankingAsync(idUser);
         }
     }
 }

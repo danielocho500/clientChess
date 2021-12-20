@@ -27,50 +27,53 @@ using System.Windows.Shapes;
 
 namespace Cliente
 {
-    public partial class Register : Window//, IRegisterServiceCallback
+    public partial class Register : Window, IRegisterServiceCallback
     {
         public RegisterServiceClient server;
 
         public Register()
         {
             InitializeComponent();
-            /*InstanceContext instanceContext = new InstanceContext(this);
-            server = new RegisterServiceClient(instanceContext);*/
+            InstanceContext instanceContext = new InstanceContext(this);
+            server = new RegisterServiceClient(instanceContext);
         }
 
         private void Register_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(txtUsername.Text) || !string.IsNullOrEmpty(txtEmail.Text) || !string.IsNullOrEmpty(pssPassword1.Password) || !string.IsNullOrEmpty(pssPassword2.Password))
             {
+                if (CountSpaces(txtUsername.Text) != 0 || CountSpaces(txtEmail.Text) != 0 || CountSpaces(pssPassword1.Password) != 0 || CountSpaces(pssPassword2.Password) != 0)
+                {
+                    MessageBox.Show(Lang.noSpaces);
+                    return;
+                }
                 if (Check_Passwords () == true)
                 {
+                    
                     if (Validate_Email())
                     {
+
                         if (Safe_Password(pssPassword1.Password))
                         {
-                            if (Blanks(pssPassword1.Password) <= 0)
+                            try
                             {
-                                if (Blanks(txtUsername.Text) <= 0)
-                                {
-                                    if (Blanks(pssPassword2.Password) <= 0)
-                                    {
-                                        server.GenerateCodeRegister(txtUsername.Text, pssPassword1.Password, txtEmail.Text);
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show(Lang.space);
-                                    }
-                                }
-                                else
-                                {
-                                    MessageBox.Show(Lang.space);
-                                }
+                                server.GenerateCodeRegister(txtUsername.Text, pssPassword1.Password, txtEmail.Text);
                             }
-                            else
+                            catch (EndpointNotFoundException)
                             {
-                                MessageBox.Show(Lang.space);
+                                MainWindow mainWindow = new MainWindow();
+                                mainWindow.Show();
+                                this.Close();
                             }
                         }
+                        else
+                        {
+                            MessageBox.Show(Lang.badPassword);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(Lang.badEmail);
                     }
                 }
                 else
@@ -89,6 +92,8 @@ namespace Cliente
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
             this.Close();
         }
 
@@ -110,24 +115,6 @@ namespace Cliente
             {
                 return false;
             }
-        }
-
-        public int Blanks(string text)
-        {
-            int cont = 0;
-            string word;
-
-            for (int i = 0; i < text.Length; i++)
-            {
-                word = text.Substring(i, 1);
-
-                if (word == " ")
-                {
-                    cont++;
-                }
-            }
-
-            return cont;
         }
 
         private bool Validate_Email()
@@ -178,6 +165,11 @@ namespace Cliente
             if (status == 0)
             {
                 MessageBox.Show(Lang.codeSuccess);
+                Login login = new Login();
+                login.Show();
+
+                this.Close();
+
             }
             else if (status == 1)
             {
@@ -189,6 +181,24 @@ namespace Cliente
             }
         }
 
+        public int CountSpaces(string text)
+        {
+            int cont = 0;
+            string letter;
+
+            for (int i = 0; i < text.Length; i++)
+            {
+                letter = text.Substring(i, 1);
+
+                if (letter == " ")
+                {
+                    cont++;
+                }
+            }
+
+            return cont;
+        }
+
         public void CodeRecieve(int status)
         {
             if (status== 0)
@@ -196,6 +206,18 @@ namespace Cliente
                 lbCode.Visibility = Visibility.Visible;
                 txtCode.Visibility = Visibility.Visible;
                 btnValidate.Visibility = Visibility.Visible;
+
+                txtUsername.Text = "";
+                txtUsername.IsEnabled = false;
+
+                txtEmail.Text = "";
+                txtEmail.IsEnabled = false;
+
+                pssPassword1.Password = "";
+                pssPassword1.IsEnabled = false;
+
+                pssPassword2.Password = "";
+                pssPassword2.IsEnabled = false;
             }
             else if (status == 1)
             {
@@ -203,13 +225,9 @@ namespace Cliente
             }
             else if (status == 2)
             {
-                MessageBox.Show(Lang.error);
-            }
-            else if (status == 3)
-            {
                 MessageBox.Show(Lang.emailRegistered);
             }
-            else if (status == 4)
+            else if (status == 3)
             {
                 MessageBox.Show(Lang.userTaken);
             }

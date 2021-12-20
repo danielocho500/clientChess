@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Cliente.ChessService;
+using Cliente.Properties.Langs;
 
 namespace Cliente
 {
@@ -22,9 +23,18 @@ namespace Cliente
         public Stats(int id)
         {
             InitializeComponent();
-            /*InstanceContext instanceContext = new InstanceContext(this);
+            InstanceContext instanceContext = new InstanceContext(this);
             server = new GetStatsServiceClient(instanceContext);
-            server.getStats(id);*/
+            try
+            {
+                server.GetStats(id);
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show(Lang.noConecction);
+                Connected.IsConnected = false;
+                this.Close();
+            }
         }
 
         public void ShowStats(int Matches_played, int Matches_win, decimal WinP, int eloMax, int eloActual)

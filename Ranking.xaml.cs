@@ -1,4 +1,5 @@
 ﻿using Cliente.ChessService;
+using Cliente.Properties.Langs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,19 +23,30 @@ namespace Cliente
     public partial class Ranking : Window, IRankingServiceCallback
     {
         public RankingServiceClient server;
-        public Ranking()
+        public Ranking(int id)
         {
             InitializeComponent();
-            /*InstanceContext instanceContext = new InstanceContext(this);
+            InstanceContext instanceContext = new InstanceContext(this);
             server = new RankingServiceClient(instanceContext);
-            server.getRanking();*/
+            try
+            {
+                server.GetRanking(id);
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show(Lang.noConecction);
+                Connected.IsConnected = false;
+                this.Close();
+            }
         }
 
         public void ShowRanking(Tuple<string, int>[] rank)
         {
+            int i = 0;
             foreach (Tuple<string, int> element in rank)
             {
-                var player = new { UserName = element.Item1, Elo = element.Item2 };
+                i++;
+                var player = new { UserName = element.Item1, Elo = element.Item2, place = i };
                 lvRank.Items.Add(player);
             }
         }

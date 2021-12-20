@@ -31,31 +31,14 @@ using System.Windows.Shapes;
 namespace Cliente
 {
 
-    public partial class MainWindow : Window //, IConnectionServiceCallback
+    public partial class MainWindow : Window
     {
 
         public ConnectionServiceClient server;
         public MainWindow()
         {
             InitializeComponent();
-
-            /*btnLogin.IsEnabled = false;
-            btnRegister.IsEnabled = false;
-
-            InstanceContext instanceContext = new InstanceContext(this);
-            server = new ConnectionServiceClient(instanceContext);
-
-            try
-            {
-                server.Check();
-            }
-
-            catch (Exception e)
-            {
-                MessageBox.Show("No connection with the server");
-                Application.Current.Shutdown();
-                Console.WriteLine(e);
-            }*/
+            Connected.IsConnected = false;
         }
 
         private void Login_Click (object sender, RoutedEventArgs e)
@@ -69,6 +52,7 @@ namespace Cliente
         {
             Register register = new Register();
             register.Show();
+            this.Close();
         }
 
         private void Close_Click (object sender, RoutedEventArgs e)
@@ -76,18 +60,5 @@ namespace Cliente
             this.Close();
         }
 
-        public void IsConnected(bool status)
-        {
-            if (status)
-            {
-                btnLogin.IsEnabled = true;
-                btnRegister.IsEnabled = true;
-            }
-            else
-            {
-                MessageBox.Show(Lang.noConecction);
-                Application.Current.Shutdown();
-            }
-        }
     }
 }

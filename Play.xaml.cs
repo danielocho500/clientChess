@@ -51,12 +51,23 @@ namespace Cliente
             MatchCode = MatchCode_;
             IsWhite = white_;
             UsernameActual = username_;
+
+            if (!IsWhite)
+            {
+                image_you.Margin = new Thickness(247,44,0,0);
+                image_rival.Margin = new Thickness(56, 44, 0, 0);
+            }
             
-
-            string color = (IsWhite) ? Lang.white : Lang.black;
-
-            LbColor.Content = color;
-            server_match.sendConnection(IsWhite, MatchCode);
+            try
+            {
+                server_match.SendConnection(IsWhite, MatchCode);
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show(Lang.noConecction);
+                Connected.IsConnected = false;
+                this.Close();
+            }
 
             if (IsWhite)
                 isTurn = true;
@@ -66,7 +77,7 @@ namespace Cliente
             LbRivalName.Content = Rival;
 
             dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
-            dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
+            dispatcherTimer.Tick += new EventHandler(DispatcherTimer_Tick);
             dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
             dispatcherTimer.Start();
 
@@ -76,15 +87,15 @@ namespace Cliente
 
         }
 
-        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        private void DispatcherTimer_Tick(object sender, EventArgs e)
         {
             if (isTurn)
                 timeLeftuser--;
             else
                 timeLeftRival--;
 
-            lbUserTime.Content = getTimeLeftFormat(timeLeftuser);
-            LbRivalTime.Content = getTimeLeftFormat(timeLeftRival);
+            lbUserTime.Content = GetTimeLeftFormat(timeLeftuser);
+            LbRivalTime.Content = GetTimeLeftFormat(timeLeftRival);
 
             if (timeLeftRival != 0 && timeLeftuser != 0)
                 return;
@@ -92,10 +103,22 @@ namespace Cliente
             dispatcherTimer.Stop();
 
             if (timeLeftRival == 0)
-                server_match.win(IsWhite, true, MatchCode);
+            {
+                try
+                {
+                    server_match.Win(!IsWhite, true, MatchCode);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show(Lang.noConecction);
+                    Connected.IsConnected = false;
+                    this.Close();
+                }
+            }
+                
         }
 
-        public string getTimeLeftFormat(int secs)
+        public string GetTimeLeftFormat(int secs)
         {
             string format;
             int minutes = 0;
@@ -122,7 +145,16 @@ namespace Cliente
             string message = TextBMessage.Text;
             listVMessages.Items.Add(GetHourFormat() + " " + UsernameActual + ": " + message);
             listVMessages.ScrollIntoView(listVMessages.Items.Count - 1);
-            server_match.SendMessage(IsWhite, message, MatchCode);
+            try
+            {
+                server_match.SendMessage(IsWhite, message, MatchCode);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(Lang.noConecction);
+                Connected.IsConnected = false;
+                this.Close();
+            }
             TextBMessage.Text = "";
         }
 
@@ -130,7 +162,16 @@ namespace Cliente
         {
             if (MessageBox.Show(Lang.surrender, Lang.confirm, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
-                server_match.giveUp(IsWhite, MatchCode);
+                try
+                {
+                    server_match.GiveUp(IsWhite, MatchCode);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show(Lang.noConecction);
+                    Connected.IsConnected = false;
+                    this.Close();
+                }
             }
         }
 
@@ -379,7 +420,16 @@ namespace Cliente
 
             if (buttonStatus == SquareStatus.toMoveWhite || buttonStatus == SquareStatus.toMoveBlack || toDefeatPieces.Contains(buttonStatus))
             {
-                server_match.move(IsWhite, MatchCode, selectedSquare, btn, timeLeftuser);
+                try
+                {
+                    server_match.Move(IsWhite, MatchCode, selectedSquare, btn, timeLeftuser);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show(Lang.noConecction);
+                    Connected.IsConnected = false;
+                    this.Close();
+                }
                 isTurn = false;
 
                 Squares[selectedSquare].setSquareStatus(SquareStatus.disabled);
@@ -461,11 +511,11 @@ namespace Cliente
                     selectedSquareValue = SquareStatus.BlackQueen;
                     break;
             }
-            setOptionMoves(btnMove);
+            SetOptionMoves(btnMove);
         }
 
 
-        public void setOptionMoves(List<string> btnMove)
+        public void SetOptionMoves(List<string> btnMove)
         {
             string moveColor = blackPieces.Contains(selectedSquareValue) ? Lang.black : Lang.white;
             foreach (string btn in btnMove)
@@ -525,14 +575,43 @@ namespace Cliente
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if(!givenUP)
-                server_match.win(IsWhite, false, MatchCode);
+            if (!givenUP)
+            {
+                try
+                {
+                    server_match.Win(IsWhite, false, MatchCode);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show(Lang.noConecction);
+                    Connected.IsConnected = false;
+                    try
+                    {
+                        this.Close();
+                    }
+                    catch (Exception) { 
+                    }
+                }
+            }
+                
         }
 
-        public void movePiece(string previousPosition, string newPosition, int newTime)
+        public void MovePiece(string previousPosition, string newPosition, int newTime)
         {
             if ((IsWhite && Squares[newPosition].GetSquareStatus() == SquareStatus.WhiteKing) || (!IsWhite && Squares[newPosition].GetSquareStatus() == SquareStatus.BlackKing))
-                server_match.win(IsWhite, false, MatchCode);
+            {
+                try
+                {
+                    server_match.Win(IsWhite, false, MatchCode);
+                }
+                catch (EndpointNotFoundException)
+                {
+                    MessageBox.Show(Lang.noConecction);
+                    Connected.IsConnected = false;
+                    this.Close();
+                }
+            }
+                
 
             timeLeftRival = newTime;
 
@@ -574,14 +653,14 @@ namespace Cliente
             Squares["c7"] = new ButtonInfo(SquareStatus.BlackPawn, 3, 7, c7);
             Squares["c8"] = new ButtonInfo(SquareStatus.BlackBishop, 3, 8, c8);
 
-            Squares["d1"] = new ButtonInfo(SquareStatus.disabled, 4, 1, d1);
+            Squares["d1"] = new ButtonInfo(SquareStatus.WhiteQueen, 4, 1, d1);
             Squares["d2"] = new ButtonInfo(SquareStatus.WhitePawn, 4, 2, d2);
             Squares["d3"] = new ButtonInfo(SquareStatus.disabled, 4, 3, d3);
             Squares["d4"] = new ButtonInfo(SquareStatus.disabled, 4, 4, d4);
             Squares["d5"] = new ButtonInfo(SquareStatus.disabled, 4, 5, d5);
             Squares["d6"] = new ButtonInfo(SquareStatus.disabled, 4, 6, d6);
             Squares["d7"] = new ButtonInfo(SquareStatus.BlackPawn, 4, 7, d7);
-            Squares["d8"] = new ButtonInfo(SquareStatus.disabled, 4, 8, d8);
+            Squares["d8"] = new ButtonInfo(SquareStatus.BlackQueen, 4, 8, d8);
 
             Squares["e1"] = new ButtonInfo(SquareStatus.WhiteKing, 5, 1, e1);
             Squares["e2"] = new ButtonInfo(SquareStatus.WhitePawn, 5, 2, e2);
@@ -991,6 +1070,5 @@ namespace Cliente
         {
             Clic("h1");
         }
-
     }
 }
