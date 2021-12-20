@@ -1,0 +1,15 @@
+﻿<Window x:Class="Cliente.Chat"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Cliente"
+        mc:Ignorable="d"
+        Title="Chat" Height="450" Width="359.091">
+    <Grid HorizontalAlignment="Left" Width="349" d:LayoutOverrides="LeftMargin, RightMargin">
+        <ListBox x:Name="lboxMessages" Margin="10,50,10,110"></ListBox>
+        <TextBox x:Name="txtMessage" Margin="10,0,96,16" Height="69" VerticalAlignment="Bottom" BorderBrush="Black"></TextBox>
+        <Label Name="lbFriend" Content="Chat" Margin="149,0,148,0" Height="35" VerticalAlignment="Top" FontSize="20"/>
+        <Button x:Name="btnSend" Content="Send" Height="69" Margin="0,0,10,16" VerticalAlignment="Bottom" Background="Transparent" Foreground="Black" FontSize="20" BorderBrush="Black" d:LayoutOverrides="VerticalAlignment" HorizontalAlignment="Right" Width="69" Click="Send_Click"/>
+    </Grid>
+</Window>

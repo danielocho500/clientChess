@@ -26,10 +26,20 @@ namespace Cliente
             server = new ChessService.LoginServiceClient(instanceContext);
         }
 
-        public void LoginStatus(bool status, string message)
-        {
-            MessageBox.Show(message);
-
+        public void LoginStatus(bool status, string message, int idUser) 
+        { 
+        
+            if (status == true)
+            {
+                MessageBox.Show(message);
+                MainChess mainchess = new MainChess(idUser);
+                mainchess.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show(message);
+            }
         }
 
         private void Login_Click(object sender, RoutedEventArgs e)

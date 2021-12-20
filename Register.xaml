@@ -5,28 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cliente"
         mc:Ignorable="d"
-        Title="SuperChess Registrarse" Height="666" Width="1024">
+        Title="SuperChess Regist" Height="666" Width="1024">
     <Grid Margin="15,0,2,-21">
-        <Image Source="/resource/Register2.0.png" Margin="-32,-14,-9,-2" ></Image>
-        <Label Content="_Register" Margin="432,10,406,0" FontSize="40" Height="63" VerticalAlignment="Top"/>
-        <Label x:Name ="lbUsername" Content="_Username:" Margin="154,98,0,0" HorizontalAlignment="Left" Width="139" FontSize="25" Height="43" VerticalAlignment="Top"/>
-        <Label x:Name ="lbEmail" Content="_Email:" Margin="154,177,0,0" HorizontalAlignment="Left" Width="88" FontSize="25" Height="43" VerticalAlignment="Top"/>
-        <Label x:Name ="lbPassword1" Content="_Password:" Margin="154,259,0,0" HorizontalAlignment="Left" Width="139" FontSize="25" Height="43" VerticalAlignment="Top"/>
-        <Label x:Name ="lbPassword2" Content="_Confirm Password:" Margin="154,0,0,267" HorizontalAlignment="Left" Width="213" FontSize="25" Height="43" VerticalAlignment="Bottom" RenderTransformOrigin="0.485,-0.321"/>
-        <Label  Content="The password must include:" Margin="165,0,0,204" FontSize="15" Height="35" VerticalAlignment="Bottom" RenderTransformOrigin="0.485,-0.321" Foreground="red" HorizontalAlignment="Left" Width="202"/>
-        <Label  Content="1. At least one lower case letter,&#xD;&#xA;2. At least one upper case letter,&#xD;&#xA;3. At least special character,&#xD;&#xA;4. At least one number&#xD;&#xA;5. At least 8 characters length" Margin="362,0,406,127" FontSize="15" Height="112" VerticalAlignment="Bottom" RenderTransformOrigin="0.485,-0.321"/>
-        
-        <TextBox x:Name="txtUsername" Margin="389,0,53,515" Height="43" VerticalAlignment="Bottom" Grid.Column="0" Grid.Row="0" FontSize="25"/>
-        <TextBox x:Name="txtEmail" Margin="389,177,53,0" Height="43" VerticalAlignment="Top" Grid.Column="0" Grid.Row="0" FontSize="25"/>
-        <PasswordBox x:Name="pssPassword1" Margin="389,259,53,0" Grid.Column="0" Grid.Row="0" FontSize="25" Height="43" VerticalAlignment="Top"/>
-        <PasswordBox x:Name="pssPassword2" Margin="389,0,53,267" Height="43" VerticalAlignment="Bottom" Grid.Column="0" Grid.Row="0" FontSize="25" d:LayoutOverrides="VerticalAlignment"/>
+        <Image Source="/resource/Register.png" Margin="-16,-22,-4,6" ></Image>
+        <Image Source="/resource/Boton3.png" Margin="0,0,-55,-20" Height="292" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="410" />
+        <Image Source="/resource/Boton6.png" Margin="-61,0,0,-6" Height="224" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="249" />
+        <Label Content="_Register" Margin="420,62,394,0" FontSize="40" Height="63" VerticalAlignment="Top" Foreground="Black" FontWeight="Bold"/>
+        <Label x:Name ="lbUsername" Content="_Username:" Margin="35,156,0,0" HorizontalAlignment="Left" Width="131" FontSize="25" Height="37" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label x:Name ="lbEmail" Content="_Email:" Margin="35,223,0,0" HorizontalAlignment="Left" Width="84" FontSize="25" Height="37" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label x:Name ="lbPassword1" Content="_Password:" Margin="35,293,0,294" HorizontalAlignment="Left" Width="131" FontSize="25" FontWeight="Bold"/>
+        <Label x:Name ="lbPassword2" Content="_Confirm Password:" Margin="35,0,0,234" HorizontalAlignment="Left" Width="230" FontSize="25" RenderTransformOrigin="0.485,-0.321" Height="55" VerticalAlignment="Bottom" FontWeight="Bold"/>
+        <Label  Content="The password must include:" Margin="73,0,0,195" FontSize="15" Height="30" VerticalAlignment="Bottom" RenderTransformOrigin="0.485,-0.321" Foreground="red" HorizontalAlignment="Left" Width="192" FontWeight="Bold"/>
+        <Label  Content="1. At least one lower case letter,&#xD;&#xA;2. At least one upper case letter,&#xD;&#xA;3. At least special character,&#xD;&#xA;4. At least one number&#xD;&#xA;5. At least 8 characters length" Margin="260,0,0,112" FontSize="15" Height="113" VerticalAlignment="Bottom" RenderTransformOrigin="0.485,-0.321" HorizontalAlignment="Left" Width="219" FontWeight="Bold"/>
 
-        <Button x:Name="btnRegistrase" Content="_Registrase" Height="40" Margin="0,0,260,46" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="146" Click="Registrarse_Click" d:LayoutOverrides="VerticalAlignment" Background="Transparent" Foreground="White" FontSize="20" BorderBrush="Transparent"/>
-        <Button x:Name="btnCancelar" Content="_Cancelar" Height="40" Margin="0,0,53,46" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="142" Click="Cancelar_Click" d:LayoutOverrides="VerticalAlignment" Background="Transparent" Foreground="White" FontSize="20" BorderBrush="Transparent"/>
+        <TextBox x:Name="txtUsername" Margin="282,0,189,463" Height="37" VerticalAlignment="Bottom" Grid.Column="0" Grid.Row="0" FontSize="25"/>
+        <TextBox x:Name="txtEmail" Margin="282,223,189,0" Height="37" VerticalAlignment="Top" Grid.Column="0" Grid.Row="0" FontSize="25"/>
+        <PasswordBox x:Name="pssPassword1" Margin="282,293,189,323" Grid.Column="0" Grid.Row="0" FontSize="25"/>
+        <PasswordBox x:Name="pssPassword2" Margin="282,0,189,253" Height="36" VerticalAlignment="Bottom" Grid.Column="0" Grid.Row="0" FontSize="25" d:LayoutOverrides="VerticalAlignment"/>
 
-        <Label x:Name ="lbCodigo" Content="Codigo:" Margin="10,0,0,43" HorizontalAlignment="Left" Width="118" FontSize="25" Height="43" VerticalAlignment="Bottom" RenderTransformOrigin="0.485,-0.321" Visibility="Hidden"/>
-        <TextBox x:Name="txtCodigo" Margin="128,0,0,43" Height="43" VerticalAlignment="Bottom" Grid.Column="0" Grid.Row="0" FontSize="25" d:LayoutOverrides="VerticalAlignment" HorizontalAlignment="Left" Width="206" Visibility="Hidden"/>
-        <Button x:Name="btnValidar" Content="Validar" Height="40" Margin="354,0,499,44" VerticalAlignment="Bottom" Click="Validar_Click" Background="Transparent" Foreground="Black" FontSize="20" BorderBrush="Black" d:LayoutOverrides="VerticalAlignment" Visibility="Hidden"/>
+        <Button x:Name="btnRegistrase" Content="_Register" Height="40" Margin="0,0,68,84" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="146" Click="Registrarse_Click" d:LayoutOverrides="VerticalAlignment" Background="Transparent" Foreground="White" FontSize="20" BorderBrush="Transparent"/>
+        <Button x:Name="btnCancelar" Content="_Cancel" Height="38" Margin="14,0,0,50" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="99" Click="Cancelar_Click" d:LayoutOverrides="VerticalAlignment" Background="Transparent" Foreground="White" FontSize="20" BorderBrush="Transparent"/>
+
+        <Label x:Name ="lbCodigo" Content="Codigo:" Margin="193,0,0,45" HorizontalAlignment="Left" Width="118" FontSize="25" Height="43" VerticalAlignment="Bottom" RenderTransformOrigin="0.485,-0.321" Visibility="Hidden" Foreground="White"/>
+        <TextBox x:Name="txtCodigo" Margin="299,0,494,45" Height="43" VerticalAlignment="Bottom" Grid.Column="0" Grid.Row="0" FontSize="25" d:LayoutOverrides="VerticalAlignment" Visibility="Hidden"/>
+        <Button x:Name="btnValidar" Content="Validar" Height="40" Margin="0,0,338,46" VerticalAlignment="Bottom" Click="Validar_Click" Background="Transparent" Foreground="White" FontSize="20" BorderBrush="White" d:LayoutOverrides="VerticalAlignment" Visibility="Hidden" HorizontalAlignment="Right" Width="146"/>
 
     </Grid>
 </Window>

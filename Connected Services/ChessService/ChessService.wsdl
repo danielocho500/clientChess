@@ -58,10 +58,43 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetHttpBinding_IConnectionService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetHttpBinding_IRequestService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetHttpBinding_IRespondService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetHttpBinding_IConnectedFriendsService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IRegisterService_generateCode_InputMessage">
@@ -82,6 +115,42 @@
   <wsdl:message name="ILoginService_LoginStatus_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:LoginStatus" />
   </wsdl:message>
+  <wsdl:message name="IConnectionService_check_InputMessage">
+    <wsdl:part name="parameters" element="tns:check" />
+  </wsdl:message>
+  <wsdl:message name="IConnectionService_isConnected_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:isConnected" />
+  </wsdl:message>
+  <wsdl:message name="IRequestService_sendRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:sendRequest" />
+  </wsdl:message>
+  <wsdl:message name="IRequestService_sendRequestStatus_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:sendRequestStatus" />
+  </wsdl:message>
+  <wsdl:message name="IRespondService_getRequests_InputMessage">
+    <wsdl:part name="parameters" element="tns:getRequests" />
+  </wsdl:message>
+  <wsdl:message name="IRespondService_confirmRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:confirmRequest" />
+  </wsdl:message>
+  <wsdl:message name="IRespondService_ReciveRequest_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReciveRequest" />
+  </wsdl:message>
+  <wsdl:message name="IConnectedFriendsService_Connected_InputMessage">
+    <wsdl:part name="parameters" element="tns:Connected" />
+  </wsdl:message>
+  <wsdl:message name="IConnectedFriendsService_Disconnected_InputMessage">
+    <wsdl:part name="parameters" element="tns:Disconnected" />
+  </wsdl:message>
+  <wsdl:message name="IConnectedFriendsService_getUser_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:getUser" />
+  </wsdl:message>
+  <wsdl:message name="IConnectedFriendsService_newConection_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:newConection" />
+  </wsdl:message>
+  <wsdl:message name="IConnectedFriendsService_newDisconection_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:newDisconection" />
+  </wsdl:message>
   <wsdl:portType name="IRegisterService">
     <wsdl:operation name="generateCode">
       <wsdl:input wsaw:Action="http://tempuri.org/IRegisterService/generateCode" message="tns:IRegisterService_generateCode_InputMessage" />
@@ -100,6 +169,50 @@
     </wsdl:operation>
     <wsdl:operation name="LoginStatus">
       <wsdl:output wsaw:Action="http://tempuri.org/ILoginService/LoginStatus" message="tns:ILoginService_LoginStatus_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IConnectionService">
+    <wsdl:operation name="check">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConnectionService/check" message="tns:IConnectionService_check_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="isConnected">
+      <wsdl:output wsaw:Action="http://tempuri.org/IConnectionService/isConnected" message="tns:IConnectionService_isConnected_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IRequestService">
+    <wsdl:operation name="sendRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRequestService/sendRequest" message="tns:IRequestService_sendRequest_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="sendRequestStatus">
+      <wsdl:output wsaw:Action="http://tempuri.org/IRequestService/sendRequestStatus" message="tns:IRequestService_sendRequestStatus_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IRespondService">
+    <wsdl:operation name="getRequests">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRespondService/getRequests" message="tns:IRespondService_getRequests_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="confirmRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRespondService/confirmRequest" message="tns:IRespondService_confirmRequest_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReciveRequest">
+      <wsdl:output wsaw:Action="http://tempuri.org/IRespondService/ReciveRequest" message="tns:IRespondService_ReciveRequest_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IConnectedFriendsService">
+    <wsdl:operation name="Connected">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConnectedFriendsService/Connected" message="tns:IConnectedFriendsService_Connected_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Disconnected">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConnectedFriendsService/Disconnected" message="tns:IConnectedFriendsService_Disconnected_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getUser">
+      <wsdl:output wsaw:Action="http://tempuri.org/IConnectedFriendsService/getUser" message="tns:IConnectedFriendsService_getUser_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="newConection">
+      <wsdl:output wsaw:Action="http://tempuri.org/IConnectedFriendsService/newConection" message="tns:IConnectedFriendsService_newConection_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="newDisconection">
+      <wsdl:output wsaw:Action="http://tempuri.org/IConnectedFriendsService/newDisconection" message="tns:IConnectedFriendsService_newDisconection_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IRegisterService" type="tns:IRegisterService">
@@ -143,13 +256,101 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="NetHttpBinding_IConnectionService" type="tns:IConnectionService">
+    <wsp:PolicyReference URI="#NetHttpBinding_IConnectionService_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/websocket" />
+    <wsdl:operation name="check">
+      <soap12:operation soapAction="http://tempuri.org/IConnectionService/check" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="isConnected">
+      <soap12:operation soapAction="http://tempuri.org/IConnectionService/isConnected" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetHttpBinding_IRequestService" type="tns:IRequestService">
+    <wsp:PolicyReference URI="#NetHttpBinding_IRequestService_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/websocket" />
+    <wsdl:operation name="sendRequest">
+      <soap12:operation soapAction="http://tempuri.org/IRequestService/sendRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="sendRequestStatus">
+      <soap12:operation soapAction="http://tempuri.org/IRequestService/sendRequestStatus" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetHttpBinding_IRespondService" type="tns:IRespondService">
+    <wsp:PolicyReference URI="#NetHttpBinding_IRespondService_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/websocket" />
+    <wsdl:operation name="getRequests">
+      <soap12:operation soapAction="http://tempuri.org/IRespondService/getRequests" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="confirmRequest">
+      <soap12:operation soapAction="http://tempuri.org/IRespondService/confirmRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ReciveRequest">
+      <soap12:operation soapAction="http://tempuri.org/IRespondService/ReciveRequest" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetHttpBinding_IConnectedFriendsService" type="tns:IConnectedFriendsService">
+    <wsp:PolicyReference URI="#NetHttpBinding_IConnectedFriendsService_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/websocket" />
+    <wsdl:operation name="Connected">
+      <soap12:operation soapAction="http://tempuri.org/IConnectedFriendsService/Connected" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="Disconnected">
+      <soap12:operation soapAction="http://tempuri.org/IConnectedFriendsService/Disconnected" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getUser">
+      <soap12:operation soapAction="http://tempuri.org/IConnectedFriendsService/getUser" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="newConection">
+      <soap12:operation soapAction="http://tempuri.org/IConnectedFriendsService/newConection" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="newDisconection">
+      <soap12:operation soapAction="http://tempuri.org/IConnectedFriendsService/newDisconection" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="ChessService">
     <wsdl:port name="NetTcpBinding_IRegisterService" binding="tns:NetTcpBinding_IRegisterService">
       <soap12:address location="net.tcp://localhost:8081/ChatService" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/ChatService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-RGC3AGN\danie</Upn>
+          <Upn>DESKTOP-K22I61J\peres</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -158,8 +359,32 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/ChatService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-RGC3AGN\danie</Upn>
+          <Upn>DESKTOP-K22I61J\peres</Upn>
         </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetHttpBinding_IConnectionService" binding="tns:NetHttpBinding_IConnectionService">
+      <soap12:address location="ws://localhost:8080/ChatService" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>ws://localhost:8080/ChatService</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetHttpBinding_IRequestService" binding="tns:NetHttpBinding_IRequestService">
+      <soap12:address location="ws://localhost:8080/ChatService" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>ws://localhost:8080/ChatService</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetHttpBinding_IRespondService" binding="tns:NetHttpBinding_IRespondService">
+      <soap12:address location="ws://localhost:8080/ChatService" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>ws://localhost:8080/ChatService</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetHttpBinding_IConnectedFriendsService" binding="tns:NetHttpBinding_IConnectedFriendsService">
+      <soap12:address location="ws://localhost:8080/ChatService" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>ws://localhost:8080/ChatService</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
   </wsdl:service>

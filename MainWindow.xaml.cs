@@ -1,6 +1,9 @@
-﻿using System;
+﻿
+using Cliente.ChessService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -15,14 +18,31 @@ using System.Windows.Shapes;
 
 namespace Cliente
 {
-    /// <summary>
-    /// Lógica de interacción para MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+
+    public partial class MainWindow : Window, IConnectionServiceCallback
     {
+
+        public ConnectionServiceClient server;
         public MainWindow()
         {
             InitializeComponent();
+
+            btnLogin.IsEnabled = false;
+            btnRegister.IsEnabled = false;
+
+            InstanceContext instanceContext = new InstanceContext(this);
+            server = new ConnectionServiceClient(instanceContext);
+
+            try
+            {
+                server.check();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("No connection with the server");
+                Application.Current.Shutdown();
+                Console.WriteLine(e);
+            }
         }
 
         private void Login_Click (object sender, RoutedEventArgs e)
@@ -36,6 +56,25 @@ namespace Cliente
         {
             Register register = new Register();
             register.Show();
+        }
+
+        private void Close_Click (object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        public void isConnected(bool status)
+        {
+            if (status)
+            {
+                btnLogin.IsEnabled = true;
+                btnRegister.IsEnabled = true;
+            }
+            else
+            {
+                MessageBox.Show("No connection with the server");
+                Application.Current.Shutdown();
+            }
         }
     }
 }

@@ -57,15 +57,36 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Chat.xaml.cs">
+      <DependentUpon>Chat.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\ChessService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Invitations.xaml.cs">
+      <DependentUpon>Invitations.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainChess.xaml.cs">
+      <DependentUpon>MainChess.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
     </Compile>
+    <Page Include="Chat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Invitations.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainChess.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -114,6 +135,9 @@
     <None Include="Connected Services\ChessService\item1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ChessService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -123,17 +147,34 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resource\Inicio 2.0.png" />
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resource\Login2.0.png" />
+    <Resource Include="Resource\Main3.0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Login3.0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Register3.0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Main.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Boton3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Boton6.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Resource\Register.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resource\Register2.0.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
+    <Resource Include="Resource\MainChess.png" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\ChessService\" />

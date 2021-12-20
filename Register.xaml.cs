@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cliente.ChessService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
@@ -17,7 +18,7 @@ using System.Windows.Shapes;
 namespace Cliente
 {
 
-    public partial class Register : Window, ChessService.IRegisterServiceCallback
+    public partial class Register : Window, IRegisterServiceCallback
     {
         public ChessService.RegisterServiceClient server;
         public Register()
@@ -135,8 +136,14 @@ namespace Cliente
             return true;
         }
 
-        public void ValidateCode(bool codeStatus, string message)
+        public void ValidateCode(bool codeStatus, int messageCode)
         {
+            string message = "";
+            if (messageCode == 0)
+                message = "Accoun Registered";
+            else
+                message = "Error, Account not registered";
+
             MessageBox.Show(message);
             if (codeStatus)
                 this.Close();

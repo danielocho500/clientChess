@@ -7,23 +7,25 @@
         mc:Ignorable="d"
         Title="SuperChess Login" Height="666" Width="1024">
     <Grid>
-        <Image Source="/resource/Login2.0.png" Margin="-76,0,-74,-41" ></Image>
-        <TextBox Name="txtUsername"  HorizontalAlignment="Right" Width="258" Margin="0,0,52,279" Grid.Column="0" Grid.Row="0" FontSize="20" FontStyle="Oblique" FontWeight="Thin" Height="38" VerticalAlignment="Bottom"></TextBox>
-        <PasswordBox Name="pssPassword" HorizontalAlignment="Right" Width="258" Margin="0,0,52,198" Height="38" VerticalAlignment="Bottom" FontSize="20" ></PasswordBox>
+        <Image Source="/resource/Login.png" Margin="-60,-38,-58,0" ></Image>
+        <Image Source="/resource/Boton3.png" Margin="-64,0,0,-52" HorizontalAlignment="Left" Height="183" VerticalAlignment="Bottom" Width="314" ></Image>
+        <Label Content="Welcome" Margin="0,0,145,436" Grid.Column="0" Grid.Row="0" FontSize="29" Height="50" VerticalAlignment="Bottom" Foreground="White" FontWeight="Bold" HorizontalAlignment="Right" Width="139"/>
+        <TextBox Name="txtUsername"  HorizontalAlignment="Right" Width="258" Margin="0,263,102,0" Grid.Column="0" Grid.Row="0" FontSize="20" FontStyle="Oblique" FontWeight="Thin" Height="38" VerticalAlignment="Top"/>
+        <PasswordBox Name="pssPassword" HorizontalAlignment="Right" Width="258" Margin="0,0,102,253" Height="38" VerticalAlignment="Bottom" FontSize="20" ></PasswordBox>
         <TextBlock 
-                           Margin="0,0,52,236"
+                           Margin="0,306,102,291"
                            Foreground="White" 
                            FontSize="20"
                            Visibility="Visible"
-                           x:Name="txtPrompt" Height="38" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="256" ><Run Text="P"/><Run Text="assword"/><Run Text=":"/></TextBlock>
-        <Button x:Name="btnLogin" Content="_Login" Height="66" Margin="0,0,50,104" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="258" Click="Login_Click" d:LayoutOverrides="VerticalAlignment" FontSize="25" Foreground="White" Background="Transparent" BorderBrush="Transparent"/>
+                           x:Name="txtPrompt" HorizontalAlignment="Right" Width="256" ><Run Text="P"/><Run Text="assword"/><Run Text=":"/></TextBlock>
+        <Button x:Name="btnLogin" Content="_Login" Height="90" Margin="0,0,96,129" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="258" Click="Login_Click" d:LayoutOverrides="VerticalAlignment" FontSize="25" Foreground="White" Background="Transparent" BorderBrush="Transparent" RenderTransformOrigin="0.337,-0.242"/>
         <TextBlock 
-            Margin="0,275,54,0"
+            Margin="0,220,104,0"
             Foreground="White" 
             FontSize="20"
             Visibility="Visible"
             x:Name="txtPrompt_Copy" Height="38" VerticalAlignment="Top" HorizontalAlignment="Right" Width="256" Text="Username:" />
 
-        <Button x:Name="btnRegresar" Content="&lt;- Regresar" Height="40" Margin="0,0,95,24" VerticalAlignment="Bottom" Background="Transparent" Foreground="Black" FontSize="20" BorderBrush="Black" d:LayoutOverrides="VerticalAlignment" HorizontalAlignment="Right" Width="163" Click="Regresar_Click"/>
+        <Button x:Name="btnRegresar" Content="Back" Height="35" Margin="25,0,0,12" VerticalAlignment="Bottom" Background="Transparent" Foreground="White" FontSize="20" BorderBrush="Transparent" d:LayoutOverrides="VerticalAlignment" HorizontalAlignment="Left" Width="98" Click="Regresar_Click"/>
     </Grid>
 </Window>
