@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cliente"
         mc:Ignorable="d"
-        Title="SuperChess Regist" Height="666" Width="1024">
+        Title="SuperChess Regist" Height="666" Width="1024" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid Margin="15,0,2,-21">
         <Image Source="/resource/Register.png" Margin="-16,-22,-4,6" ></Image>
         <Image Source="/resource/Boton3.png" Margin="0,0,-55,-20" Height="292" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="410" />

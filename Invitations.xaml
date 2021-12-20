@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cliente"
         mc:Ignorable="d"
-        Title="Invitations" Height="666" Width="1024">
+        Title="Invitations" Height="666" Width="1024" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Label  Content="Invitations" Margin="398,10,398,0" FontSize="40" FontWeight="Bold" RenderTransformOrigin="0.485,-0.321" Foreground="Black" Height="68" VerticalAlignment="Top"/>
         <ListBox x:Name="lboxRequest" Margin="232,78,270,274" ></ListBox>

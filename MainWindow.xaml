@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cliente"
         mc:Ignorable="d"
-        Title="SuperChess" Height="666" Width="1024">
+        Title="SuperChess" Height="666" Width="1024" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Image Source="/resource/Main.png" Margin="-36,-33,-36,-2"></Image>
         <Label Content="¿You don't have account?" Margin="412,0,421,228" Grid.Column="0" Grid.Row="0" FontSize="15" Height="30" VerticalAlignment="Bottom" Foreground="White" d:LayoutOverrides="VerticalAlignment"/>

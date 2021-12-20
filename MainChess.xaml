@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cliente"
         mc:Ignorable="d"
-        Title="SuperChess" Height="666" Width="1024" Closing="Window_Closing">
+        Title="SuperChess" Height="666" Width="1024" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Closing="Window_Closing">
     <Grid Margin="-56,-32,-54,0">
         <Image Source="/resource/mainchess.png" Margin="-10,28,-8,-28" ></Image>
 
@@ -16,12 +16,13 @@
         <Button x:Name="btnRanking" Content="_Ranking" Height="64" Margin="89,0,0,106" VerticalAlignment="Bottom" Click="Ranking_Click" Background="Transparent" Foreground="White" FontSize="30" BorderBrush="Transparent" HorizontalAlignment="Left" Width="186" d:LayoutOverrides="VerticalAlignment"/>
         <Button x:Name="btnConfiguration" Content="" Height="41" Margin="79,0,0,508" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="54" Click="Config_Click" Background="Transparent" Foreground="White" FontSize="30" BorderBrush="Transparent"/>
 
-        <ListView x:Name="listViewUsers" Margin="416,298,141,106"/>
+        <ListView x:Name="listViewUsers" FontSize="20" FontFamily="Franklin Gothic Medium"  Margin="416,298,141,106"/>
         <Label  Content="Friends" Margin="0,196,378,0" FontSize="20" Height="36" FontWeight="Bold" VerticalAlignment="Top" RenderTransformOrigin="0.485,-0.321" Foreground="White" HorizontalAlignment="Right" Width="84"/>
 
         <TextBox Name="txtAddUser" Margin="416,237,413,0" Grid.Column="0" Grid.Row="0" FontSize="20" FontStyle="Oblique" FontWeight="Thin" Height="51" VerticalAlignment="Top"/>
         <Button x:Name="btnAddUser" Content="_Add Friend" Height="32" Margin="0,0,292,388" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="104" Click="AddUser_Click" FontSize="18" Foreground="White" Background="Transparent" BorderBrush="White"/>
 
         <Button x:Name="btnInvitations" Content="_Friend Requests" Height="32" Margin="0,0,143,388" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="137" Click="Invitations_Click" FontSize="18" Foreground="White" Background="Transparent" BorderBrush="White"/>
+        
     </Grid>
 </Window>

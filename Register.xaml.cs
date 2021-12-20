@@ -6,7 +6,8 @@
 /* Descripción: Ventana de registro para un nuevo usuario         */
 /******************************************************************/
 
-using Cliente.SuperChess;
+
+using Cliente.ChessService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,7 +47,7 @@ namespace Cliente
                     {
                         if (Safe_Password(pssPassword1.Password))
                         {
-                            bool generatedCode = server.generateCode(txtUsername.Text, pssPassword1.Password, txtEmail.Text);
+                            bool generatedCode = server.GenerateCodeRegister(txtUsername.Text, pssPassword1.Password, txtEmail.Text);
                             if (generatedCode)
                             {
                                 btnValidate.Visibility = Visibility.Visible;
@@ -81,7 +82,7 @@ namespace Cliente
 
         private void Validate_Click(object sender, RoutedEventArgs e)
         {
-            server.verificateCode(txtCode.Text);
+            server.VerificateCode(txtCode.Text);
         }
 
         //Validaciones de campos y formatos

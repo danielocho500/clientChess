@@ -7,7 +7,8 @@
 /*              amistad                                           */
 /******************************************************************/
 
-using Cliente.SuperChess;
+
+using Cliente.ChessService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,7 +38,7 @@ namespace Cliente
             InitializeComponent();
             InstanceContext instanceContext = new InstanceContext(this);
             server = new RespondServiceClient(instanceContext);
-            server.getRequests(idUser);
+            server.GetRequests(idUser);
             idUserSend = idUser;
         }
 
@@ -82,8 +83,8 @@ namespace Cliente
 
                 }
 
-                server.confirmRequest(true, idUserSend, idUserRecive);
-                server.getRequests(idUserSend);
+                server.ConfirmRequest(true, idUserSend, idUserRecive);
+                server.GetRequests(idUserSend);
             }
             
         }
@@ -110,8 +111,8 @@ namespace Cliente
                     }
                 }
 
-                server.confirmRequest(false, idUserSend, idUserRecive);
-                server.getRequests(idUserSend);
+                server.ConfirmRequest(false, idUserSend, idUserRecive);
+                server.GetRequests(idUserSend);
             }
         }
     }

@@ -7,7 +7,8 @@
 /******************************************************************/
 
 
-using Cliente.SuperChess;
+
+using Cliente.ChessService;
 using System;
 using System.Collections.Generic;
 using System.Linq;

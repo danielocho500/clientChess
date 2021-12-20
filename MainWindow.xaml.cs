@@ -9,7 +9,8 @@
 
 
 
-using Cliente.SuperChess;
+
+using Cliente.ChessService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,7 +46,7 @@ namespace Cliente
 
             try
             {
-                server.check();
+                server.Check();
             }
             catch (Exception e)
             {
@@ -73,7 +74,7 @@ namespace Cliente
             this.Close();
         }
 
-        public void isConnected(bool status)
+        public void IsConnected(bool status)
         {
             if (status)
             {

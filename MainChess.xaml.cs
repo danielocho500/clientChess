@@ -7,7 +7,8 @@
 /*              las diferentes funcionalidades del juego          */
 /******************************************************************/
 
-using Cliente.SuperChess;
+
+using Cliente.ChessService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,7 @@ namespace Cliente
         public RequestServiceClient server_Request;
         public FriendServiceClient server_friend;
         public int idUser;
+        //Aqui creamos dos arrays para guardarlos
         public string[] usersConnected;
         public string[] usersDisConnected;
 
@@ -40,17 +42,20 @@ namespace Cliente
             server_Request = new RequestServiceClient(instanceContext);
             server_friend = new FriendServiceClient(instanceContext);
             idUser = idUser_;
+            //Aqui manda que se conecta
             server_friend.Connected(idUser_);
         }
 
         private void NewGame_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("New Game... in development");
+            GetCodeMatch getCodeMatch = new GetCodeMatch(idUser);
+            getCodeMatch.ShowDialog();
         }
 
         private void JoinToGame_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Join to game... in development");
+            JoinMatch joinMatch = new JoinMatch(idUser);
+            joinMatch.ShowDialog();
         }
 
         private void Stats_Click(object sender, RoutedEventArgs e)
@@ -67,6 +72,7 @@ namespace Cliente
         {
             Login lg = new Login();
             lg.Show();
+            //Aqui se va :c
             server_friend.Disconnected(idUser);
             this.Close();
         }
@@ -79,14 +85,14 @@ namespace Cliente
         private void Invitations_Click(object sender, RoutedEventArgs e)
         {
             Invitations invitations = new Invitations(idUser);
-            invitations.Show();
+            invitations.ShowDialog();
         }
 
         private void AddUser_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(txtAddUser.Text))
             {
-                server_Request.sendRequest(txtAddUser.Text,idUser);
+                server_Request.SendRequest(txtAddUser.Text,idUser);
             }
             else
             {
@@ -94,31 +100,33 @@ namespace Cliente
             }
         }
 
-        public void sendRequestStatus(bool status, string msg)
+        public void SendRequestStatus(bool status, string msg)
         {
             MessageBox.Show(msg);
         }
 
-        public void getUsers(string[] usernamesConn, string[] usernamesDisc)
+        public void GetUsers(string[] usernamesConn, string[] usernamesDisc)
         {
             usersConnected = usernamesConn.ToArray();
             usersDisConnected = usernamesDisc.ToArray();
-            updadteUsers(usernamesConn, usernamesDisc);
+            UpdadteUsers(usernamesConn, usernamesDisc);
         }
 
-        public void newConecction(string username)
+        public void NewConecction(string username)
         {
+            //Agrega a conectados el usuario
             List<string> usersConnectedAux = usersConnected.ToList();
             List<string> usersDisconectAux = usersDisConnected.ToList();
             usersConnectedAux.Add(username);
             usersDisconectAux.Remove(username);
             usersConnected = usersConnectedAux.ToArray();
             usersDisConnected = usersDisconectAux.ToArray();
-            updadteUsers(usersConnected,usersDisConnected);
+            UpdadteUsers(usersConnected,usersDisConnected);
         }
 
-        public void newDisconecction(string username)
+        public void NewDisconecction(string username)
         {
+            //Aqui lo borra :C
             List<string> usersConnectedAux = usersConnected.ToList();
             List<string> usersDisconectAux = usersDisConnected.ToList();
             usersConnectedAux.Remove(username);
@@ -130,7 +138,7 @@ namespace Cliente
 
             usersConnected = usersConnectedAux.ToArray();
             usersDisConnected = usersDisconectAux.ToArray();
-            updadteUsers(usersConnected, usersDisConnected);
+            UpdadteUsers(usersConnected, usersDisConnected);
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -138,24 +146,20 @@ namespace Cliente
             server_friend.Disconnected(idUser); 
         }
 
-        public void updadteUsers(string[] usernamesConneted, string[] usernamesDisconnected)
+        public void UpdadteUsers(string[] usernamesConneted, string[] usernamesDisconnected)
         {
             listViewUsers.Items.Clear();
-            string con = "";
-            string dis = "";
 
             foreach (string user in usernamesConneted)
             {
                 listViewUsers.Items.Add("✅" + user);
                 listViewUsers.ScrollIntoView(listViewUsers.Items.Count - 1);
-                con += " " + user;
             }
 
             foreach (string user in usernamesDisconnected)
             {
                 listViewUsers.Items.Add("[X]" + user);
                 listViewUsers.ScrollIntoView(listViewUsers.Items.Count - 1);
-                dis += " " + user; 
             }
         }
     }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cliente"
         mc:Ignorable="d"
-        Title="SuperChess Login" Height="666" Width="1024">
+        Title="SuperChess Login" Height="666" Width="1024" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Image Source="/resource/Login.png" Margin="-60,-38,-58,0" ></Image>
         <Image Source="/resource/Boton3.png" Margin="-64,0,0,-52" HorizontalAlignment="Left" Height="183" VerticalAlignment="Bottom" Width="314" ></Image>
