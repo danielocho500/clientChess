@@ -15,11 +15,11 @@ namespace Cliente.ChessService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ChessService.IRegisterService", CallbackContract=typeof(Cliente.ChessService.IRegisterServiceCallback))]
     public interface IRegisterService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegisterService/GenerateCodeRegister", ReplyAction="http://tempuri.org/IRegisterService/GenerateCodeRegisterResponse")]
-        bool GenerateCodeRegister(string username, string password, string email);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IRegisterService/GenerateCodeRegister")]
+        void GenerateCodeRegister(string username, string password, string email);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegisterService/GenerateCodeRegister", ReplyAction="http://tempuri.org/IRegisterService/GenerateCodeRegisterResponse")]
-        System.Threading.Tasks.Task<bool> GenerateCodeRegisterAsync(string username, string password, string email);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IRegisterService/GenerateCodeRegister")]
+        System.Threading.Tasks.Task GenerateCodeRegisterAsync(string username, string password, string email);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IRegisterService/VerificateCode")]
         void VerificateCode(string codeuser);
@@ -32,7 +32,10 @@ namespace Cliente.ChessService {
     public interface IRegisterServiceCallback {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IRegisterService/ValidateCode")]
-        void ValidateCode(bool codeStatus, int message);
+        void ValidateCode(int status);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IRegisterService/CodeRecieve")]
+        void CodeRecieve(int status);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -63,11 +66,11 @@ namespace Cliente.ChessService {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public bool GenerateCodeRegister(string username, string password, string email) {
-            return base.Channel.GenerateCodeRegister(username, password, email);
+        public void GenerateCodeRegister(string username, string password, string email) {
+            base.Channel.GenerateCodeRegister(username, password, email);
         }
         
-        public System.Threading.Tasks.Task<bool> GenerateCodeRegisterAsync(string username, string password, string email) {
+        public System.Threading.Tasks.Task GenerateCodeRegisterAsync(string username, string password, string email) {
             return base.Channel.GenerateCodeRegisterAsync(username, password, email);
         }
         
@@ -205,7 +208,7 @@ namespace Cliente.ChessService {
     public interface IRequestServiceCallback {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IRequestService/SendRequestStatus")]
-        void SendRequestStatus(bool status, string msg);
+        void SendRequestStatus(int status);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -665,7 +668,7 @@ namespace Cliente.ChessService {
     public interface IRankingServiceCallback {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IRankingService/ShowRanking")]
-        void ShowRanking(System.Tuple<string, int> rank);
+        void ShowRanking(System.Tuple<string, int>[] rank);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]

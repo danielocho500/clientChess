@@ -38,11 +38,11 @@ namespace Cliente
         public MainChess(int idUser_)
         {
             InitializeComponent();
-            InstanceContext instanceContext = new InstanceContext(this);
+            /*InstanceContext instanceContext = new InstanceContext(this);
             server_Request = new RequestServiceClient(instanceContext);
             server_friend = new FriendServiceClient(instanceContext);
             idUser = idUser_;
-            server_friend.Connected(idUser_);
+            server_friend.Connected(idUser_);*/
         }
 
         private void NewGame_Click(object sender, RoutedEventArgs e)
@@ -101,9 +101,18 @@ namespace Cliente
             }
         }
 
-        public void SendRequestStatus(bool status, string msg)
+        public void SendRequestStatus(int status)
         {
-            MessageBox.Show(msg);
+            /*
+             ---->Request
+                success = 0   ------> limpiar campo
+                error = 1
+                friends Already = 2
+                requested already = 3
+                rejected = 4,
+                userNotFound = 5,
+                AutoRequest = 6
+             * */
         }
 
         public void GetUsers(string[] usernamesConn, string[] usernamesDisc)
@@ -144,7 +153,7 @@ namespace Cliente
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            server_friend.Disconnected(idUser); 
+            //server_friend.Disconnected(idUser); 
         }
 
         public void UpdadteUsers(string[] usernamesConneted, string[] usernamesDisconnected)

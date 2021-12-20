@@ -11,13 +11,6 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GenerateCodeRegisterResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="GenerateCodeRegisterResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="VerificateCode">
     <xs:complexType>
       <xs:sequence>
@@ -28,8 +21,14 @@
   <xs:element name="ValidateCode">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="codeStatus" type="xs:boolean" />
-        <xs:element minOccurs="0" name="message" type="xs:int" />
+        <xs:element minOccurs="0" name="status" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CodeRecieve">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="status" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -72,8 +71,7 @@
   <xs:element name="SendRequestStatus">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="status" type="xs:boolean" />
-        <xs:element minOccurs="0" name="msg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="status" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -284,7 +282,7 @@
   <xs:element name="ShowRanking">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="rank" nillable="true" type="q4:TupleOfstringint" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="rank" nillable="true" type="q4:ArrayOfTupleOfstringint" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

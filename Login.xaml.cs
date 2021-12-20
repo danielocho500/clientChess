@@ -32,8 +32,8 @@ namespace Cliente
         public Login()
         {
             InitializeComponent();
-            InstanceContext instanceContext = new InstanceContext(this);
-            server = new LoginServiceClient(instanceContext);
+            /*InstanceContext instanceContext = new InstanceContext(this);
+            server = new LoginServiceClient(instanceContext);*/
         }
 
         public void LoginStatus(int status, int idUser) 
@@ -53,9 +53,17 @@ namespace Cliente
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
+            
+
+
             if (!string.IsNullOrEmpty(txtUsername.Text) && (!string.IsNullOrEmpty(pssPassword.Password)))
             {
-                server.Login(txtUsername.Text, pssPassword.Password);
+                //server.Login(txtUsername.Text, pssPassword.Password);
+                // solo por de prueba 
+                MainChess mainchess = new MainChess(1);
+                mainchess.Show();
+                this.Close();
+                // solo por de prueba
             }
             else
             {

@@ -133,14 +133,14 @@
   <wsdl:message name="IRegisterService_GenerateCodeRegister_InputMessage">
     <wsdl:part name="parameters" element="tns:GenerateCodeRegister" />
   </wsdl:message>
-  <wsdl:message name="IRegisterService_GenerateCodeRegister_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GenerateCodeRegisterResponse" />
-  </wsdl:message>
   <wsdl:message name="IRegisterService_VerificateCode_InputMessage">
     <wsdl:part name="parameters" element="tns:VerificateCode" />
   </wsdl:message>
   <wsdl:message name="IRegisterService_ValidateCode_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ValidateCode" />
+  </wsdl:message>
+  <wsdl:message name="IRegisterService_CodeRecieve_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:CodeRecieve" />
   </wsdl:message>
   <wsdl:message name="ILoginService_Login_InputMessage">
     <wsdl:part name="parameters" element="tns:Login" />
@@ -241,13 +241,15 @@
   <wsdl:portType name="IRegisterService">
     <wsdl:operation name="GenerateCodeRegister">
       <wsdl:input wsaw:Action="http://tempuri.org/IRegisterService/GenerateCodeRegister" message="tns:IRegisterService_GenerateCodeRegister_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IRegisterService/GenerateCodeRegisterResponse" message="tns:IRegisterService_GenerateCodeRegister_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="VerificateCode">
       <wsdl:input wsaw:Action="http://tempuri.org/IRegisterService/VerificateCode" message="tns:IRegisterService_VerificateCode_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ValidateCode">
       <wsdl:output wsaw:Action="http://tempuri.org/IRegisterService/ValidateCode" message="tns:IRegisterService_ValidateCode_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CodeRecieve">
+      <wsdl:output wsaw:Action="http://tempuri.org/IRegisterService/CodeRecieve" message="tns:IRegisterService_CodeRecieve_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ILoginService">
@@ -372,9 +374,6 @@
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="VerificateCode">
       <soap12:operation soapAction="http://tempuri.org/IRegisterService/VerificateCode" style="document" />
@@ -384,6 +383,12 @@
     </wsdl:operation>
     <wsdl:operation name="ValidateCode">
       <soap12:operation soapAction="http://tempuri.org/IRegisterService/ValidateCode" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CodeRecieve">
+      <soap12:operation soapAction="http://tempuri.org/IRegisterService/CodeRecieve" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

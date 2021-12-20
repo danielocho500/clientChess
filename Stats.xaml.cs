@@ -22,9 +22,9 @@ namespace Cliente
         public Stats(int id)
         {
             InitializeComponent();
-            InstanceContext instanceContext = new InstanceContext(this);
+            /*InstanceContext instanceContext = new InstanceContext(this);
             server = new GetStatsServiceClient(instanceContext);
-            server.getStats(id);
+            server.getStats(id);*/
         }
 
         public void ShowStats(int Matches_played, int Matches_win, decimal WinP, int eloMax, int eloActual)

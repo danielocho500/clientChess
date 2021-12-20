@@ -26,15 +26,15 @@ using System.Windows.Shapes;
 
 namespace Cliente
 {
-    public partial class Register : Window, IRegisterServiceCallback
+    public partial class Register : Window//, IRegisterServiceCallback
     {
         public RegisterServiceClient server;
 
         public Register()
         {
             InitializeComponent();
-            InstanceContext instanceContext = new InstanceContext(this);
-            server = new RegisterServiceClient(instanceContext);
+            /*InstanceContext instanceContext = new InstanceContext(this);
+            server = new RegisterServiceClient(instanceContext);*/
         }
 
         private void Register_Click(object sender, RoutedEventArgs e)
@@ -47,17 +47,7 @@ namespace Cliente
                     {
                         if (Safe_Password(pssPassword1.Password))
                         {
-                            bool generatedCode = server.GenerateCodeRegister(txtUsername.Text, pssPassword1.Password, txtEmail.Text);
-                            if (generatedCode)
-                            {
-                                btnValidate.Visibility = Visibility.Visible;
-                                lbCode.Visibility = Visibility.Visible;
-                                txtCode.Visibility = Visibility.Visible;
-                            }
-                            else
-                            {
-                                MessageBox.Show("Code was no generated");
-                            }
+                            server.GenerateCodeRegister(txtUsername.Text, pssPassword1.Password, txtEmail.Text);
                         }
                     }
                 }
@@ -143,17 +133,23 @@ namespace Cliente
             return true;
         }
 
-        public void ValidateCode(bool codeStatus, int messageCode)
+        public void ValidateCode(int status)
         {
-            string message = "";
-            if (messageCode == 0)
-                message = "Accoun Registered";
-            else
-                message = "Error, Account not registered";
+            /* 
+                 succes = 0 --> cerrar ventana
+                 fail = 1
+                 incorrect code = 2
+             */
+        }
 
-            MessageBox.Show(message);
-            if (codeStatus)
-                this.Close();
+        public void CodeRecieve(int status)
+        {
+            /*
+                codeGenerated = 0 --> habilitar campo para poner el código
+                fail = 1
+                emailRegistered = 2
+                userTAken = 3
+             */
         }
     }
 }

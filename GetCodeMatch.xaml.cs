@@ -19,19 +19,19 @@ namespace Cliente
     /// <summary>
     /// Interaction logic for GetCodeMatch.xaml
     /// </summary>
-    public partial class GetCodeMatch : Window, ISendInvitationServiceCallback
+    public partial class GetCodeMatch : Window//, ISendInvitationServiceCallback
     {
         public SendInvitationServiceClient server;
         public int idUser;
         public string codeMatch;
         public GetCodeMatch(int idUser_)
         {
-            idUser = idUser_;
             InitializeComponent();
+            /*idUser = idUser_;
 
             InstanceContext instanceContext = new InstanceContext(this);
             server = new SendInvitationServiceClient(instanceContext);
-            server.GenerateCodeInvitation(idUser);
+            server.GenerateCodeInvitation(idUser);*/
         }
 
         public void JoinMatch(string usernameRival, string username, string codeMatch, bool white)
@@ -49,14 +49,14 @@ namespace Cliente
 
         private void BtnExit_Click(object sender, RoutedEventArgs e)
         {
-            server.DeleteCodeInvitation(codeMatch);
+            //server.DeleteCodeInvitation(codeMatch);
             this.Close();
         }
 
-        void ISendInvitationServiceCallback.GetCodeMatch(bool status, string code)
+        /*void ISendInvitationServiceCallback.GetCodeMatch(bool status, string code)
         {
             codeMatch = code;
             lbCode.Content = code;
-        }
+        }*/
     }
 }

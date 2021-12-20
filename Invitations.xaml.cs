@@ -36,10 +36,10 @@ namespace Cliente
         public Invitations(int idUser)
         {
             InitializeComponent();
-            InstanceContext instanceContext = new InstanceContext(this);
+            /*InstanceContext instanceContext = new InstanceContext(this);
             server = new RespondServiceClient(instanceContext);
             server.GetRequests(idUser);
-            idUserSend = idUser;
+            idUserSend = idUser;*/
         }
 
         public void ReciveRequest(Dictionary<int, string> users)

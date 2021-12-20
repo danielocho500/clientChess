@@ -24,9 +24,9 @@ namespace Cliente
         {
             InitializeComponent();
 
-            idUser = idUser_;
+            /*idUser = idUser_;
             InstanceContext instanceContext = new InstanceContext(this);
-            server = new SendInvitationServiceClient(instanceContext);
+            server = new SendInvitationServiceClient(instanceContext);*/
 
         }
 

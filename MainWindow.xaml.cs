@@ -30,7 +30,7 @@ using System.Windows.Shapes;
 namespace Cliente
 {
 
-    public partial class MainWindow : Window, IConnectionServiceCallback
+    public partial class MainWindow : Window //, IConnectionServiceCallback
     {
 
         public ConnectionServiceClient server;
@@ -38,7 +38,7 @@ namespace Cliente
         {
             InitializeComponent();
 
-            btnLogin.IsEnabled = false;
+            /*btnLogin.IsEnabled = false;
             btnRegister.IsEnabled = false;
 
             InstanceContext instanceContext = new InstanceContext(this);
@@ -48,12 +48,13 @@ namespace Cliente
             {
                 server.Check();
             }
+
             catch (Exception e)
             {
                 MessageBox.Show("No connection with the server");
                 Application.Current.Shutdown();
                 Console.WriteLine(e);
-            }
+            }*/
         }
 
         private void Login_Click (object sender, RoutedEventArgs e)
