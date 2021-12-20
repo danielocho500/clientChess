@@ -1,4 +1,13 @@
-﻿using Cliente.SuperChess;
+﻿/******************************************************************/
+/* Archivo: Invitations.xaml.cs                                   */
+/* Programador: Daniel Diaz                                       */
+/* Fecha: 26/Oct/2021                                             */
+/* Fecha modificación:  29/Oct/2021                               */
+/* Descripción: Ventana para aceptar o rechazar solicitus de      */
+/*              amistad                                           */
+/******************************************************************/
+
+using Cliente.SuperChess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +44,6 @@ namespace Cliente
         public void ReciveRequest(Dictionary<int, string> users)
         {
             request = users;
-
             lboxRequest.Items.Clear();
             
             foreach (var userkey in users.Keys)
@@ -62,14 +70,18 @@ namespace Cliente
             {
                 int idUserRecive = -1;
                 userIteamName = lboxRequest.SelectedItem.ToString();
+
                 foreach (var requestKey in request.Keys)
                 {
+
                     if (request[requestKey] == userIteamName)
                     {
                         idUserRecive = requestKey;
                         break;
                     }
+
                 }
+
                 server.confirmRequest(true, idUserSend, idUserRecive);
                 server.getRequests(idUserSend);
             }
@@ -88,6 +100,7 @@ namespace Cliente
             {
                 int idUserRecive = -1;
                 userIteamName = lboxRequest.SelectedItem.ToString();
+
                 foreach (var requestKey in request.Keys)
                 {
                     if (request[requestKey] == userIteamName)
@@ -96,6 +109,7 @@ namespace Cliente
                         break;
                     }
                 }
+
                 server.confirmRequest(false, idUserSend, idUserRecive);
                 server.getRequests(idUserSend);
             }

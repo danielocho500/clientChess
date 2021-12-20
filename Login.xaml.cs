@@ -1,4 +1,13 @@
-﻿using Cliente.SuperChess;
+﻿/******************************************************************/
+/* Archivo: Login.xaml.cs                                         */
+/* Programador: Raul Peredo                                       */
+/* Fecha: 18/Oct/2021                                             */
+/* Fecha modificación:  22/Oct/2021                               */
+/* Descripción: Ventana para iniciar sesion en el sistema         */
+/******************************************************************/
+
+
+using Cliente.SuperChess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +25,6 @@ using System.Windows.Shapes;
 
 namespace Cliente
 {
-
     public partial class Login : Window, ILoginServiceCallback
     {
         public LoginServiceClient server;
@@ -29,7 +37,6 @@ namespace Cliente
 
         public void LoginStatus(bool status, string message, int idUser) 
         { 
-        
             if (status == true)
             {
                 MessageBox.Show(message);
@@ -51,12 +58,11 @@ namespace Cliente
             }
             else
             {
-                MessageBox.Show("Campos vacios");
-                
+                MessageBox.Show("Empty fields");
             }
         }
 
-        private void Regresar_Click(object sender, RoutedEventArgs e)
+        private void Back_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainw = new MainWindow();
             mainw.Show();

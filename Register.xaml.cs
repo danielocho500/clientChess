@@ -1,4 +1,12 @@
-﻿using Cliente.SuperChess;
+﻿/******************************************************************/
+/* Archivo: Register.xaml.cs                                      */
+/* Programador: Raul Peredo                                       */
+/* Fecha: 18/Oct/2021                                             */
+/* Fecha modificación:  22/Oct/2021                               */
+/* Descripción: Ventana de registro para un nuevo usuario         */
+/******************************************************************/
+
+using Cliente.SuperChess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,68 +25,68 @@ using System.Windows.Shapes;
 
 namespace Cliente
 {
-
     public partial class Register : Window, IRegisterServiceCallback
     {
         public RegisterServiceClient server;
+
         public Register()
         {
             InitializeComponent();
             InstanceContext instanceContext = new InstanceContext(this);
             server = new RegisterServiceClient(instanceContext);
         }
-        private void Registrarse_Click(object sender, RoutedEventArgs e)
+
+        private void Register_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(txtUsername.Text) || !string.IsNullOrEmpty(txtEmail.Text) || !string.IsNullOrEmpty(pssPassword1.Password) || !string.IsNullOrEmpty(pssPassword2.Password))
             {
-                if (Verificar_Contrasenas_Iguales() == true)
+                if (Check_Passwords () == true)
                 {
-                    if (Validar_Correo())
+                    if (Validate_Email())
                     {
-                        if (Contraseña_Segura(pssPassword1.Password))
+                        if (Safe_Password(pssPassword1.Password))
                         {
                             bool generatedCode = server.generateCode(txtUsername.Text, pssPassword1.Password, txtEmail.Text);
                             if (generatedCode)
                             {
-                                btnValidar.Visibility = Visibility.Visible;
-                                lbCodigo.Visibility = Visibility.Visible;
-                                txtCodigo.Visibility = Visibility.Visible;
+                                btnValidate.Visibility = Visibility.Visible;
+                                lbCode.Visibility = Visibility.Visible;
+                                txtCode.Visibility = Visibility.Visible;
                             }
                             else
                             {
                                 MessageBox.Show("Code was no generated");
-                            }
-                                
+                            }     
                         }
                     }
                 }
                 else
                 {
-                    if (Verificar_Contrasenas_Iguales() == false)
+                    if (Check_Passwords() == false)
                     {
-                        MessageBox.Show("Las contraseñas no coinciden");
+                        MessageBox.Show("The passwords are not the same");
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Campos Faltantes");
+                MessageBox.Show("Missing fields");
             }
         }
 
-        private void Cancelar_Click(object sender, RoutedEventArgs e)
+        private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
-        private void Validar_Click(object sender, RoutedEventArgs e)
+        private void Validate_Click(object sender, RoutedEventArgs e)
         {
-            server.verificateCode(txtCodigo.Text);
+            server.verificateCode(txtCode.Text);
         }
 
-        //Validaciones de campos
+        //Validaciones de campos y formatos
 
-        private bool Verificar_Contrasenas_Iguales()
+        private bool Check_Passwords()
         {
             string pass1 = pssPassword1.Password;
             string pass2 = pssPassword2.Password;
@@ -90,16 +98,15 @@ namespace Cliente
             {
                 return false;
             }
-
         }
 
-        private bool Validar_Correo()
+        private bool Validate_Email()
         {
             Regex regex = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", RegexOptions.CultureInvariant | RegexOptions.Singleline);
             return regex.IsMatch(txtEmail.Text);
         }
 
-        static bool Contraseña_Segura(string passWord)
+        static bool Safe_Password(string passWord)
         {
             int validConditions = 0;
             foreach (char c in passWord)

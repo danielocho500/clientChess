@@ -1,4 +1,14 @@
-﻿
+﻿/******************************************************************/
+/* Archivo: MainWindow.xaml.cs                                    */
+/* Programador: Raul Peredo                                       */
+/* Fecha: 18/Oct/2021                                             */
+/* Fecha modificación:  22/Oct/2021                               */
+/* Descripción: Ventana principal ponde se decide si quiere       */
+/*              iniciar sesion o desea registrase                 */
+/******************************************************************/
+
+
+
 using Cliente.SuperChess;
 using System;
 using System.Collections.Generic;

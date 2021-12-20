@@ -23,12 +23,12 @@
         <PasswordBox x:Name="pssPassword1" Margin="282,293,189,323" Grid.Column="0" Grid.Row="0" FontSize="25"/>
         <PasswordBox x:Name="pssPassword2" Margin="282,0,189,253" Height="36" VerticalAlignment="Bottom" Grid.Column="0" Grid.Row="0" FontSize="25" d:LayoutOverrides="VerticalAlignment"/>
 
-        <Button x:Name="btnRegistrase" Content="_Register" Height="40" Margin="0,0,68,84" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="146" Click="Registrarse_Click" d:LayoutOverrides="VerticalAlignment" Background="Transparent" Foreground="White" FontSize="20" BorderBrush="Transparent"/>
-        <Button x:Name="btnCancelar" Content="_Cancel" Height="38" Margin="14,0,0,50" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="99" Click="Cancelar_Click" d:LayoutOverrides="VerticalAlignment" Background="Transparent" Foreground="White" FontSize="20" BorderBrush="Transparent"/>
+        <Button x:Name="btnRegister" Content="_Register" Height="40" Margin="0,0,68,84" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="146" Click="Register_Click" d:LayoutOverrides="VerticalAlignment" Background="Transparent" Foreground="White" FontSize="20" BorderBrush="Transparent"/>
+        <Button x:Name="btnCancel" Content="_Cancel" Height="38" Margin="14,0,0,50" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="99" Click="Cancel_Click" d:LayoutOverrides="VerticalAlignment" Background="Transparent" Foreground="White" FontSize="20" BorderBrush="Transparent"/>
 
-        <Label x:Name ="lbCodigo" Content="Codigo:" Margin="193,0,0,45" HorizontalAlignment="Left" Width="118" FontSize="25" Height="43" VerticalAlignment="Bottom" RenderTransformOrigin="0.485,-0.321" Visibility="Hidden" Foreground="White"/>
-        <TextBox x:Name="txtCodigo" Margin="299,0,494,45" Height="43" VerticalAlignment="Bottom" Grid.Column="0" Grid.Row="0" FontSize="25" d:LayoutOverrides="VerticalAlignment" Visibility="Hidden"/>
-        <Button x:Name="btnValidar" Content="Validar" Height="40" Margin="0,0,338,46" VerticalAlignment="Bottom" Click="Validar_Click" Background="Transparent" Foreground="White" FontSize="20" BorderBrush="White" d:LayoutOverrides="VerticalAlignment" Visibility="Hidden" HorizontalAlignment="Right" Width="146"/>
+        <Label x:Name ="lbCode" Content="Codigo:" Margin="193,0,0,45" HorizontalAlignment="Left" Width="118" FontSize="25" Height="43" VerticalAlignment="Bottom" RenderTransformOrigin="0.485,-0.321" Visibility="Hidden" Foreground="White"/>
+        <TextBox x:Name="txtCode" Margin="299,0,494,45" Height="43" VerticalAlignment="Bottom" Grid.Column="0" Grid.Row="0" FontSize="25" d:LayoutOverrides="VerticalAlignment" Visibility="Hidden"/>
+        <Button x:Name="btnValidate" Content="Validar" Height="40" Margin="0,0,338,46" VerticalAlignment="Bottom" Click="Validate_Click" Background="Transparent" Foreground="White" FontSize="20" BorderBrush="White" d:LayoutOverrides="VerticalAlignment" Visibility="Hidden" HorizontalAlignment="Right" Width="146"/>
 
     </Grid>
 </Window>

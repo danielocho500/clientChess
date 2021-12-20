@@ -1,4 +1,13 @@
-﻿using Cliente.SuperChess;
+﻿/******************************************************************/
+/* Archivo: MainChess.xaml.cs                                     */
+/* Programador: Daniel Diaz                                       */
+/* Fecha: 26/Oct/2021                                             */
+/* Fecha modificación:  29/Oct/2021                               */
+/* Descripción: Ventana principal del sistema donde se accede a   */
+/*              las diferentes funcionalidades del juego          */
+/******************************************************************/
+
+using Cliente.SuperChess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,11 +25,14 @@ using System.Windows.Shapes;
 
 namespace Cliente
 {
-    public partial class MainChess : Window, IFriendServiceCallback
+    public partial class MainChess : Window, IFriendServiceCallback, IRequestServiceCallback
     {
         public RequestServiceClient server_Request;
         public FriendServiceClient server_friend;
         public int idUser;
+        public string[] usersConnected;
+        public string[] usersDisConnected;
+
         public MainChess(int idUser_)
         {
             InitializeComponent();
@@ -29,7 +41,6 @@ namespace Cliente
             server_friend = new FriendServiceClient(instanceContext);
             idUser = idUser_;
             server_friend.Connected(idUser_);
-            
         }
 
         private void NewGame_Click(object sender, RoutedEventArgs e)
@@ -56,9 +67,7 @@ namespace Cliente
         {
             Login lg = new Login();
             lg.Show();
-
             server_friend.Disconnected(idUser);
-
             this.Close();
         }
 
@@ -71,7 +80,6 @@ namespace Cliente
         {
             Invitations invitations = new Invitations(idUser);
             invitations.Show();
-
         }
 
         private void AddUser_Click(object sender, RoutedEventArgs e)
@@ -80,7 +88,8 @@ namespace Cliente
             {
                 server_Request.sendRequest(txtAddUser.Text,idUser);
             }
-            else{
+            else
+            {
                 MessageBox.Show("Please, enter an username");
             }
         }
@@ -90,35 +99,64 @@ namespace Cliente
             MessageBox.Show(msg);
         }
 
-        private void TestChatW_Click(object sender, RoutedEventArgs e)
+        public void getUsers(string[] usernamesConn, string[] usernamesDisc)
         {
-            Chat ch = new Chat();
-            ch.Show();
-        }
-
-        public void getUsers(string[] usernames)
-        {
-            string imp = "";
-            foreach (string username in usernames)
-            {
-                imp += username;
-            }
-            MessageBox.Show("total: " + imp);
+            usersConnected = usernamesConn.ToArray();
+            usersDisConnected = usernamesDisc.ToArray();
+            updadteUsers(usernamesConn, usernamesDisc);
         }
 
         public void newConecction(string username)
         {
-            MessageBox.Show(username + "Se conecto");
+            List<string> usersConnectedAux = usersConnected.ToList();
+            List<string> usersDisconectAux = usersDisConnected.ToList();
+            usersConnectedAux.Add(username);
+            usersDisconectAux.Remove(username);
+            usersConnected = usersConnectedAux.ToArray();
+            usersDisConnected = usersDisconectAux.ToArray();
+            updadteUsers(usersConnected,usersDisConnected);
         }
 
         public void newDisconecction(string username)
         {
-            MessageBox.Show(username + "se desconecto");
+            List<string> usersConnectedAux = usersConnected.ToList();
+            List<string> usersDisconectAux = usersDisConnected.ToList();
+            usersConnectedAux.Remove(username);
+
+            if (!usersDisconectAux.Contains(username))
+            {
+                usersDisconectAux.Add(username);
+            }
+
+            usersConnected = usersConnectedAux.ToArray();
+            usersDisConnected = usersDisconectAux.ToArray();
+            updadteUsers(usersConnected, usersDisConnected);
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            server_friend.Disconnected(idUser);
+            server_friend.Disconnected(idUser); 
+        }
+
+        public void updadteUsers(string[] usernamesConneted, string[] usernamesDisconnected)
+        {
+            listViewUsers.Items.Clear();
+            string con = "";
+            string dis = "";
+
+            foreach (string user in usernamesConneted)
+            {
+                listViewUsers.Items.Add("✅" + user);
+                listViewUsers.ScrollIntoView(listViewUsers.Items.Count - 1);
+                con += " " + user;
+            }
+
+            foreach (string user in usernamesDisconnected)
+            {
+                listViewUsers.Items.Add("[X]" + user);
+                listViewUsers.ScrollIntoView(listViewUsers.Items.Count - 1);
+                dis += " " + user; 
+            }
         }
     }
 }
