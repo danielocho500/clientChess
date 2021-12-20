@@ -583,6 +583,15 @@ namespace Cliente.Properties.Langs {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Fields with blanks.
+        /// </summary>
+        public static string space {
+            get {
+                return ResourceManager.GetString("space", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Stats.
         /// </summary>
         public static string stats {

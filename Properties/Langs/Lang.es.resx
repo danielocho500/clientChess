@@ -291,6 +291,9 @@
   <data name="selectUser" xml:space="preserve">
     <value>Selecciona un usuario en la lista</value>
   </data>
+  <data name="space" xml:space="preserve">
+    <value>Campos con espacios en blanco</value>
+  </data>
   <data name="stats" xml:space="preserve">
     <value>Estadisticas</value>
   </data>

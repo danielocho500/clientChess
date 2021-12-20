@@ -48,7 +48,28 @@ namespace Cliente
                     {
                         if (Safe_Password(pssPassword1.Password))
                         {
-                            server.GenerateCodeRegister(txtUsername.Text, pssPassword1.Password, txtEmail.Text);
+                            if (Blanks(pssPassword1.Password) <= 0)
+                            {
+                                if (Blanks(txtUsername.Text) <= 0)
+                                {
+                                    if (Blanks(pssPassword2.Password) <= 0)
+                                    {
+                                        server.GenerateCodeRegister(txtUsername.Text, pssPassword1.Password, txtEmail.Text);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show(Lang.space);
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show(Lang.space);
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show(Lang.space);
+                            }
                         }
                     }
                 }
@@ -89,6 +110,24 @@ namespace Cliente
             {
                 return false;
             }
+        }
+
+        public int Blanks(string text)
+        {
+            int cont = 0;
+            string word;
+
+            for (int i = 0; i < text.Length; i++)
+            {
+                word = text.Substring(i, 1);
+
+                if (word == " ")
+                {
+                    cont++;
+                }
+            }
+
+            return cont;
         }
 
         private bool Validate_Email()
