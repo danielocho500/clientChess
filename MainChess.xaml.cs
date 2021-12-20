@@ -65,7 +65,7 @@ namespace Cliente
 
         private void Ranking_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Ranking... in development");
+            new Ranking().ShowDialog();
         }
 
         private void Logout_Click(object sender, RoutedEventArgs e)

@@ -95,7 +95,7 @@ namespace Cliente.ChessService {
     public interface ILoginServiceCallback {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILoginService/LoginStatus")]
-        void LoginStatus(bool status, string message, int idUser);
+        void LoginStatus(int status, int idUser);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -647,6 +647,61 @@ namespace Cliente.ChessService {
         
         public System.Threading.Tasks.Task getStatsAsync(int id) {
             return base.Channel.getStatsAsync(id);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ChessService.IRankingService", CallbackContract=typeof(Cliente.ChessService.IRankingServiceCallback))]
+    public interface IRankingService {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IRankingService/getRanking")]
+        void getRanking();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IRankingService/getRanking")]
+        System.Threading.Tasks.Task getRankingAsync();
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IRankingServiceCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IRankingService/ShowRanking")]
+        void ShowRanking(System.Tuple<string, int> rank);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IRankingServiceChannel : Cliente.ChessService.IRankingService, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class RankingServiceClient : System.ServiceModel.DuplexClientBase<Cliente.ChessService.IRankingService>, Cliente.ChessService.IRankingService {
+        
+        public RankingServiceClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
+        }
+        
+        public RankingServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
+        }
+        
+        public RankingServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public RankingServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public RankingServiceClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
+        }
+        
+        public void getRanking() {
+            base.Channel.getRanking();
+        }
+        
+        public System.Threading.Tasks.Task getRankingAsync() {
+            return base.Channel.getRankingAsync();
         }
     }
 }

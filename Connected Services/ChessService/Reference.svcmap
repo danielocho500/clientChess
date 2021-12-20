@@ -23,9 +23,10 @@
   </MetadataSources>
   <Metadata>
     <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="90617fdc-4ebe-4446-aa11-53649a5ddaf6" SourceId="1" SourceUrl="http://localhost:8080/?xsd=xsd2" />
-    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="b30121c7-fee0-4826-bc88-ed6aaa9f7886" SourceId="1" SourceUrl="http://localhost:8080/?xsd=xsd0" />
-    <MetadataFile FileName="ChessService.wsdl" MetadataType="Wsdl" ID="9fee19a9-2b8c-4a6f-9ba2-76d5da379cd2" SourceId="1" SourceUrl="http://localhost:8080/?wsdl" />
     <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="0835c761-8a2e-4ad5-b0bf-2894966126a5" SourceId="1" SourceUrl="http://localhost:8080/?xsd=xsd1" />
+    <MetadataFile FileName="ChessService.wsdl" MetadataType="Wsdl" ID="9fee19a9-2b8c-4a6f-9ba2-76d5da379cd2" SourceId="1" SourceUrl="http://localhost:8080/?wsdl" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="62d1e78e-a8b1-43b2-80c0-8cb895108a50" SourceId="1" SourceUrl="http://localhost:8080/?xsd=xsd3" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="b30121c7-fee0-4826-bc88-ed6aaa9f7886" SourceId="1" SourceUrl="http://localhost:8080/?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

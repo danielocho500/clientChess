@@ -36,18 +36,18 @@ namespace Cliente
             server = new LoginServiceClient(instanceContext);
         }
 
-        public void LoginStatus(bool status, string message, int idUser) 
+        public void LoginStatus(int status, int idUser) 
         { 
-            if (status == true)
+            if (status == 0)
             {
-                MessageBox.Show(message);
+                MessageBox.Show("success");
                 MainChess mainchess = new MainChess(idUser);
                 mainchess.Show();
                 this.Close();
             }
             else
             {
-                MessageBox.Show(message);
+                MessageBox.Show("nope nope");
             }
         }
 
@@ -59,7 +59,7 @@ namespace Cliente
             }
             else
             {
-                MessageBox.Show("Empty f-ields");
+                MessageBox.Show("Empty fields");
             }
         }
 

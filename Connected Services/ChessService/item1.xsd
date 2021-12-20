@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:8080/?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://localhost:8080/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System" />
   <xs:element name="GenerateCodeRegister">
     <xs:complexType>
       <xs:sequence>
@@ -43,8 +44,7 @@
   <xs:element name="LoginStatus">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="status" type="xs:boolean" />
-        <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="status" type="xs:int" />
         <xs:element minOccurs="0" name="idUser" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
@@ -273,6 +273,18 @@
         <xs:element minOccurs="0" name="WinP" type="xs:decimal" />
         <xs:element minOccurs="0" name="eloMax" type="xs:int" />
         <xs:element minOccurs="0" name="eloActual" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getRanking">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ShowRanking">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="rank" nillable="true" type="q4:TupleOfstringint" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

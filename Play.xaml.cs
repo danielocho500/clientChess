@@ -30,7 +30,7 @@ namespace Cliente
         private SquareStatus selectedSquareValue = SquareStatus.disabled;
 
         private SquareStatus[] whitePieces = new SquareStatus[] { SquareStatus.WhitePawn, SquareStatus.WhiteBishop, SquareStatus.WhiteKing, SquareStatus.WhiteQueen, SquareStatus.WhiteKnight, SquareStatus.WhiteTower };
-        private SquareStatus[] blackPieces = new SquareStatus[] { SquareStatus.BlackPawn, SquareStatus.BlackBishop, SquareStatus.BlackKing, SquareStatus.BlackQueen, SquareStatus.BlackKnight, SquareStatus.WhiteTower };
+        private SquareStatus[] blackPieces = new SquareStatus[] { SquareStatus.BlackPawn, SquareStatus.BlackBishop, SquareStatus.BlackKing, SquareStatus.BlackQueen, SquareStatus.BlackKnight, SquareStatus.BlackTower };
         private SquareStatus[] toDefeatPieces = new SquareStatus[] { SquareStatus.BlackPawnToDefeat, SquareStatus.WhitePawnToDefeat, SquareStatus.BlackBishopToDefeat, SquareStatus.WhiteBishopToDefeat, SquareStatus.BlackKingToDefeat, SquareStatus.WhiteKingToDefeat, SquareStatus.BlackKnightToDefeat, SquareStatus.WhiteKingToDefeat, SquareStatus.BlackQueenToDefeat, SquareStatus.WhiteQueenToDefeat, SquareStatus.BlackTowerToDefeat, SquareStatus.WhiteTowerToDefeat };
 
         System.Windows.Threading.DispatcherTimer dispatcherTimer;
@@ -149,8 +149,7 @@ namespace Cliente
 
 
         public void MatchEnds(bool youWon, int oldElo, int newElo)
-        {
-            
+        {           
             givenUP = true;
             string msg = (youWon) ? "You WIN!!!!" : "You Lose :c";
             msg += "  Elo: " + oldElo + " -> " + newElo;
@@ -247,6 +246,118 @@ namespace Cliente
                         imgBlackKingToDefeat.Stretch = Stretch.Fill;
                         button.Content = imgBlackKingToDefeat;
                         break;
+
+                    case SquareStatus.WhiteKnight:
+                        Image imgWhiteKnight = new Image();
+                        imgWhiteKnight.Source = new BitmapImage(new Uri("Images/WhiteKnight.png", UriKind.Relative));
+                        imgWhiteKnight.Stretch = Stretch.Fill;
+                        button.Content = imgWhiteKnight;
+                        break;
+
+                    case SquareStatus.WhiteKnightToDefeat:
+                        Image imgWhiteKnightToDefeat = new Image();
+                        imgWhiteKnightToDefeat.Source = new BitmapImage(new Uri("Images/WhiteKnightToDefeat.png", UriKind.Relative));
+                        imgWhiteKnightToDefeat.Stretch = Stretch.Fill;
+                        button.Content = imgWhiteKnightToDefeat;
+                        break;
+
+                    case SquareStatus.BlackKnight:
+                        Image imgBlackKnightg = new Image();
+                        imgBlackKnightg.Source = new BitmapImage(new Uri("Images/BlackKnight.png", UriKind.Relative));
+                        imgBlackKnightg.Stretch = Stretch.Fill;
+                        button.Content = imgBlackKnightg;
+                        break;
+
+                    case SquareStatus.BlackKnightToDefeat:
+                        Image imgBlackKnightToDefeat = new Image();
+                        imgBlackKnightToDefeat.Source = new BitmapImage(new Uri("Images/BlackKnightToDefeat.png", UriKind.Relative));
+                        imgBlackKnightToDefeat.Stretch = Stretch.Fill;
+                        button.Content = imgBlackKnightToDefeat;
+                        break;
+
+                    case SquareStatus.WhiteTower:
+                        Image imgWhiteTower = new Image();
+                        imgWhiteTower.Source = new BitmapImage(new Uri("Images/WhiteTower.png", UriKind.Relative));
+                        imgWhiteTower.Stretch = Stretch.Fill;
+                        button.Content = imgWhiteTower;
+                        break;
+
+                    case SquareStatus.WhiteTowerToDefeat:
+                        Image imgWhiteTowerToDefeat = new Image();
+                        imgWhiteTowerToDefeat.Source = new BitmapImage(new Uri("Images/WhiteTowerToDefeat.png", UriKind.Relative));
+                        imgWhiteTowerToDefeat.Stretch = Stretch.Fill;
+                        button.Content = imgWhiteTowerToDefeat;
+                        break;
+
+                    case SquareStatus.BlackTower:
+                        Image imgBlackTower = new Image();
+                        imgBlackTower.Source = new BitmapImage(new Uri("Images/BlackTower.png", UriKind.Relative));
+                        imgBlackTower.Stretch = Stretch.Fill;
+                        button.Content = imgBlackTower;
+                        break;
+
+                    case SquareStatus.BlackTowerToDefeat:
+                        Image imgBlackTowerToDefeat = new Image();
+                        imgBlackTowerToDefeat.Source = new BitmapImage(new Uri("Images/BlackTowerToDefeat.png", UriKind.Relative));
+                        imgBlackTowerToDefeat.Stretch = Stretch.Fill;
+                        button.Content = imgBlackTowerToDefeat;
+                        break;
+
+                    case SquareStatus.WhiteBishop:
+                        Image imgWhiteBishop = new Image();
+                        imgWhiteBishop.Source = new BitmapImage(new Uri("Images/WhiteBishop.png", UriKind.Relative));
+                        imgWhiteBishop.Stretch = Stretch.Fill;
+                        button.Content = imgWhiteBishop;
+                        break;
+
+                    case SquareStatus.WhiteBishopToDefeat:
+                        Image imgWhiteBishopToDefeat = new Image();
+                        imgWhiteBishopToDefeat.Source = new BitmapImage(new Uri("Images/WhiteBishopToDefeat.png", UriKind.Relative));
+                        imgWhiteBishopToDefeat.Stretch = Stretch.Fill;
+                        button.Content = imgWhiteBishopToDefeat;
+                        break;
+
+                    case SquareStatus.BlackBishop:
+                        Image imgBlackBishop = new Image();
+                        imgBlackBishop.Source = new BitmapImage(new Uri("Images/BlackBishop.png", UriKind.Relative));
+                        imgBlackBishop.Stretch = Stretch.Fill;
+                        button.Content = imgBlackBishop;
+                        break;
+
+                    case SquareStatus.BlackBishopToDefeat:
+                        Image imgBlackBishopToDefeat = new Image();
+                        imgBlackBishopToDefeat.Source = new BitmapImage(new Uri("Images/BlackBishopToDefeat.png", UriKind.Relative));
+                        imgBlackBishopToDefeat.Stretch = Stretch.Fill;
+                        button.Content = imgBlackBishopToDefeat;
+                        break;
+
+                    case SquareStatus.WhiteQueen:
+                        Image imgWhiteQueen = new Image();
+                        imgWhiteQueen.Source = new BitmapImage(new Uri("Images/WhiteQueen.png", UriKind.Relative));
+                        imgWhiteQueen.Stretch = Stretch.Fill;
+                        button.Content = imgWhiteQueen;
+                        break;
+
+                    case SquareStatus.WhiteQueenToDefeat:
+                        Image imgWhiteQueenToDefeat = new Image();
+                        imgWhiteQueenToDefeat.Source = new BitmapImage(new Uri("Images/WhiteQueenToDefeat.png", UriKind.Relative));
+                        imgWhiteQueenToDefeat.Stretch = Stretch.Fill;
+                        button.Content = imgWhiteQueenToDefeat;
+                        break;
+
+                    case SquareStatus.BlackQueen:
+                        Image imgBlackQueen = new Image();
+                        imgBlackQueen.Source = new BitmapImage(new Uri("Images/BlackQueen.png", UriKind.Relative));
+                        imgBlackQueen.Stretch = Stretch.Fill;
+                        button.Content = imgBlackQueen;
+                        break;
+
+                    case SquareStatus.BlackQueenToDefeat:
+                        Image imgBlackQueenToDefeat = new Image();
+                        imgBlackQueenToDefeat.Source = new BitmapImage(new Uri("Images/BlackQueenToDefeat.png", UriKind.Relative));
+                        imgBlackQueenToDefeat.Stretch = Stretch.Fill;
+                        button.Content = imgBlackQueenToDefeat;
+                        break;
                 }
             }
         }
@@ -315,9 +426,42 @@ namespace Cliente
                     btnMove = Moves.getMovesKing(false, buttonInfo.GetColumn(), buttonInfo.GetRow(), Squares);
                     selectedSquareValue = SquareStatus.BlackKing;
                     break;
+                case SquareStatus.WhiteKnight:
+                    btnMove = Moves.getMovesKnight(true, buttonInfo.GetColumn(), buttonInfo.GetRow(), Squares);
+                    selectedSquareValue = SquareStatus.WhiteKnight;
+                    break;
+                case SquareStatus.BlackKnight:
+                    btnMove = Moves.getMovesKnight(false, buttonInfo.GetColumn(), buttonInfo.GetRow(), Squares);
+                    selectedSquareValue = SquareStatus.BlackKnight;
+                    break;
+                case SquareStatus.WhiteTower:
+                    btnMove = Moves.getMovesTower(true, buttonInfo.GetColumn(), buttonInfo.GetRow(), Squares);
+                    selectedSquareValue = SquareStatus.WhiteTower;
+                    break;
+                case SquareStatus.BlackTower:
+                    btnMove = Moves.getMovesTower(false, buttonInfo.GetColumn(), buttonInfo.GetRow(), Squares);
+                    selectedSquareValue = SquareStatus.BlackTower;
+                    break;
+                case SquareStatus.WhiteBishop:
+                    btnMove = Moves.getMovesBishop(true, buttonInfo.GetColumn(), buttonInfo.GetRow(), Squares);
+                    selectedSquareValue = SquareStatus.WhiteBishop;
+                    break;
+                case SquareStatus.BlackBishop:
+                    btnMove = Moves.getMovesBishop(false, buttonInfo.GetColumn(), buttonInfo.GetRow(), Squares);
+                    selectedSquareValue = SquareStatus.BlackBishop;
+                    break;
+                case SquareStatus.WhiteQueen:
+                    btnMove = Moves.getMovesQueen(true, buttonInfo.GetColumn(), buttonInfo.GetRow(), Squares);
+                    selectedSquareValue = SquareStatus.WhiteQueen;
+                    break;
+                case SquareStatus.BlackQueen:
+                    btnMove = Moves.getMovesQueen(false, buttonInfo.GetColumn(), buttonInfo.GetRow(), Squares);
+                    selectedSquareValue = SquareStatus.BlackQueen;
+                    break;
             }
             setOptionMoves(btnMove);
         }
+
 
         public void setOptionMoves(List<string> btnMove)
         {
@@ -346,6 +490,30 @@ namespace Cliente
                             break;
                         case SquareStatus.WhiteKing:
                             Squares[btn].setSquareStatus(SquareStatus.WhiteKingToDefeat);
+                            break;
+                        case SquareStatus.WhiteKnight:
+                            Squares[btn].setSquareStatus(SquareStatus.WhiteKnightToDefeat);
+                            break;
+                        case SquareStatus.BlackKnight:
+                            Squares[btn].setSquareStatus(SquareStatus.BlackKnightToDefeat);
+                            break;
+                        case SquareStatus.WhiteTower:
+                            Squares[btn].setSquareStatus(SquareStatus.WhiteTowerToDefeat);
+                            break;
+                        case SquareStatus.BlackTower:
+                            Squares[btn].setSquareStatus(SquareStatus.BlackTowerToDefeat);
+                            break;
+                        case SquareStatus.WhiteBishop:
+                            Squares[btn].setSquareStatus(SquareStatus.WhiteBishopToDefeat);
+                            break;
+                        case SquareStatus.BlackBishop:
+                            Squares[btn].setSquareStatus(SquareStatus.BlackBishopToDefeat);
+                            break;
+                        case SquareStatus.WhiteQueen:
+                            Squares[btn].setSquareStatus(SquareStatus.WhiteQueenToDefeat);
+                            break;
+                        case SquareStatus.BlackQueen:
+                            Squares[btn].setSquareStatus(SquareStatus.BlackQueenToDefeat);
                             break;
                     }
                 }
@@ -377,32 +545,32 @@ namespace Cliente
 
         public void PrepareDictionary()
         {
-            Squares["a1"] = new ButtonInfo(SquareStatus.disabled, 1, 1, a1);
+            Squares["a1"] = new ButtonInfo(SquareStatus.WhiteTower, 1, 1, a1);
             Squares["a2"] = new ButtonInfo(SquareStatus.WhitePawn, 1, 2, a2);
             Squares["a3"] = new ButtonInfo(SquareStatus.disabled, 1, 3, a3);
             Squares["a4"] = new ButtonInfo(SquareStatus.disabled, 1, 4, a4);
             Squares["a5"] = new ButtonInfo(SquareStatus.disabled, 1, 5, a5);
             Squares["a6"] = new ButtonInfo(SquareStatus.disabled, 1, 6, a6);
             Squares["a7"] = new ButtonInfo(SquareStatus.BlackPawn, 1, 7, a7);
-            Squares["a8"] = new ButtonInfo(SquareStatus.disabled, 1, 8, a8);
+            Squares["a8"] = new ButtonInfo(SquareStatus.BlackTower, 1, 8, a8);
 
-            Squares["b1"] = new ButtonInfo(SquareStatus.disabled, 2, 1, b1);
+            Squares["b1"] = new ButtonInfo(SquareStatus.WhiteKnight, 2, 1, b1);
             Squares["b2"] = new ButtonInfo(SquareStatus.WhitePawn, 2, 2, b2);
             Squares["b3"] = new ButtonInfo(SquareStatus.disabled, 2, 3, b3);
             Squares["b4"] = new ButtonInfo(SquareStatus.disabled, 2, 4, b4);
             Squares["b5"] = new ButtonInfo(SquareStatus.disabled, 2, 5, b5);
             Squares["b6"] = new ButtonInfo(SquareStatus.disabled, 2, 6, b6);
             Squares["b7"] = new ButtonInfo(SquareStatus.BlackPawn, 2, 7, b7);
-            Squares["b8"] = new ButtonInfo(SquareStatus.disabled, 2, 8, b8);
+            Squares["b8"] = new ButtonInfo(SquareStatus.BlackKnight, 2, 8, b8);
 
-            Squares["c1"] = new ButtonInfo(SquareStatus.disabled, 3, 1, c1);
+            Squares["c1"] = new ButtonInfo(SquareStatus.WhiteBishop, 3, 1, c1);
             Squares["c2"] = new ButtonInfo(SquareStatus.WhitePawn, 3, 2, c2);
             Squares["c3"] = new ButtonInfo(SquareStatus.disabled, 3, 3, c3);
             Squares["c4"] = new ButtonInfo(SquareStatus.disabled, 3, 4, c4);
             Squares["c5"] = new ButtonInfo(SquareStatus.disabled, 3, 5, c5);
             Squares["c6"] = new ButtonInfo(SquareStatus.disabled, 3, 6, c6);
             Squares["c7"] = new ButtonInfo(SquareStatus.BlackPawn, 3, 7, c7);
-            Squares["c8"] = new ButtonInfo(SquareStatus.disabled, 3, 8, c8);
+            Squares["c8"] = new ButtonInfo(SquareStatus.BlackBishop, 3, 8, c8);
 
             Squares["d1"] = new ButtonInfo(SquareStatus.disabled, 4, 1, d1);
             Squares["d2"] = new ButtonInfo(SquareStatus.WhitePawn, 4, 2, d2);
@@ -422,32 +590,32 @@ namespace Cliente
             Squares["e7"] = new ButtonInfo(SquareStatus.BlackPawn, 5, 7, e7);
             Squares["e8"] = new ButtonInfo(SquareStatus.BlackKing, 5, 8, e8);
 
-            Squares["f1"] = new ButtonInfo(SquareStatus.disabled, 6, 1, f1);
+            Squares["f1"] = new ButtonInfo(SquareStatus.WhiteBishop, 6, 1, f1);
             Squares["f2"] = new ButtonInfo(SquareStatus.WhitePawn, 6, 2, f2);
             Squares["f3"] = new ButtonInfo(SquareStatus.disabled, 6, 3, f3);
             Squares["f4"] = new ButtonInfo(SquareStatus.disabled, 6, 4, f4);
             Squares["f5"] = new ButtonInfo(SquareStatus.disabled, 6, 5, f5);
             Squares["f6"] = new ButtonInfo(SquareStatus.disabled, 6, 6, f6);
             Squares["f7"] = new ButtonInfo(SquareStatus.BlackPawn, 6, 7, f7);
-            Squares["f8"] = new ButtonInfo(SquareStatus.disabled, 6, 8, f8);
+            Squares["f8"] = new ButtonInfo(SquareStatus.BlackBishop, 6, 8, f8);
 
-            Squares["g1"] = new ButtonInfo(SquareStatus.disabled, 7, 1, g1);
+            Squares["g1"] = new ButtonInfo(SquareStatus.WhiteKnight, 7, 1, g1);
             Squares["g2"] = new ButtonInfo(SquareStatus.WhitePawn, 7, 2, g2);
             Squares["g3"] = new ButtonInfo(SquareStatus.disabled, 7, 3, g3);
             Squares["g4"] = new ButtonInfo(SquareStatus.disabled, 7, 4, g4);
             Squares["g5"] = new ButtonInfo(SquareStatus.disabled, 7, 5, g5);
             Squares["g6"] = new ButtonInfo(SquareStatus.disabled, 7, 6, g6);
             Squares["g7"] = new ButtonInfo(SquareStatus.BlackPawn, 7, 7, g7);
-            Squares["g8"] = new ButtonInfo(SquareStatus.disabled, 7, 8, g8);
+            Squares["g8"] = new ButtonInfo(SquareStatus.BlackKnight, 7, 8, g8);
 
-            Squares["h1"] = new ButtonInfo(SquareStatus.disabled, 8, 1, h1);
+            Squares["h1"] = new ButtonInfo(SquareStatus.WhiteTower, 8, 1, h1);
             Squares["h2"] = new ButtonInfo(SquareStatus.WhitePawn, 8, 2, h2);
             Squares["h3"] = new ButtonInfo(SquareStatus.disabled, 8, 3, h3);
             Squares["h4"] = new ButtonInfo(SquareStatus.disabled, 8, 4, h4);
             Squares["h5"] = new ButtonInfo(SquareStatus.disabled, 8, 5, h5);
             Squares["h6"] = new ButtonInfo(SquareStatus.disabled, 8, 6, h6);
             Squares["h7"] = new ButtonInfo(SquareStatus.BlackPawn, 8, 7, h7);
-            Squares["h8"] = new ButtonInfo(SquareStatus.disabled, 8, 8, h8);
+            Squares["h8"] = new ButtonInfo(SquareStatus.BlackTower, 8, 8, h8);
         }
 
         public void DisableOptionsToMove()
@@ -475,6 +643,24 @@ namespace Cliente
                             break;
                         case SquareStatus.WhiteKingToDefeat:
                             Squares[key].setSquareStatus(SquareStatus.WhiteKing);
+                            break;
+                        case SquareStatus.BlackKnightToDefeat:
+                            Squares[key].setSquareStatus(SquareStatus.BlackKnight);
+                            break;
+                        case SquareStatus.WhiteKnightToDefeat:
+                            Squares[key].setSquareStatus(SquareStatus.WhiteKnight);
+                            break;
+                        case SquareStatus.BlackBishopToDefeat:
+                            Squares[key].setSquareStatus(SquareStatus.BlackBishop);
+                            break;
+                        case SquareStatus.WhiteBishopToDefeat:
+                            Squares[key].setSquareStatus(SquareStatus.WhiteBishop);
+                            break;
+                        case SquareStatus.BlackQueenToDefeat:
+                            Squares[key].setSquareStatus(SquareStatus.BlackQueen);
+                            break;
+                        case SquareStatus.WhiteQueenToDefeat:
+                            Squares[key].setSquareStatus(SquareStatus.WhiteQueen);
                             break;
                     }
                 }

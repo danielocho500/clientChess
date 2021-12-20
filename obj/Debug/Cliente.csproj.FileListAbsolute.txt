@@ -175,6 +175,8 @@ C:\Users\danie\Documents\chess (2)\chess (2)\Cliente\obj\Debug\JoinMatch.g.cs
 C:\Users\danie\Documents\chess (2)\chess (2)\Cliente\obj\Debug\Login.g.cs
 C:\Users\danie\Documents\chess (2)\chess (2)\Cliente\obj\Debug\MainChess.g.cs
 C:\Users\danie\Documents\chess (2)\chess (2)\Cliente\obj\Debug\MainWindow.g.cs
+C:\Users\danie\Documents\chess (2)\chess (2)\Cliente\obj\Debug\Play.g.cs
+C:\Users\danie\Documents\chess (2)\chess (2)\Cliente\obj\Debug\Ranking.g.cs
 C:\Users\danie\Documents\chess (2)\chess (2)\Cliente\obj\Debug\Register.g.cs
 C:\Users\danie\Documents\chess (2)\chess (2)\Cliente\obj\Debug\Stats.g.cs
 C:\Users\danie\Documents\chess (2)\chess (2)\Cliente\obj\Debug\App.g.cs
@@ -187,6 +189,8 @@ C:\Users\danie\Documents\chess (2)\chess (2)\Cliente\obj\Debug\JoinMatch.baml
 C:\Users\danie\Documents\chess (2)\chess (2)\Cliente\obj\Debug\Login.baml
 C:\Users\danie\Documents\chess (2)\chess (2)\Cliente\obj\Debug\MainChess.baml
 C:\Users\danie\Documents\chess (2)\chess (2)\Cliente\obj\Debug\MainWindow.baml
+C:\Users\danie\Documents\chess (2)\chess (2)\Cliente\obj\Debug\Play.baml
+C:\Users\danie\Documents\chess (2)\chess (2)\Cliente\obj\Debug\Ranking.baml
 C:\Users\danie\Documents\chess (2)\chess (2)\Cliente\obj\Debug\Register.baml
 C:\Users\danie\Documents\chess (2)\chess (2)\Cliente\obj\Debug\Stats.baml
 C:\Users\danie\Documents\chess (2)\chess (2)\Cliente\obj\Debug\Cliente.g.resources
@@ -198,5 +202,3 @@ C:\Users\danie\Documents\chess (2)\chess (2)\Cliente\obj\Debug\Cliente.csproj.Co
 C:\Users\danie\Documents\chess (2)\chess (2)\Cliente\obj\Debug\es\Cliente.resources.dll
 C:\Users\danie\Documents\chess (2)\chess (2)\Cliente\obj\Debug\Cliente.exe
 C:\Users\danie\Documents\chess (2)\chess (2)\Cliente\obj\Debug\Cliente.pdb
-C:\Users\danie\Documents\chess (2)\chess (2)\Cliente\obj\Debug\Play.g.cs
-C:\Users\danie\Documents\chess (2)\chess (2)\Cliente\obj\Debug\Play.baml
